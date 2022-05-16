@@ -6,15 +6,34 @@ public class CameraCtrl : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private Vector3 offsetDefault;
     [SerializeField] private Vector2 speed = Vector2.one;
     [SerializeField] private Rect cameraLimits;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        offsetDefault = offset;
+    }
+
+    private void Update()
     {
         if (target != null)
         {
-            Vector3 newPos = target.position + offset;
+            Vector3 newPos;
+
+            if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0)
+            {
+                newPos = target.position + offset;
+                offset = offsetDefault;
+            }
+            else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
+            {
+                newPos = target.position - offsetDefault;
+                offset = -offsetDefault;
+            }
+            else
+                newPos = target.position + offset;
+
             newPos.z = transform.position.z;
 
             Vector3 delta = newPos - transform.position;
@@ -32,7 +51,7 @@ public class CameraCtrl : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Camera camera = GetComponent<Camera>();
         float  height = camera.orthographicSize;
