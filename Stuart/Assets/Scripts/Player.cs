@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 currentVelocity;
     public Vector3 CurrentVelocity => currentVelocity;
     [SerializeField] private TimeUpdater timeUpdater;
-    [SerializeField] private float cooldownTime;
 
     private bool isInputLocked => (inputLockTimer > 0);
 
@@ -23,8 +22,6 @@ public class Player : MonoBehaviour
 
     private float jumpTime;
     private float inputLockTimer = 0;
-    private float cooldownTimer = 0;
-    
 
     private void Start()
     {
