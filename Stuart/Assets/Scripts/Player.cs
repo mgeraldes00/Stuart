@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundProbe;
     [SerializeField] private float groundProbeRadius = 5.0f;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask platformMask;
+    [SerializeField] private int defaultLayer = 3;
     [SerializeField] private float maxJumpTime = 0.1f;
     [SerializeField] private float fallGravityScale = 5.0f;
     [SerializeField] private Vector3 currentVelocity;
@@ -19,19 +21,24 @@ public class Player : MonoBehaviour
     private bool isInputLocked => (inputLockTimer > 0);
 
     private Rigidbody2D rb;
+    private SpriteRenderer sprite;
 
     private float jumpTime;
     private float inputLockTimer = 0;
+    [SerializeField] private bool onGround;
+    [SerializeField] private bool onPlatform;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         currentVelocity = rb.velocity;
-        bool onGround = IsOnGround();
+        onGround = IsOnGround();
+        onPlatform = IsOnPlatform();
 
         if (isInputLocked)
         {
@@ -51,10 +58,15 @@ public class Player : MonoBehaviour
                 if (Mathf.Abs(hAxis) > 0) timeUpdater.SetScale(1.0f);
                 else timeUpdater.SetScale(0.0f);
             }
+
+            if (onPlatform)
+                sprite.sortingOrder = defaultLayer - 2;
+            else if (onGround)
+                sprite.sortingOrder = defaultLayer;
             
             if (Input.GetButtonDown("Jump"))
             {
-                if (onGround)
+                if (onGround || onPlatform)
                 {
                     rb.gravityScale = 1.0f;
                     currentVelocity.y = jumpSpeed;
@@ -91,6 +103,14 @@ public class Player : MonoBehaviour
     {
         var collider = Physics2D.OverlapCircle(
             groundProbe.position, groundProbeRadius, groundMask);
+
+        return (collider != null);
+    }
+
+    private bool IsOnPlatform()
+    {
+        var collider = Physics2D.OverlapCircle(
+            groundProbe.position, groundProbeRadius, platformMask);
 
         return (collider != null);
     }
