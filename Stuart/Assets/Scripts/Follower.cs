@@ -9,12 +9,9 @@ public class Follower : MonoBehaviour
     [SerializeField] private Vector3 offsetDefault;
     [SerializeField] private Vector2 speed = Vector2.one;
 
-    [SerializeField] private float groundOffset;
-
     private void Start()
     {
         offsetDefault = offset;
-        groundOffset = -gameObject.transform.localScale.x * 2;
     }
 
     private void Update()
@@ -26,18 +23,18 @@ public class Follower : MonoBehaviour
             if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0)
             {
                 newPos = new Vector3(
-                    target.position.x + offset.x, groundOffset, 0);
+                    target.position.x + offset.x, gameObject.transform.position.y, 0);
                 offset = offsetDefault;
             }
             else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
             {
                 newPos = new Vector3(
-                    target.position.x - offset.x, groundOffset, 0);
+                    target.position.x - offset.x, gameObject.transform.position.y, 0);
                 offset = -offsetDefault;
             }
             else
                 newPos = newPos = new Vector3(
-                    target.position.x + offset.x, groundOffset, 0);
+                    target.position.x + offset.x, gameObject.transform.position.y, 0);
 
             newPos.z = transform.position.z;
 
