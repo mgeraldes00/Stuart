@@ -8,6 +8,7 @@ public class PanelNavigation : MonoBehaviour
     private const float duration = 1.5f;
 
     [SerializeField] private int currentPanel;
+    [SerializeField] private int nextPanel;
 
     private bool isLocked;
 
@@ -19,26 +20,66 @@ public class PanelNavigation : MonoBehaviour
     {
         cam = GetComponent<Camera>();
 
-        currentPanel = 0;
-        PlayerPrefs.SetInt("CurrentPanel", 0);
+        PlayerPrefs.DeleteAll();
 
         if (!PlayerPrefs.HasKey("CurrentPanel"))
         {
             currentPanel = 0;
+            nextPanel = 12;
             PlayerPrefs.SetInt("CurrentPanel", 0);
+        }
+        else
+        {
+            currentPanel = PlayerPrefs.GetInt("CurrentPanel");
+            nextPanel = currentPanel + 1;
+
+            if (nextPanel > panels.Length)
+                nextPanel = panels.Length;
+
+            if (currentPanel > 0)
+            {
+                cam.orthographicSize = 2.1f;
+                transform.position = new Vector3(
+                    panels[currentPanel - 1].transform.position.x,
+                    panels[currentPanel - 1].transform.position.y, -10);
+            }
         }
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && currentPanel < panels.Length 
-            && !isLocked)
+        if (Input.GetButtonUp("Select") && currentPanel == 0 && !isLocked)
         {
-            Debug.Log("Move to panel");
+            Debug.Log("Move to first panel");
+            isLocked = true;
+            StartCoroutine(Move(0));
+            currentPanel = 1;
+            PlayerPrefs.SetInt("CurrentPanel", currentPanel);
+        }
+
+        if (Input.GetAxis("Horizontal") > 0 && currentPanel > 0
+            && currentPanel < nextPanel && !isLocked)
+        {
+            Debug.Log("Move to next panel");
             isLocked = true;
             StartCoroutine(Move(PlayerPrefs.GetInt("CurrentPanel")));
-            currentPanel++;
+            ++currentPanel;
             PlayerPrefs.SetInt("CurrentPanel", currentPanel);
+        }
+
+        if (Input.GetAxis("Horizontal") < 0 && currentPanel > 1
+            && currentPanel <= nextPanel && !isLocked)
+        {
+            Debug.Log("Move to previous panel");
+            isLocked = true;
+            --currentPanel;
+            PlayerPrefs.SetInt("CurrentPanel", currentPanel);
+            StartCoroutine(Move(currentPanel - 1));
+        }
+
+        if (Input.GetButtonDown("Select") && currentPanel > 0 && !isLocked)
+        {
+            SceneManager.LoadScene(currentPanel);
         }
     }
 
