@@ -31,6 +31,7 @@ public class Goal : MonoBehaviour
     {
         if (isOnGoal && Input.GetButtonUp("Select"))
         {
+            PlayerPrefs.SetInt("LastPanelPlayed", 1);
             SceneManager.LoadScene("Panels");
         }
     }

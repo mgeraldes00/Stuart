@@ -20,19 +20,38 @@ public class PanelNavigation : MonoBehaviour
     {
         cam = GetComponent<Camera>();
 
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
 
         if (!PlayerPrefs.HasKey("CurrentPanel"))
         {
             currentPanel = 0;
-            nextPanel = 12;
+            nextPanel = 1;
             PlayerPrefs.SetInt("CurrentPanel", 0);
+            PlayerPrefs.SetInt("LastPanelPlayed", 0);
         }
         else
         {
             currentPanel = PlayerPrefs.GetInt("CurrentPanel");
-            nextPanel = currentPanel + 1;
+            if (PlayerPrefs.GetInt("LastPanelPlayed") == 1)
+                nextPanel = currentPanel + 1;
+            else
+                nextPanel = currentPanel;
 
+            // Modify image for all played panels
+            if (currentPanel > 0)
+            {
+                for (int i = 0; i < nextPanel - 1; i++)
+                {
+                    panels[i].GetComponent<SpriteRenderer>().color = Color.grey;
+                }
+
+                if (PlayerPrefs.GetInt("LastPanelPlayed") == 0)
+                {
+                    panels[currentPanel - 1].GetComponent<SpriteRenderer>().
+                        color = Color.white;
+                }
+            }
+            
             if (nextPanel > panels.Length)
                 nextPanel = panels.Length;
 
@@ -79,6 +98,7 @@ public class PanelNavigation : MonoBehaviour
 
         if (Input.GetButtonDown("Select") && currentPanel > 0 && !isLocked)
         {
+            PlayerPrefs.SetInt("LastPanelPlayed", 0);
             SceneManager.LoadScene(currentPanel);
         }
     }
