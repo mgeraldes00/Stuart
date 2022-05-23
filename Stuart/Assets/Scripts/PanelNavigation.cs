@@ -20,8 +20,6 @@ public class PanelNavigation : MonoBehaviour
     {
         cam = GetComponent<Camera>();
 
-        //PlayerPrefs.DeleteAll();
-
         if (!PlayerPrefs.HasKey("CurrentPanel"))
         {
             currentPanel = 0;
