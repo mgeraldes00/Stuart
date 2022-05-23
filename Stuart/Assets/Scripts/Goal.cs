@@ -27,7 +27,7 @@ public class Goal : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void Update()
     {
         if (isOnGoal && Input.GetButtonUp("Select"))
         {
