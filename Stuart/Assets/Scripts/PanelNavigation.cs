@@ -8,7 +8,9 @@ public class PanelNavigation : MonoBehaviour
     private const float duration = 1.5f;
 
     [SerializeField] private int currentPanel;
+    [SerializeField] private int lastPanelPlayed;
     [SerializeField] private int nextPanel;
+    [SerializeField] private int maxPanelReached;
 
     private bool isLocked;
 
@@ -20,30 +22,52 @@ public class PanelNavigation : MonoBehaviour
     {
         cam = GetComponent<Camera>();
 
+        maxPanelReached = PlayerPrefs.GetInt("MaxPanelReached");
+        lastPanelPlayed = PlayerPrefs.GetInt("LastPanelPlayed");
+
         if (!PlayerPrefs.HasKey("CurrentPanel"))
         {
             currentPanel = 0;
             nextPanel = 1;
             PlayerPrefs.SetInt("CurrentPanel", 0);
             PlayerPrefs.SetInt("LastPanelPlayed", 0);
+            PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
+            PlayerPrefs.SetInt("MaxPanelReached", 0);
         }
         else
         {
             currentPanel = PlayerPrefs.GetInt("CurrentPanel");
-            if (PlayerPrefs.GetInt("LastPanelPlayed") == 1)
-                nextPanel = currentPanel + 1;
-            else
-                nextPanel = currentPanel;
+            
+            nextPanel = maxPanelReached + 1;
+            
+            /*if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 1)
+            {
+                
+            }
+            else if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 0)
+            {
+                if (maxPanelReached >= lastPanelPlayed)
+                {
+                    nextPanel = maxPanelReached + 1;
+                }
+                else if (maxPanelReached < lastPanelPlayed)
+                {
+                    maxPanelReached--;
+                    PlayerPrefs.SetInt("MaxPanelReached", maxPanelReached);
+                    nextPanel = maxPanelReached + 1;
+                }
+            }*/
 
             // Modify image for all played panels
             if (currentPanel > 0)
             {
-                for (int i = 0; i < nextPanel - 1; i++)
+                for (int i = 0; i < maxPanelReached; i++)
                 {
                     panels[i].GetComponent<SpriteRenderer>().color = Color.grey;
                 }
 
-                if (PlayerPrefs.GetInt("LastPanelPlayed") == 0)
+                if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 0
+                    && maxPanelReached < currentPanel)
                 {
                     panels[currentPanel - 1].GetComponent<SpriteRenderer>().
                         color = Color.white;
@@ -96,7 +120,8 @@ public class PanelNavigation : MonoBehaviour
 
         if (Input.GetButtonDown("Select") && currentPanel > 0 && !isLocked)
         {
-            PlayerPrefs.SetInt("LastPanelPlayed", 0);
+            PlayerPrefs.SetInt("LastPanelPlayed", currentPanel);
+            PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
             SceneManager.LoadScene(currentPanel);
         }
     }

@@ -9,6 +9,13 @@ public class Goal : MonoBehaviour
 
     [SerializeField] private bool isOnGoal;
 
+    [SerializeField] private int levelIndex;
+
+    private void Start()
+    {
+        levelIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(playerMask))
@@ -31,7 +38,9 @@ public class Goal : MonoBehaviour
     {
         if (isOnGoal && Input.GetButtonUp("Select"))
         {
-            PlayerPrefs.SetInt("LastPanelPlayed", 1);
+            PlayerPrefs.SetInt("IsLastPanelPlayed", 1);
+            if (PlayerPrefs.GetInt("MaxPanelReached") < levelIndex)
+                PlayerPrefs.SetInt("MaxPanelReached", levelIndex);
             SceneManager.LoadScene("Panels");
         }
     }
