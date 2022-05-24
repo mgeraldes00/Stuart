@@ -23,10 +23,12 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
 
-    private float jumpTime;
-    private float inputLockTimer = 0;
+    [SerializeField] private float jumpTime;
+    [SerializeField] private float inputLockTimer = 0;
     [SerializeField] private bool onGround;
     [SerializeField] private bool onPlatform;
+    [SerializeField] private bool jumping;
+    [SerializeField] private bool gliding;
 
     private void Start()
     {
@@ -60,9 +62,19 @@ public class Player : MonoBehaviour
             }
 
             if (onPlatform)
+            {
+                // BUG : sometimes disables glide incorrectly when touching
+                // a platform but not standing on it
+                jumping = false;
+                gliding = false;
                 sprite.sortingOrder = defaultLayer - 2;
+            }
             else if (onGround)
+            {
+                jumping = false;
+                gliding = false;
                 sprite.sortingOrder = defaultLayer;
+            }
             
             if (Input.GetButtonDown("Jump"))
             {
@@ -72,18 +84,42 @@ public class Player : MonoBehaviour
                     currentVelocity.y = jumpSpeed;
                     jumpTime = Time.time;
                 }
+                else
+                {
+                    if (currentVelocity.y <= 0)
+                    {
+                        gliding = true;
+                        rb.gravityScale = 0.2f;
+                    }
+                }
             }
             else if (Input.GetButton("Jump"))
             {
                 float elapsedTime = Time.time - jumpTime;
-                if (elapsedTime > maxJumpTime)
+                if (elapsedTime > maxJumpTime && !gliding)
                 {
                     rb.gravityScale = fallGravityScale;
                 }
+
+                if (currentVelocity.y > 0 && !onPlatform && !onGround)
+                    jumping = true;
+                if (jumping && currentVelocity.y <= 0)
+                {
+                    gliding = true;
+                    rb.gravityScale = 0.2f;
+                }
+            }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                jumping = false;
+
+                if (gliding)
+                    gliding = false;
             }
             else
             {
-                rb.gravityScale = fallGravityScale;
+                if (!gliding)
+                    rb.gravityScale = fallGravityScale;
             }
 
             rb.velocity = currentVelocity;
