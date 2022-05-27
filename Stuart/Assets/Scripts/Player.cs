@@ -26,7 +26,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpTime;
     [SerializeField] private float inputLockTimer = 0;
     [SerializeField] private bool onGround;
+    public bool OnGround => onGround;
     [SerializeField] private bool onPlatform;
+    public bool OnPlatform => onPlatform;
     [SerializeField] private bool jumping;
     [SerializeField] private bool gliding;
 

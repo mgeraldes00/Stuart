@@ -8,33 +8,80 @@ public class Follower : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private Vector3 offsetDefault;
     [SerializeField] private Vector2 speed = Vector2.one;
+    [SerializeField] private Vector2 speedDefault = Vector2.one;
 
     private void Start()
     {
         offsetDefault = offset;
+        speedDefault = speed;
     }
 
     private void Update()
     {
         if (target != null)
         {
-            Vector3 newPos;
+            Vector3 newPos = new Vector3(
+                target.position.x + offset.x, gameObject.transform.position.y, 0);
 
-            if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0)
+            if (target.gameObject.GetComponent<Player>().OnGround
+                && speed.x > speedDefault.x)
             {
-                newPos = new Vector3(
-                    target.position.x + offset.x, gameObject.transform.position.y, 0);
-                offset = offsetDefault;
+                speed.x -= 0.001f + Time.deltaTime;
             }
-            else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
+
+            if (speed.x < speedDefault.x)
+                speed.x = speedDefault.x;
+
+            if (!target.gameObject.GetComponent<Player>().OnPlatform)
             {
-                newPos = new Vector3(
-                    target.position.x - offset.x, gameObject.transform.position.y, 0);
-                offset = -offsetDefault;
+                if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0)
+                {
+                    newPos = new Vector3(
+                        target.position.x + offset.x, gameObject.transform.position.y, 0);
+                    offset = offsetDefault;
+                    if (target.gameObject.GetComponent<Player>().OnGround)
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
+                {
+                    newPos = new Vector3(
+                        target.position.x + offset.x, gameObject.transform.position.y, 0);
+                    offset = -offsetDefault;
+                    if (target.gameObject.GetComponent<Player>().OnGround)
+                        transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            else if (target.gameObject.GetComponent<Player>().OnPlatform)
+            {
+                speed.x += speedDefault.x * 0.001f + Time.deltaTime;
+                if (speed.x > 1.5f)
+                    speed.x = 1.5f;
+                if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0
+                    && gameObject.transform.position.x < target.gameObject.transform.position.x)
+                {
+                    //speed = speedDefault;
+                    newPos = new Vector3(
+                        target.position.x + offset.x, gameObject.transform.position.y, 0);
+                    offset = offsetDefault;
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0
+                    && gameObject.transform.position.x > target.gameObject.transform.position.x)
+                {
+                    //speed = speedDefault;
+                    newPos = new Vector3(
+                        target.position.x + offset.x, gameObject.transform.position.y, 0);
+                    offset = -offsetDefault;
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
             }
             else
-                newPos = newPos = new Vector3(
+            {   	
+                newPos = new Vector3(
                     target.position.x + offset.x, gameObject.transform.position.y, 0);
+            }
+            
+                
 
             newPos.z = transform.position.z;
 
