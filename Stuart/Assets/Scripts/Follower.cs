@@ -26,7 +26,7 @@ public class Follower : MonoBehaviour
             if (target.gameObject.GetComponent<Player>().OnGround
                 && speed.x > speedDefault.x)
             {
-                speed.x -= 0.001f + Time.deltaTime;
+                speed.x -= 1f * Time.deltaTime;
             }
 
             if (speed.x < speedDefault.x)
@@ -39,16 +39,34 @@ public class Follower : MonoBehaviour
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
                     offset = offsetDefault;
-                    if (target.gameObject.GetComponent<Player>().OnGround)
-                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                    if (target.gameObject.GetComponent<Player>().OnGround
+                        || target.gameObject.GetComponent<Player>().Jumping
+                        || target.gameObject.GetComponent<Player>().Gliding)
+                    {
+                        if (gameObject.transform.position.x 
+                            < target.gameObject.transform.position.x
+                            || speed.x == speedDefault.x)
+                        {
+                            transform.rotation = Quaternion.Euler(0, 0, 0);
+                        }
+                    }
                 }
                 else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
                 {
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
                     offset = -offsetDefault;
-                    if (target.gameObject.GetComponent<Player>().OnGround)
-                        transform.rotation = Quaternion.Euler(0, 180, 0);
+                    if (target.gameObject.GetComponent<Player>().OnGround
+                        || target.gameObject.GetComponent<Player>().Jumping
+                        || target.gameObject.GetComponent<Player>().Gliding)
+                    {
+                        if (gameObject.transform.position.x 
+                            > target.gameObject.transform.position.x
+                            || speed.x == speedDefault.x)
+                        {
+                            transform.rotation = Quaternion.Euler(0, 180, 0);
+                        }
+                    }
                 }
             }
             else if (target.gameObject.GetComponent<Player>().OnPlatform)
@@ -59,7 +77,6 @@ public class Follower : MonoBehaviour
                 if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0
                     && gameObject.transform.position.x < target.gameObject.transform.position.x)
                 {
-                    //speed = speedDefault;
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
                     offset = offsetDefault;
@@ -68,7 +85,6 @@ public class Follower : MonoBehaviour
                 else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0
                     && gameObject.transform.position.x > target.gameObject.transform.position.x)
                 {
-                    //speed = speedDefault;
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
                     offset = -offsetDefault;
@@ -79,9 +95,7 @@ public class Follower : MonoBehaviour
             {   	
                 newPos = new Vector3(
                     target.position.x + offset.x, gameObject.transform.position.y, 0);
-            }
-            
-                
+            }                
 
             newPos.z = transform.position.z;
 

@@ -30,7 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField] private bool onPlatform;
     public bool OnPlatform => onPlatform;
     [SerializeField] private bool jumping;
+    public bool Jumping => jumping;
     [SerializeField] private bool gliding;
+    public bool Gliding => gliding;
 
     private void Start()
     {
