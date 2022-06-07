@@ -12,6 +12,8 @@ public class Follower : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+
         offsetDefault = offset;
         speedDefault = speed;
     }

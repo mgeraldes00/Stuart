@@ -14,6 +14,8 @@ public class CameraCtrl : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+
         offsetDefault = offset;
     }
 
