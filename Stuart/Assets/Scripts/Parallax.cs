@@ -11,6 +11,8 @@ public class Parallax : MonoBehaviour
 
     void Start()
     {
+        sourceTransform = Camera.main.transform;
+
         offset = new Vector3(
             transform.position.x - sourceTransform.position.x * moveScale.x,
             transform.position.y - sourceTransform.position.y * moveScale.y,
