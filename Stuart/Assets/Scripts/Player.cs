@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
 
-    [SerializeField] private float jumpTime;
+    private float jumpTime;
     [SerializeField] private float inputLockTimer = 0;
     [SerializeField] private bool onGround;
     public bool OnGround => onGround;
@@ -94,6 +94,8 @@ public class Player : MonoBehaviour
                     {
                         gliding = true;
                         rb.gravityScale = 0.2f;
+                        if (currentVelocity.y < -5 * fallGravityScale)
+                            currentVelocity.y -= currentVelocity.y * 0.8f;
                     }
                 }
             }
@@ -105,7 +107,7 @@ public class Player : MonoBehaviour
                     rb.gravityScale = fallGravityScale;
                 }
 
-                if (currentVelocity.y > 0 && !onPlatform && !onGround)
+                if (currentVelocity.y >= 0 && !onPlatform && !onGround)
                     jumping = true;
                 if (jumping && currentVelocity.y <= 0)
                 {
@@ -141,7 +143,7 @@ public class Player : MonoBehaviour
 
     private bool IsOnGround()
     {
-        var collider = Physics2D.OverlapCircle(
+        Collider2D collider = Physics2D.OverlapCircle(
             groundProbe.position, groundProbeRadius, groundMask);
 
         return (collider != null);
@@ -149,10 +151,10 @@ public class Player : MonoBehaviour
 
     private bool IsOnPlatform()
     {
-        var collider = Physics2D.OverlapCircle(
+        Collider2D collider = Physics2D.OverlapCircle(
             groundProbe.position, groundProbeRadius, platformMask);
 
-        return (collider != null);
+        return (collider != null && !jumping && !gliding);
     }
 
     private void OnDrawGizmosSelected()
