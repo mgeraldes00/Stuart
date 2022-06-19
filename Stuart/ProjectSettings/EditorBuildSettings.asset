@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Panels.unity
-    guid: 5f34077945289d246b4d253478c1468b
-  - enabled: 1
-    path: Assets/Scenes/MovementTest.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/PanelTest.unity
-    guid: d416e2571b3e4944982362d52b51b57e
+    path: Assets/Scenes/Tutorial.unity
+    guid: 4721aa4e393b25941ba201c7d7cd2c3b
   m_configObjects: {}
