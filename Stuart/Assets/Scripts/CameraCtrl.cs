@@ -8,7 +8,7 @@ public class CameraCtrl : MonoBehaviour
 
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
-    [SerializeField] private Vector3 offsetDefault;
+    [SerializeField] private float offsetDefaultX;
     [SerializeField] private Vector2 speed = Vector2.one;
     [SerializeField] private Rect cameraLimits;
 
@@ -16,7 +16,7 @@ public class CameraCtrl : MonoBehaviour
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
-        offsetDefault = offset;
+        offsetDefaultX = offset.x;
     }
 
     private void Update()
@@ -27,17 +27,24 @@ public class CameraCtrl : MonoBehaviour
 
             if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0)
             {
-                newPos = target.position + offset;
-                offset = offsetDefault;
+                newPos.x = target.position.x + offset.x;
+                offset.x = offsetDefaultX;
             }
             else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
             {
-                newPos = target.position - offsetDefault;
-                offset = -offsetDefault;
+                newPos.x = target.position.x - offsetDefaultX;
+                offset.x = -offsetDefaultX;
             }
             else
-                newPos = target.position + offset;
+                newPos.x = target.position.x + offset.x;
 
+            if (target.gameObject.GetComponent<Player>().CurrentVelocity.y > 0)
+                newPos.y = target.position.y + (target.position.y * 0.12f);
+            else if (target.gameObject.GetComponent<Player>().CurrentVelocity.y < -15)
+                newPos.y = target.position.y - (target.position.y * 0.12f);
+            else
+                newPos.y = target.position.y + (target.position.y * 0.12f);
+                
             newPos.z = transform.position.z;
 
             Vector3 delta = newPos - transform.position;
