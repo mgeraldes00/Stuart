@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class EventPoint : MonoBehaviour
 {
+    [SerializeField] private GameObject controller;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Application.targetFrameRate = 300;
+        controller = GameObject.Find("Controller");
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5.0f;
     public float JumpSpeed => jumpSpeed;
     [SerializeField] private Transform groundProbe;
+    [SerializeField] private Transform enterPoint;
     [SerializeField] private float groundProbeRadius = 5.0f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask platformMask;
@@ -34,6 +35,10 @@ public class Player : MonoBehaviour
     [SerializeField] private bool gliding;
     public bool Gliding => gliding;
 
+    public bool IsTutorial;
+
+    [SerializeField] private bool enteredScene;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +46,14 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (enteredScene)
+        {
+            UpdateMovement();
+        }
+    }
+
+    private void UpdateMovement()
     {
         currentVelocity = rb.velocity;
         onGround = IsOnGround();
@@ -67,8 +80,6 @@ public class Player : MonoBehaviour
 
             if (onPlatform)
             {
-                // BUG : sometimes disables glide incorrectly when touching
-                // a platform but not standing on it
                 jumping = false;
                 gliding = false;
                 sprite.sortingOrder = defaultLayer - 2;
@@ -141,6 +152,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    public IEnumerator EnterScene(float timeToEnter)
+    {
+        yield return new WaitForSeconds(timeToEnter);
+        do
+        {
+            rb.velocity = new Vector3(2, 0, 0);
+
+            yield return null;
+        }
+        while(transform.position.x < enterPoint.position.x);
+        
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(1.0f);
+        enteredScene = true;
+    }
+    
     private bool IsOnGround()
     {
         Collider2D collider = Physics2D.OverlapCircle(

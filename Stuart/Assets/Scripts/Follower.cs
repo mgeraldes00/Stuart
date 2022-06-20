@@ -10,6 +10,8 @@ public class Follower : MonoBehaviour
     [SerializeField] private Vector2 speed = Vector2.one;
     [SerializeField] private Vector2 speedDefault = Vector2.one;
 
+    public bool IsTutorial;
+
     private void Start()
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
