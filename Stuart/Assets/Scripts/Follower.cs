@@ -5,22 +5,38 @@ using UnityEngine;
 public class Follower : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    [SerializeField] private Transform enterPoint;
     [SerializeField] private Vector3 offset;
     [SerializeField] private Vector3 offsetDefault;
     [SerializeField] private Vector2 speed = Vector2.one;
     [SerializeField] private Vector2 speedDefault = Vector2.one;
 
-    public bool IsTutorial;
+    private Rigidbody2D rb;
+
+    [SerializeField] private bool isLocked;
+
+    [SerializeField] private bool enteredScene;
+
+    // World space UI components
+    int textIndex;
 
     private void Start()
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+
+        rb = GetComponent<Rigidbody2D>();
 
         offsetDefault = offset;
         speedDefault = speed;
     }
 
     private void Update()
+    {
+        if (enteredScene && !isLocked)
+            UpdateMovement();
+    }
+
+    private void UpdateMovement()
     {
         if (target != null)
         {
@@ -110,5 +126,58 @@ public class Follower : MonoBehaviour
 
             transform.position = newPos;
         }
+    }
+
+    public IEnumerator EnterScene(float timeToEnter)
+    {
+        yield return new WaitForSeconds(timeToEnter);
+
+        if (enterPoint.position.x < transform.position.x)
+        {
+            do
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                rb.velocity = new Vector3(-2, 0, 0);
+                yield return null;
+            }
+            while (transform.position.x > enterPoint.position.x);
+        }
+        else
+        {
+            do
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                rb.velocity = new Vector3(2, 0, 0);
+                yield return null;
+            }
+            while (transform.position.x < enterPoint.position.x);
+        }
+        
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(1.0f);
+        enteredScene = true;
+    }
+
+    public void Lock()
+    {
+        isLocked = true;
+    }
+
+    public void Unlock()
+    {
+        isLocked = false;
+    }
+
+    public void ShowBalloon()
+    {
+        Debug.Log($"FOLLOWER TALKING {textIndex}");
+
+        textIndex++;
+    }
+
+    public void Clear()
+    {
+        Debug.Log("FOLLOWER LISTENING");
     }
 }

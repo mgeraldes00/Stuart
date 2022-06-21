@@ -2546,6 +2546,10 @@ PrefabInstance:
       propertyPath: timeUpdater
       value: 
       objectReference: {fileID: 1187164091}
+    - target: {fileID: 4870345705777911819, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: enteredScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4870345705777911820, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2567,6 +2571,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2102542700}
+    - target: {fileID: 5474135624191018161, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: enteredScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018172, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_Name
       value: Follower

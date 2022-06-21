@@ -35,9 +35,12 @@ public class Player : MonoBehaviour
     [SerializeField] private bool gliding;
     public bool Gliding => gliding;
 
-    public bool IsTutorial;
+    [SerializeField] private bool isLocked;
 
     [SerializeField] private bool enteredScene;
+
+    // World space UI components
+    int textIndex;
 
     private void Start()
     {
@@ -47,7 +50,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (enteredScene)
+        if (enteredScene && !isLocked)
         {
             UpdateMovement();
         }
@@ -168,6 +171,18 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         enteredScene = true;
     }
+
+    public void Lock()
+    {
+        isLocked = true;
+
+        rb.gravityScale = fallGravityScale;
+    }
+
+    public void Unlock()
+    {
+        isLocked = false;
+    }
     
     private bool IsOnGround()
     {
@@ -192,5 +207,17 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(groundProbe.position, groundProbeRadius);
         }
+    }
+
+    public void ShowBalloon()
+    {
+        Debug.Log($"PLAYER TALKING {textIndex}");
+
+        textIndex++;
+    }
+
+    public void Clear()
+    {
+        Debug.Log("PLAYER LISTENING");
     }
 }
