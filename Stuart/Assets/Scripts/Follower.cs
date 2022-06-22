@@ -18,9 +18,6 @@ public class Follower : MonoBehaviour
 
     [SerializeField] private bool enteredScene;
 
-    // World space UI components
-    int textIndex;
-
     private void Start()
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -168,22 +165,18 @@ public class Follower : MonoBehaviour
 
     public void Unlock()
     {
+        speed.x = 1.25f;
+
         isLocked = false;
     }
 
     public void Talk()
     {
-        Debug.Log($"FOLLOWER TALKING {textIndex}");
-
         speechBalloon.ShowBalloon();
-
-        textIndex++;
     }
 
     public void Listen()
     {
-        Debug.Log("FOLLOWER LISTENING");
-
         speechBalloon.HideBalloon();
     }
 }

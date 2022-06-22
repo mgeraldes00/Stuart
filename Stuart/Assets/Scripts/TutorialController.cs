@@ -47,9 +47,11 @@ public class TutorialController : MonoBehaviour, IController
         {
             case 1:
                 player.Lock();
-                StartCoroutine(follower.EnterScene(2.0f));
+                StartCoroutine(follower.EnterScene(1.5f));
 
-                StartCoroutine(Dialogue(new int[] { 0, 1, 0, 1, 0 }, 5.0f));
+                StartCoroutine(Dialogue(
+                    new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1 }, 
+                    4.5f));
                 break;
             case 2:
 
@@ -85,5 +87,12 @@ public class TutorialController : MonoBehaviour, IController
             index++;
         }
         while (index < dialogue.Length);
+
+        currentSpeaker.SendMessage("Listen");
+        
+        yield return new WaitForSeconds(0.2f);
+        follower.Unlock();
+        yield return new WaitForSeconds(0.8f);
+        player.Unlock();
     }
 }

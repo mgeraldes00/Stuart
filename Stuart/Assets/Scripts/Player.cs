@@ -41,9 +41,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool enteredScene;
 
-    // World space UI components
-    int textIndex;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -214,17 +211,11 @@ public class Player : MonoBehaviour
 
     public void Talk()
     {
-        Debug.Log($"PLAYER TALKING {textIndex}");
-
         speechBalloon.ShowBalloon();
-
-        textIndex++;
     }
 
     public void Listen()
     {
-        Debug.Log("PLAYER LISTENING");
-
         speechBalloon.HideBalloon();
     }
 }

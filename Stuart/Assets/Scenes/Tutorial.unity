@@ -903,9 +903,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1396983430188358483, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1351428886}
     - target: {fileID: 1876628214754757705, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_text
       value: "A\xED est\xE1s tu, Manecas! Realmente, onde \xE9 que nos viemos meter?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474135624191018160, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: m_Size.y
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018161, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: IsLocked
@@ -929,11 +937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7
+      value: -2.85
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -966,6 +974,37 @@ PrefabInstance:
     - target: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 2009364810}
+    - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: content.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: content.Array.data[0]
+      value: "a\xED est\xE1s tu, manecas! realmente, onde \xE9 que nos viemos meter?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: content.Array.data[1]
+      value: "\xE9. como se algu\xE9m nos tivesse colocado aqui contra a nossa vontade.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: content.Array.data[2]
+      value: "parece-me que sim. e \xE9 enorme, at\xE9 comicamente grande. realmente,
+        como foi ali parar...."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: content.Array.data[3]
+      value: "est\xE1s maluco? olha para a altura daquela torre! n\xE3o tens amor
+        \xE0 vida?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: content.Array.data[4]
+      value: que teimosia... bem, vou ver se fico bem posicionado para amparar uma
+        eventual queda..
       objectReference: {fileID: 0}
     - target: {fileID: 8462765301551857397, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_Padding.z
@@ -3439,6 +3478,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &996197902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4870345705777911817, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+  m_PrefabInstance: {fileID: 1477103557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &998627312
 GameObject:
   m_ObjectHideFlags: 0
@@ -5354,6 +5398,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 996197902}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: content.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: content.Array.data[0]
+      value: quim! que raio estamos a fazer aqui? fazes ideia de onde estamos sequer?.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: content.Array.data[1]
+      value: "estranho... do nada dei por mim neste local, como se tivesse c\xE1
+        vindo ter sem querer.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: content.Array.data[2]
+      value: hum....
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: content.Array.data[3]
+      value: "consegues ver o que est\xE1 no cimo daquela torre? algo redondo e brilhante
+        como uma moeda dourada.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: content.Array.data[4]
+      value: "\xE9 como se me estivesse a chamar... sinto que colecion\xE1-la \xE9
+        o meu prop\xF3sito.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: content.Array.data[5]
+      value: "n\xE3o quero saber. neste momento, n\xE3o consigo pensar em mais nada
+        sen\xE3o ir l\xE1 acima. s\xF3 um segundo.."
+      objectReference: {fileID: 0}
     - target: {fileID: 4870345705777911817, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5418,6 +5498,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1351428886}
+    - target: {fileID: 9064170898290984538, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9064170898290984538, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
@@ -6708,6 +6792,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3777289241457986647, guid: e5a6cec5ba8881d4b9d2a9f8adc419a1, type: 3}
   m_PrefabInstance: {fileID: 703374347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2009364810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+  m_PrefabInstance: {fileID: 163062444}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2047312670
 GameObject:

@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3106303866032782815, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_Padding.z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -284,6 +288,42 @@ PrefabInstance:
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_text
+      value: quim! que raio estamos a fazer aqui? fazes ideia de onde estamos sequer?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_fontSize
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_fontStyle
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_characterSpacing
+      value: -3.717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
