@@ -12,6 +12,7 @@ public class Follower : MonoBehaviour
     [SerializeField] private Vector2 speedDefault = Vector2.one;
 
     private Rigidbody2D rb;
+    [SerializeField] private SpeechBalloon speechBalloon;
 
     [SerializeField] private bool isLocked;
 
@@ -25,6 +26,7 @@ public class Follower : MonoBehaviour
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
         rb = GetComponent<Rigidbody2D>();
+        speechBalloon = GetComponentInChildren<SpeechBalloon>();
 
         offsetDefault = offset;
         speedDefault = speed;
@@ -169,15 +171,19 @@ public class Follower : MonoBehaviour
         isLocked = false;
     }
 
-    public void ShowBalloon()
+    public void Talk()
     {
         Debug.Log($"FOLLOWER TALKING {textIndex}");
+
+        speechBalloon.ShowBalloon();
 
         textIndex++;
     }
 
-    public void Clear()
+    public void Listen()
     {
         Debug.Log("FOLLOWER LISTENING");
+
+        speechBalloon.HideBalloon();
     }
 }

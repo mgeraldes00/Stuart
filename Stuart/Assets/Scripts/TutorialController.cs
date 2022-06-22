@@ -75,10 +75,10 @@ public class TutorialController : MonoBehaviour, IController
             else
                 currentListener = speakers[0];
 
-            currentSpeaker.SendMessage("ShowBalloon");
-            currentListener.SendMessage("Clear");
+            currentSpeaker.SendMessage("Talk");
+            currentListener.SendMessage("Listen");
 
-
+            yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => Input.GetButtonDown("Select"));
             yield return null;
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
+    [SerializeField] private SpeechBalloon speechBalloon;
 
     private float jumpTime;
     [SerializeField] private float inputLockTimer = 0;
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        speechBalloon = GetComponentInChildren<SpeechBalloon>();
     }
 
     private void Update()
@@ -209,15 +212,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ShowBalloon()
+    public void Talk()
     {
         Debug.Log($"PLAYER TALKING {textIndex}");
+
+        speechBalloon.ShowBalloon();
 
         textIndex++;
     }
 
-    public void Clear()
+    public void Listen()
     {
         Debug.Log("PLAYER LISTENING");
+
+        speechBalloon.HideBalloon();
     }
 }
