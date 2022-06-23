@@ -218,4 +218,12 @@ public class Player : MonoBehaviour
     {
         speechBalloon.HideBalloon();
     }
+
+    public void Turn()
+    {
+        if (transform.rotation == Quaternion.Euler(0, 0, 0))
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        else
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
 }

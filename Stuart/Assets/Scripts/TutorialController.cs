@@ -51,7 +51,7 @@ public class TutorialController : MonoBehaviour, IController
 
                 StartCoroutine(Dialogue(
                     new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1 }, 
-                    4.5f));
+                    4.5f, new int[] { 5, 8 }));
                 break;
             case 2:
 
@@ -59,13 +59,22 @@ public class TutorialController : MonoBehaviour, IController
         }
     }
 
-    private IEnumerator Dialogue(int[] dialogue, float timeToStart)
+    private IEnumerator Dialogue(
+        int[] dialogue, float timeToStart, int[] extraParams = null)
     {
         int index = 0;
 
         Component[] speakers = new Component[] { player, follower };
 
         Component currentSpeaker, currentListener;
+
+        int turningPoint = -1, returnPoint = -1;
+
+        if (extraParams != null)
+        {
+            turningPoint = extraParams[0];
+            returnPoint = extraParams[1];
+        }
 
         yield return new WaitForSeconds(timeToStart);
         do
@@ -76,6 +85,14 @@ public class TutorialController : MonoBehaviour, IController
                 currentListener = speakers[1];
             else
                 currentListener = speakers[0];
+
+            if (extraParams != null)
+            {
+                if (index == turningPoint)
+                    currentListener.SendMessage("Turn");
+                if (index == returnPoint)
+                    currentSpeaker.SendMessage("Turn");
+            }
 
             currentSpeaker.SendMessage("Talk");
             currentListener.SendMessage("Listen");
