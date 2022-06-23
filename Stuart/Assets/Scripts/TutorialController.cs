@@ -9,6 +9,9 @@ public class TutorialController : MonoBehaviour, IController
 
     [SerializeField] private GameObject[] bounds;
     [SerializeField] private Transform reunionPoint;
+    [SerializeField] private GameObject fallPoint;
+
+    [SerializeField] private int coinNum = 0, maxCoins = 1;
 
     // Start is called before the first frame update
     private void Start()
@@ -54,12 +57,32 @@ public class TutorialController : MonoBehaviour, IController
                     4.5f, new int[] { 5, 8 }));
                 break;
             case 2:
+                fallPoint.SetActive(true);
+                break;
+            case 3:
+                // Position follower and player
 
+                player.Lock();
+                follower.Lock();
+
+                StartCoroutine(Dialogue(
+                    new int[] { 1, 0, 1, 0 },
+                    2.0f));
                 break;
         }
     }
 
-    private IEnumerator Dialogue(
+    public void CollectCoin()
+    {
+        coinNum++;
+
+        if (coinNum == maxCoins)
+        {
+            BeginEvent(2);
+        }
+    }
+
+    public IEnumerator Dialogue(
         int[] dialogue, float timeToStart, int[] extraParams = null)
     {
         int index = 0;
