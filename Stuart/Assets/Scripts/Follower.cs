@@ -158,6 +158,81 @@ public class Follower : MonoBehaviour
         enteredScene = true;
     }
 
+    public IEnumerator AdjustPosition()
+    {
+        float targetPosition = 0;
+        float targetSpeed;
+
+        if (target.position.x > gameObject.transform.position.x)
+        {
+            targetPosition = target.position.x - 5;
+            if (gameObject.transform.position.x - targetPosition > 5)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                targetSpeed = 3;
+
+                do
+                {
+                    rb.velocity = new Vector3(targetSpeed, 0, 0);
+                    yield return null;
+                }
+                while (transform.position.x < targetPosition);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                targetSpeed = -3;
+
+                do
+                {
+                    rb.velocity = new Vector3(targetSpeed, 0, 0);
+                    yield return null;
+                }
+                while (transform.position.x > targetPosition);
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            targetPosition = target.position.x + 5;
+            if (targetPosition - gameObject.transform.position.x > 5)
+            {
+                targetSpeed = -3;
+
+                Debug.Log(target.position.x - gameObject.transform.position.x);
+                Debug.Log(gameObject.transform.position.x - target.position.x);
+                Debug.Log(targetPosition);
+
+                do
+                {
+                    rb.velocity = new Vector3(targetSpeed, 0, 0);
+                    yield return null;
+                }
+                while (transform.position.x > targetPosition);
+            }
+            else
+            {
+                targetSpeed = 3;
+
+                Debug.Log(target.position.x - gameObject.transform.position.x);
+                Debug.Log(gameObject.transform.position.x - target.position.x);
+                Debug.Log(targetPosition);
+
+                do
+                {
+                    rb.velocity = new Vector3(targetSpeed, 0, 0);
+                    yield return null;
+                }
+                while (transform.position.x < targetPosition);
+            }
+
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        rb.velocity = Vector3.zero;
+    }
+
     public void Lock()
     {
         isLocked = true;

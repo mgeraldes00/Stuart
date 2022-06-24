@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
     public float JumpSpeed => jumpSpeed;
+    [SerializeField] private Transform follower;
     [SerializeField] private Transform groundProbe;
     [SerializeField] private Transform enterPoint;
     [SerializeField] private float groundProbeRadius = 5.0f;
@@ -46,6 +47,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         speechBalloon = GetComponentInChildren<SpeechBalloon>();
+
+        follower = GameObject.FindWithTag("Follower").GetComponent<Transform>();
     }
 
     private void Update()
@@ -170,6 +173,28 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         enteredScene = true;
+    }
+
+    public IEnumerator AdjustPosition(float distanceToAdjust = 0)
+    {
+        float time = 0;
+
+        yield return new WaitForSeconds(0.5f);
+        if (follower.position.x > gameObject.transform.position.x)
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            currentVelocity.x = -1;
+        }
+
+        do
+        {
+            rb.velocity = new Vector3(distanceToAdjust, 0, 0);
+            time += 0.01f;
+            yield return null;
+        }
+        while (time <= 1);
     }
 
     public void Lock()

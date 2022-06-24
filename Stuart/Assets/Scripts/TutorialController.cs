@@ -60,14 +60,15 @@ public class TutorialController : MonoBehaviour, IController
                 fallPoint.SetActive(true);
                 break;
             case 3:
-                // Position follower and player
-
                 player.Lock();
                 follower.Lock();
 
+                StartCoroutine(player.AdjustPosition());
+                StartCoroutine(follower.AdjustPosition());
+
                 StartCoroutine(Dialogue(
                     new int[] { 1, 0, 1, 0 },
-                    2.0f));
+                    3.0f));
                 break;
         }
     }

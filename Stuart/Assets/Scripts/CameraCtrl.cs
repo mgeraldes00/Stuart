@@ -25,12 +25,14 @@ public class CameraCtrl : MonoBehaviour
         {
             Vector3 newPos;
 
-            if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0)
+            if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0
+                || target.rotation.y == 0)
             {
                 newPos.x = target.position.x + offset.x;
                 offset.x = offsetDefaultX;
             }
-            else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
+            else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0
+                || target.rotation.y < 0)
             {
                 newPos.x = target.position.x - offsetDefaultX;
                 offset.x = -offsetDefaultX;
