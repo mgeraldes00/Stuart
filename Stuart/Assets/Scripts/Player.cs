@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float JumpSpeed => jumpSpeed;
     [SerializeField] private Transform follower;
     [SerializeField] private Transform groundProbe;
-    [SerializeField] private Transform enterPoint;
+    [SerializeField] private Transform enterPoint, leavePoint;
     [SerializeField] private float groundProbeRadius = 5.0f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask platformMask;
@@ -175,9 +175,32 @@ public class Player : MonoBehaviour
         enteredScene = true;
     }
 
+    public IEnumerator LeaveScene()
+    {
+        Lock();
+
+        do
+        {
+            rb.velocity = new Vector3(3, 0, 0);
+
+            yield return null;
+        }
+        while(transform.position.x < leavePoint.position.x);
+        
+        rb.velocity = Vector3.zero;
+    }
+
     public IEnumerator AdjustPosition(float distanceToAdjust = 0)
     {
         float time = 0;
+
+        do
+        {
+            rb.velocity = new Vector3(distanceToAdjust, 0, 0);
+            time += 0.01f;
+            yield return null;
+        }
+        while (time <= 1);
 
         yield return new WaitForSeconds(0.5f);
         if (follower.position.x > gameObject.transform.position.x)
@@ -187,14 +210,6 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
             currentVelocity.x = -1;
         }
-
-        do
-        {
-            rb.velocity = new Vector3(distanceToAdjust, 0, 0);
-            time += 0.01f;
-            yield return null;
-        }
-        while (time <= 1);
     }
 
     public void Lock()

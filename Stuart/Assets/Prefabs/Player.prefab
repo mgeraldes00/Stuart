@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 5
   jumpSpeed: 7
+  follower: {fileID: 0}
   groundProbe: {fileID: 4870345704926764864}
   enterPoint: {fileID: 0}
   groundProbeRadius: 0.1
@@ -295,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_fontSize
-      value: 0.25
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_fontAsset
@@ -307,7 +308,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 0.25
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_overflowMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_enableKerning
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_sharedMaterial
@@ -320,6 +329,10 @@ PrefabInstance:
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_wordWrappingRatios
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_HorizontalAlignment

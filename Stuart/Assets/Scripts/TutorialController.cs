@@ -68,7 +68,13 @@ public class TutorialController : MonoBehaviour, IController
 
                 StartCoroutine(Dialogue(
                     new int[] { 1, 0, 1, 0 },
-                    3.0f));
+                    2.0f));
+
+                bounds[0].SetActive(false);
+                break;
+            case 4:
+                StartCoroutine(player.LeaveScene());
+                StartCoroutine(follower.LeaveScene());
                 break;
         }
     }

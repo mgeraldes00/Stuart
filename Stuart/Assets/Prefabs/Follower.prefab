@@ -248,20 +248,104 @@ PrefabInstance:
       value: quim! que raio estamos a fazer aqui? fazes ideia de onde estamos sequer?
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_fontSize
-      value: 0.25
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_fontStyle
       value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_isRichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 0.25
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_overflowMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_enableKerning
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_pageToDisplay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_verticalMapping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_characterSpacing
       value: -3.717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_horizontalMapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_wordWrappingRatios
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_parseCtrlCharacters
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_geometrySortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_useMaxVisibleDescender
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927247744862474083, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_IsTextObjectScaleStatic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}

@@ -36,7 +36,7 @@ public class Goal : MonoBehaviour
 
     private void Update()
     {
-        if (isOnGoal && Input.GetButtonUp("Select"))
+        if (isOnGoal)
         {
             PlayerPrefs.SetInt("IsLastPanelPlayed", 1);
             if (PlayerPrefs.GetInt("MaxPanelReached") < levelIndex)
