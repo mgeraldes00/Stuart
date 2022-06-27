@@ -988,7 +988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018160, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_Size.y
-      value: 3.5
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018161, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: IsLocked
@@ -1014,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Follower
       objectReference: {fileID: 0}
+    - target: {fileID: 5474135624191018174, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: efa1e9723458a254594538229adc0edd, type: 3}
     - target: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1024,7 +1028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.85
+      value: -2.79
       objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018175, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2641,7 +2645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3777289241457986647, guid: e5a6cec5ba8881d4b9d2a9f8adc419a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.65
+      value: 22.86
       objectReference: {fileID: 0}
     - target: {fileID: 3777289241457986647, guid: e5a6cec5ba8881d4b9d2a9f8adc419a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5770,6 +5774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4870345705777911822, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e2c39c23f9198a429b0c37340f5768a, type: 3}
     - target: {fileID: 6406847067422849659, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
