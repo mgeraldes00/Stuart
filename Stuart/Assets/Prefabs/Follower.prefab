@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5474135624191018160}
   m_Layer: 10
   m_Name: Follower
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5474135624191018172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.5, y: -2.7, z: 0}
+  m_LocalPosition: {x: -21.5019, y: -2.6992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8091435678049267778}
@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: efa1e9723458a254594538229adc0edd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec980ebf5328bdf4a94f0d9fda7a834a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -106,6 +106,7 @@ MonoBehaviour:
   speed: {x: 0.15, y: 1}
   speedDefault: {x: 1, y: 1}
   speechBalloon: {fileID: 0}
+  sprites: []
   isLocked: 0
   enteredScene: 0
 --- !u!50 &5474135624191018163
@@ -142,8 +143,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15, y: -0.02}
-  m_Size: {x: 1, y: 3.6}
+  m_Offset: {x: 0, y: -0.02}
+  m_Size: {x: 1, y: 3.58}
   m_Direction: 0
 --- !u!1001 &6803257732333929258
 PrefabInstance:

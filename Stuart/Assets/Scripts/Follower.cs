@@ -14,6 +14,8 @@ public class Follower : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private SpeechBalloon speechBalloon;
 
+    [SerializeField] private Sprite[] sprites;
+
     [SerializeField] private bool isLocked;
 
     [SerializeField] private bool enteredScene;
@@ -33,6 +35,11 @@ public class Follower : MonoBehaviour
     {
         if (enteredScene && !isLocked)
             UpdateMovement();
+
+        if (transform.rotation.y == 0)
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
+        else
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
     }
 
     private void UpdateMovement()
