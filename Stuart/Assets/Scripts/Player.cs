@@ -19,12 +19,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallGravityScale = 5.0f;
     [SerializeField] private Vector3 currentVelocity;
     public Vector3 CurrentVelocity => currentVelocity;
+    [SerializeField] private float horizontalVelocity;
     [SerializeField] private TimeUpdater timeUpdater;
 
     private bool isInputLocked => (inputLockTimer > 0);
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
+    private Animator animator;
+
     [SerializeField] private SpeechBalloon speechBalloon;
 
     private float jumpTime;
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+
         speechBalloon = GetComponentInChildren<SpeechBalloon>();
 
         follower = GameObject.FindWithTag("Follower").GetComponent<Transform>();
@@ -146,6 +151,12 @@ public class Player : MonoBehaviour
             }
 
             rb.velocity = currentVelocity;
+            
+            horizontalVelocity = currentVelocity.x;
+            if (currentVelocity.x < 0)
+                horizontalVelocity = -currentVelocity.x;
+
+            animator.SetFloat("Velocity", horizontalVelocity);
 
             if ((currentVelocity.x > 0) && (transform.right.x < 0))
             {
@@ -165,11 +176,19 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector3(2, 0, 0);
 
+            horizontalVelocity = 2;
+
+            animator.SetFloat("Velocity", horizontalVelocity);
+
             yield return null;
         }
         while(transform.position.x < enterPoint.position.x);
         
         rb.velocity = Vector3.zero;
+
+        horizontalVelocity = 0;
+
+        animator.SetFloat("Velocity", horizontalVelocity);
 
         yield return new WaitForSeconds(1.0f);
         enteredScene = true;
