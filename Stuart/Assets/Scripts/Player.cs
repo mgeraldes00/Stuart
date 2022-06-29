@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallGravityScale = 5.0f;
     [SerializeField] private Vector3 currentVelocity;
     public Vector3 CurrentVelocity => currentVelocity;
-    [SerializeField] private float horizontalVelocity;
     [SerializeField] private TimeUpdater timeUpdater;
 
     private bool isInputLocked => (inputLockTimer > 0);
@@ -54,22 +53,29 @@ public class Player : MonoBehaviour
         speechBalloon = GetComponentInChildren<SpeechBalloon>();
 
         follower = GameObject.FindWithTag("Follower").GetComponent<Transform>();
+
+        onGround = true;
     }
 
     private void Update()
-    {
-        if (enteredScene && !isLocked)
-        {
-            UpdateMovement();
-        }
-    }
-
-    private void UpdateMovement()
     {
         currentVelocity = rb.velocity;
         onGround = IsOnGround();
         onPlatform = IsOnPlatform();
 
+        if (enteredScene && !isLocked)
+        {
+            UpdateMovement();
+        }
+
+        animator.SetFloat("VelocityX", Mathf.Abs(currentVelocity.x));
+        animator.SetFloat("VelocityY", currentVelocity.y);
+        animator.SetBool("grounded", onGround);
+        animator.SetBool("onPlatform", onPlatform);
+    }
+
+    private void UpdateMovement()
+    {
         if (isInputLocked)
         {
             inputLockTimer -= Time.deltaTime;
@@ -151,12 +157,6 @@ public class Player : MonoBehaviour
             }
 
             rb.velocity = currentVelocity;
-            
-            horizontalVelocity = currentVelocity.x;
-            if (currentVelocity.x < 0)
-                horizontalVelocity = -currentVelocity.x;
-
-            animator.SetFloat("Velocity", horizontalVelocity);
 
             if ((currentVelocity.x > 0) && (transform.right.x < 0))
             {
@@ -176,19 +176,11 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector3(2, 0, 0);
 
-            horizontalVelocity = 2;
-
-            animator.SetFloat("Velocity", horizontalVelocity);
-
             yield return null;
         }
         while(transform.position.x < enterPoint.position.x);
         
         rb.velocity = Vector3.zero;
-
-        horizontalVelocity = 0;
-
-        animator.SetFloat("Velocity", horizontalVelocity);
 
         yield return new WaitForSeconds(1.0f);
         enteredScene = true;
@@ -198,6 +190,17 @@ public class Player : MonoBehaviour
     {
         Lock();
 
+        if (!onGround)
+        {
+            do
+            {
+                rb.gravityScale = fallGravityScale;
+
+                yield return null;
+            }
+            while(rb.velocity != Vector2.zero);
+        }
+        
         do
         {
             rb.velocity = new Vector3(3, 0, 0);
@@ -236,6 +239,7 @@ public class Player : MonoBehaviour
         isLocked = true;
 
         rb.gravityScale = fallGravityScale;
+        //rb.velocity = Vector3.zero;
     }
 
     public void Unlock()
