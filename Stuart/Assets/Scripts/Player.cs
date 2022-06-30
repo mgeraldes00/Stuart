@@ -260,7 +260,7 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(
             groundProbe.position, groundProbeRadius, platformMask);
 
-        return (collider != null && !jumping && !gliding);
+        return (collider != null);
     }
 
     private void OnDrawGizmosSelected()
