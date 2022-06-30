@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("VelocityX", Mathf.Abs(currentVelocity.x));
         animator.SetFloat("VelocityY", currentVelocity.y);
+        animator.SetFloat("Gravity", rb.gravityScale);
         animator.SetBool("grounded", onGround);
         animator.SetBool("onPlatform", onPlatform);
     }
