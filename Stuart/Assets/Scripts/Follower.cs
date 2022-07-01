@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Follower : MonoBehaviour
 {
+    [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private Transform target;
     [SerializeField] private Transform enterPoint, leavePoint;
     [SerializeField] private Vector3 offset;
     [SerializeField] private Vector3 offsetDefault;
     [SerializeField] private Vector2 speed = Vector2.one;
     [SerializeField] private Vector2 speedDefault = Vector2.one;
+    [SerializeField] private Vector3 currentPos, currentVelocity;
 
     private Rigidbody2D rb;
+    private Animator animator;
+
     [SerializeField] private SpeechBalloon speechBalloon;
 
     [SerializeField] private Sprite[] sprites;
@@ -25,7 +29,11 @@ public class Follower : MonoBehaviour
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
         speechBalloon = GetComponentInChildren<SpeechBalloon>();
+
+        currentPos = transform.position;
 
         offsetDefault = offset;
         speedDefault = speed;
@@ -34,12 +42,22 @@ public class Follower : MonoBehaviour
     private void Update()
     {
         if (enteredScene && !isLocked)
+        {
             UpdateMovement();
 
-        if (transform.rotation.y == 0)
+            currentVelocity = (transform.position - currentPos) / Time.deltaTime;
+            currentPos = transform.position;
+        }
+        else
+            currentVelocity = rb.velocity;
+            
+
+        /*if (transform.rotation.y == 0)
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
         else
-            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];*/
+
+        animator.SetFloat("VelocityX", Mathf.Abs(currentVelocity.x));
     }
 
     private void UpdateMovement()
