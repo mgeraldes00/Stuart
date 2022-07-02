@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39473f3223183f644afae1fe589e9ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalSpeed: 5
   target: {fileID: 0}
   enterPoint: {fileID: 0}
   leavePoint: {fileID: 0}
@@ -106,6 +107,8 @@ MonoBehaviour:
   offsetDefault: {x: 0, y: 0, z: 0}
   speed: {x: 0.15, y: 1}
   speedDefault: {x: 1, y: 1}
+  currentPos: {x: 0, y: 0, z: 0}
+  currentVelocity: {x: 0, y: 0, z: 0}
   speechBalloon: {fileID: 0}
   sprites: []
   isLocked: 0
@@ -180,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 3106303866032782815, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_Padding.z
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106303866032782815, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_Softness.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_Pivot.x
@@ -369,6 +376,10 @@ PrefabInstance:
       propertyPath: m_IsTextObjectScaleStatic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7664763211748415076, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8161f08fcf83c3f4b93995876c3239fa, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
 --- !u!224 &8091435678049267778 stripped
