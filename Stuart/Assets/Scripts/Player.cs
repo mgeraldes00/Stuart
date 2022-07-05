@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
-    public float JumpSpeed => jumpSpeed;
     [SerializeField] private Transform follower;
     [SerializeField] private Transform groundProbe;
     [SerializeField] private Transform enterPoint, leavePoint;
@@ -29,7 +28,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private SpeechBalloon speechBalloon;
 
+    [SerializeField] private AudioSource[] sounds;
+
     private float jumpTime;
+    [SerializeField] private float glideCooldown;
     [SerializeField] private float inputLockTimer = 0;
     [SerializeField] private bool onGround;
     public bool OnGround => onGround;
@@ -44,6 +46,8 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isLocked;
 
     [SerializeField] private bool enteredScene;
+
+    private bool hasPlayed;
 
     private void Start()
     {
@@ -101,12 +105,14 @@ public class Player : MonoBehaviour
             {
                 jumping = false;
                 gliding = false;
+                hasPlayed = false;
                 sprite.sortingOrder = defaultLayer - 2;
             }
             else if (onGround)
             {
                 jumping = false;
                 gliding = false;
+                hasPlayed = false;
                 sprite.sortingOrder = defaultLayer;
             }
             
@@ -120,12 +126,15 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    if (currentVelocity.y <= 0)
+                    if (currentVelocity.y <= 0 && glideCooldown <= 0)
                     {
                         gliding = true;
                         rb.gravityScale = 0.2f;
                         if (currentVelocity.y < -5 * fallGravityScale)
                             currentVelocity.y -= currentVelocity.y * 0.8f;
+
+                        sounds[0].Play();
+                        StartCoroutine(ResetGlideCooldown());
                     }
                 }
             }
@@ -143,6 +152,14 @@ public class Player : MonoBehaviour
                 {
                     gliding = true;
                     rb.gravityScale = 0.2f;
+
+                    if (!hasPlayed)
+                    {
+                        sounds[0].Play();
+                        StartCoroutine(ResetGlideCooldown());
+                    }
+                    
+                    hasPlayed = true;
                 }
             }
             else if (Input.GetButtonUp("Jump"))
@@ -290,6 +307,20 @@ public class Player : MonoBehaviour
         requestingDown = true;
         yield return new WaitForSeconds(0.2f);
         requestingDown = false;
+    }
+
+    private IEnumerator ResetGlideCooldown()
+    {
+        glideCooldown = 0.5f;
+
+        do
+        {
+            glideCooldown -= 1 * Time.deltaTime;
+            yield return null;
+        }
+        while (glideCooldown > 0 && !onGround && !onPlatform);
+
+        glideCooldown = 0;
     }
 
     private void OnDrawGizmosSelected()
