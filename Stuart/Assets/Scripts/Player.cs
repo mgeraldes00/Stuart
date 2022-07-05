@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     public bool Jumping => jumping;
     [SerializeField] private bool gliding;
     public bool Gliding => gliding;
+    [SerializeField] private bool requestingDown;
 
     [SerializeField] private bool isLocked;
 
@@ -157,6 +158,11 @@ public class Player : MonoBehaviour
                     rb.gravityScale = fallGravityScale;
             }
 
+            if (Input.GetButtonDown("Vertical") && onPlatform)
+            {
+                StartCoroutine(DownPlatform());
+            }
+
             rb.velocity = currentVelocity;
 
             if ((currentVelocity.x > 0) && (transform.right.x < 0))
@@ -261,7 +267,29 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(
             groundProbe.position, groundProbeRadius, platformMask);
 
-        return (collider != null);
+        return (collider != null && !requestingDown);
+    }
+
+    private IEnumerator DownPlatform()
+    {
+        StartCoroutine(ResetDownRequest());
+
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+
+        do
+        {
+            yield return null;
+        }
+        while (!onPlatform && !onGround);
+        
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+    }
+
+    private IEnumerator ResetDownRequest()
+    {
+        requestingDown = true;
+        yield return new WaitForSeconds(0.2f);
+        requestingDown = false;
     }
 
     private void OnDrawGizmosSelected()

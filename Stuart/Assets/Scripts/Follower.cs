@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Follower : MonoBehaviour
 {
-    [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private Transform target;
     [SerializeField] private Transform enterPoint, leavePoint;
     [SerializeField] private Vector3 offset;
