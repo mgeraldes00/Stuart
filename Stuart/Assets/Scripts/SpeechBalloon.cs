@@ -11,6 +11,8 @@ public class SpeechBalloon : MonoBehaviour
     [SerializeField] private Animator mask;
 
     [SerializeField] private TextMeshProUGUI text;
+
+    [SerializeField] private AudioSource sound;
     
     [SerializeField] private string[] content;
 
@@ -45,6 +47,9 @@ public class SpeechBalloon : MonoBehaviour
         string currentLine = "";
         
         yield return new WaitForSeconds(0.2f);
+
+        sound.Play();
+
         for (int i = 0; i < content[nextLine].Length; i++)
         {
             currentLine = content[nextLine].Substring(0, i);
@@ -53,5 +58,7 @@ public class SpeechBalloon : MonoBehaviour
         }
 
         nextLine++;
+
+        sound.Stop();
     }
 }
