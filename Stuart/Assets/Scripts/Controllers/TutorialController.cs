@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialController : MonoBehaviour, IController
 {
@@ -13,6 +14,9 @@ public class TutorialController : MonoBehaviour, IController
 
     [SerializeField] private int coinNum = 0, maxCoins = 1;
 
+    [SerializeField] private float fps;
+    [SerializeField] private Text fpsText;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -22,6 +26,14 @@ public class TutorialController : MonoBehaviour, IController
         follower = FindObjectOfType<Follower>();
 
         InitializeScene();
+
+        InvokeRepeating(nameof(GetFPS), 1, 1);
+    }
+
+    private void GetFPS()
+    {
+        fps = (int)(1f / Time.unscaledDeltaTime);
+        fpsText.text = fps + " fps";
     }
 
     // Update is called once per frame
