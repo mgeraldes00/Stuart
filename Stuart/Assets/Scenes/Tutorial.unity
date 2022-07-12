@@ -6239,6 +6239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1283103106}
   - component: {fileID: 1283103107}
+  - component: {fileID: 1283103108}
   m_Layer: 0
   m_Name: Scenario
   m_TagString: Untagged
@@ -6284,7 +6285,33 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: f9e9ff244fed87847b5ace835803ee21, type: 2}
   blurAmount: 0
   blurSpeed: 0.5
-  blurActive: 1
+  blurActive: 0
+--- !u!61 &1283103108
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283103105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 31.2, y: 7.4}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 15.8, y: 24}
+  m_EdgeRadius: 0
 --- !u!1 &1283742100
 GameObject:
   m_ObjectHideFlags: 0
@@ -10230,7 +10257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}

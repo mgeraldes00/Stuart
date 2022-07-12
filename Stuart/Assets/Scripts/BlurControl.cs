@@ -20,10 +20,12 @@ public class BlurControl : MonoBehaviour
 
     private void Update()
     {
-        if (player.transform.position.y < 21.5f)
+        /*if (player.transform.position.y < 21.5f 
+            || player.OnPlatform && player.transform.position.y < 21.5f
+            || player.OnGround)
             blurActive = true;
         else
-            blurActive = false;
+            blurActive = false;*/
 
         if (blurActive)
             blurAmount += blurSpeed * Time.deltaTime;
@@ -32,5 +34,21 @@ public class BlurControl : MonoBehaviour
 
         blurAmount = Mathf.Clamp(blurAmount, 0, 0.2f);
         material.SetFloat("_BlurAmount", blurAmount);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            blurActive = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            blurActive = false;
+        }
     }
 }
