@@ -20,13 +20,6 @@ public class BlurControl : MonoBehaviour
 
     private void Update()
     {
-        /*if (player.transform.position.y < 21.5f 
-            || player.OnPlatform && player.transform.position.y < 21.5f
-            || player.OnGround)
-            blurActive = true;
-        else
-            blurActive = false;*/
-
         if (blurActive)
             blurAmount += blurSpeed * Time.deltaTime;
         else

@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool requestingDown;
 
     [SerializeField] private bool isLocked;
+    public bool IsLocked => isLocked;
 
     [SerializeField] private bool enteredScene;
 

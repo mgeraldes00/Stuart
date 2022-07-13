@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class CameraCtrl : MonoBehaviour
 {
-    private Camera cam;
+    private const float camMaxSize = 5, camMinSize = 4.7f;
+
+    [SerializeField] private Camera cam;
 
     [SerializeField] private Transform target;
+    private Player player;
+
     [SerializeField] private Vector3 offset;
     [SerializeField] private float offsetDefaultX;
     [SerializeField] private Vector2 speed = Vector2.one;
     [SerializeField] private Rect cameraLimits;
 
+    [SerializeField] private float camSize;
+
     private void Start()
     {
+        cam = gameObject.GetComponent<Camera>();
+
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        player = target.gameObject.GetComponent<Player>();
 
         offsetDefaultX = offset.x;
     }
@@ -25,14 +34,12 @@ public class CameraCtrl : MonoBehaviour
         {
             Vector3 newPos;
 
-            if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0
-                || target.rotation.y == 0)
+            if (player.CurrentVelocity.x > 0 || target.rotation.y == 0)
             {
                 newPos.x = target.position.x + offset.x;
                 offset.x = offsetDefaultX;
             }
-            else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0
-                || target.rotation.y < 0)
+            else if (player.CurrentVelocity.x < 0 || target.rotation.y < 0)
             {
                 newPos.x = target.position.x - offsetDefaultX;
                 offset.x = -offsetDefaultX;
@@ -40,9 +47,9 @@ public class CameraCtrl : MonoBehaviour
             else
                 newPos.x = target.position.x + offset.x;
 
-            if (target.gameObject.GetComponent<Player>().CurrentVelocity.y > 0)
+            if (player.CurrentVelocity.y > 0)
                 newPos.y = target.position.y + (target.position.y * 0.12f);
-            else if (target.gameObject.GetComponent<Player>().CurrentVelocity.y < -15)
+            else if (player.CurrentVelocity.y < -15)
                 newPos.y = target.position.y - (target.position.y * 0.12f);
             else
                 newPos.y = target.position.y + (target.position.y * 0.12f);
@@ -62,6 +69,34 @@ public class CameraCtrl : MonoBehaviour
 
             transform.position = newPos;
         }
+    }
+
+    public IEnumerator Lock()
+    {
+        camSize = camMaxSize;
+
+        do
+        {
+            camSize -= 0.001f;
+            cam.orthographicSize = camSize;
+            
+            yield return null;
+        }
+        while (camSize >= camMinSize);
+    }
+
+    public IEnumerator Unlock()
+    {
+        camSize = camMinSize;
+
+        do
+        {
+            camSize += 0.001f;
+            cam.orthographicSize = camSize;
+
+            yield return null;
+        }
+        while (camSize <= camMaxSize);
     }
 
     private void OnDrawGizmos()

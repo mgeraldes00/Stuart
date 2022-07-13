@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TutorialController : MonoBehaviour, IController
 {
+    [SerializeField] private CameraCtrl cam;
     [SerializeField] private Player player;
     [SerializeField] private Follower follower;
 
@@ -22,6 +23,7 @@ public class TutorialController : MonoBehaviour, IController
     {
         Application.targetFrameRate = 300;
 
+        cam = FindObjectOfType<CameraCtrl>();
         player = FindObjectOfType<Player>();
         follower = FindObjectOfType<Follower>();
 
@@ -54,6 +56,8 @@ public class TutorialController : MonoBehaviour, IController
     {
         for (int i = 0; i < bounds.Length; i++)
             bounds[i].SetActive(true);
+
+        StartCoroutine(cam.Unlock());
     }
 
     public void BeginEvent(int i)
@@ -61,6 +65,7 @@ public class TutorialController : MonoBehaviour, IController
         switch (i)
         {
             case 1:
+                StartCoroutine(cam.Lock());
                 player.Lock();
                 StartCoroutine(follower.EnterScene(1.5f));
 
@@ -72,6 +77,7 @@ public class TutorialController : MonoBehaviour, IController
                 fallPoint.SetActive(true);
                 break;
             case 3:
+                StartCoroutine(cam.Lock());
                 player.Lock();
                 follower.Lock();
 
@@ -153,5 +159,6 @@ public class TutorialController : MonoBehaviour, IController
         follower.Unlock();
         yield return new WaitForSeconds(0.8f);
         player.Unlock();
+        StartCoroutine(cam.Unlock());
     }
 }

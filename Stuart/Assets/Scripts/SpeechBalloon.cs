@@ -16,9 +16,10 @@ public class SpeechBalloon : MonoBehaviour
     
     [SerializeField] private string[] content;
 
-    [SerializeField] private int nextLine;
+    [SerializeField] private int nextLine, currentIndex;
 
     [SerializeField] private float delay = 0.01f;
+    [SerializeField] private bool speaking;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,9 @@ public class SpeechBalloon : MonoBehaviour
 
         text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         text.text = "";
+
+        nextLine++;
+        currentIndex = nextLine - 1;
         
         StartCoroutine(ShowText());
     }
@@ -41,9 +45,12 @@ public class SpeechBalloon : MonoBehaviour
     {
         mask.SetBool("Talking", false);
 
-        text.text = "";
-
-        StopCoroutine(ShowText());
+        if (speaking)
+        {
+            sound.Stop();
+            speaking = false;
+            StopAllCoroutines();
+        }
     }
 
     private IEnumerator ShowText()
@@ -53,16 +60,16 @@ public class SpeechBalloon : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         sound.Play();
+        speaking = true;
 
-        for (int i = 0; i < content[nextLine].Length; i++)
+        for (int i = 0; i < content[currentIndex].Length; i++)
         {
-            currentLine = content[nextLine].Substring(0, i);
+            currentLine = content[currentIndex].Substring(0, i);
             text.text = currentLine;
             yield return new WaitForSeconds(delay);
         }
 
-        nextLine++;
-
         sound.Stop();
+        speaking = false;
     }
 }
