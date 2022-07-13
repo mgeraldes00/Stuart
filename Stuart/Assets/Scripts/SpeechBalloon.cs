@@ -40,6 +40,10 @@ public class SpeechBalloon : MonoBehaviour
     public void HideBalloon()
     {
         mask.SetBool("Talking", false);
+
+        text.text = "";
+
+        StopCoroutine(ShowText());
     }
 
     private IEnumerator ShowText()
