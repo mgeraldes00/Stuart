@@ -131,8 +131,8 @@ public class Player : MonoBehaviour
                     {
                         gliding = true;
                         rb.gravityScale = 0.2f;
-                        if (currentVelocity.y < -5 * fallGravityScale)
-                            currentVelocity.y -= currentVelocity.y * 0.8f;
+                        //if (currentVelocity.y < -5 * fallGravityScale)
+                        currentVelocity.y -= currentVelocity.y * 0.8f;
 
                         sounds[0].Play();
                         StartCoroutine(ResetGlideCooldown());
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
                     if (!hasPlayed)
                     {
                         sounds[0].Play();
-                        StartCoroutine(ResetGlideCooldown());
+                        //StartCoroutine(ResetGlideCooldown());
                     }
                     
                     hasPlayed = true;
@@ -168,7 +168,10 @@ public class Player : MonoBehaviour
                 jumping = false;
 
                 if (gliding)
+                {
                     gliding = false;
+                    StartCoroutine(ResetGlideCooldown());
+                }
             }
             else
             {
@@ -312,7 +315,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator ResetGlideCooldown()
     {
-        glideCooldown = 0.5f;
+        glideCooldown = 0.1f;
 
         do
         {

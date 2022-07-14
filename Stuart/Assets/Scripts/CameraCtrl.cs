@@ -6,6 +6,11 @@ public class CameraCtrl : MonoBehaviour
 {
     private const float camMaxSize = 5, camMinSize = 4.7f;
 
+    private const float offsetDefaultY = 0.02f, fallOffset = 0.12f;
+
+    [SerializeField] private float offsetY;
+    public float OffsetY { get { return offsetY; } set { offsetY = value; } }
+
     [SerializeField] private Camera cam;
 
     [SerializeField] private Transform target;
@@ -26,6 +31,7 @@ public class CameraCtrl : MonoBehaviour
         player = target.gameObject.GetComponent<Player>();
 
         offsetDefaultX = offset.x;
+        offsetY = offsetDefaultY;
     }
 
     private void Update()
@@ -39,7 +45,7 @@ public class CameraCtrl : MonoBehaviour
                 newPos.x = target.position.x + offset.x;
                 offset.x = offsetDefaultX;
             }
-            else if (player.CurrentVelocity.x < 0 || target.rotation.y < 0)
+            else if (player.CurrentVelocity.x < 0 || target.rotation.y != 0)
             {
                 newPos.x = target.position.x - offsetDefaultX;
                 offset.x = -offsetDefaultX;
@@ -48,11 +54,11 @@ public class CameraCtrl : MonoBehaviour
                 newPos.x = target.position.x + offset.x;
 
             if (player.CurrentVelocity.y > 0)
-                newPos.y = target.position.y + (target.position.y * 0.12f);
+                newPos.y = target.position.y + (target.position.y * offsetY);
             else if (player.CurrentVelocity.y < -15)
-                newPos.y = target.position.y - (target.position.y * 0.12f);
+                newPos.y = target.position.y - (target.position.y * fallOffset);
             else
-                newPos.y = target.position.y + (target.position.y * 0.12f);
+                newPos.y = target.position.y + (target.position.y * offsetY);
                 
             newPos.z = transform.position.z;
 
@@ -98,6 +104,8 @@ public class CameraCtrl : MonoBehaviour
         }
         while (camSize <= camMaxSize);
     }
+
+    public void OffsetReset() => offsetY = offsetDefaultY;
 
     private void OnDrawGizmos()
     {
