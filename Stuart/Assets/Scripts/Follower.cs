@@ -5,6 +5,7 @@ using UnityEngine;
 public class Follower : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    private Player player;
     [SerializeField] private Transform enterPoint, leavePoint;
     [SerializeField] private Vector3 offset;
     [SerializeField] private Vector3 offsetDefault;
@@ -26,6 +27,7 @@ public class Follower : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        player = target.GetComponent<Player>();
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -66,8 +68,7 @@ public class Follower : MonoBehaviour
             Vector3 newPos = new Vector3(
                 target.position.x + offset.x, gameObject.transform.position.y, 0);
 
-            if (target.gameObject.GetComponent<Player>().OnGround
-                && speed.x > speedDefault.x)
+            if (player.OnGround && speed.x > speedDefault.x)
             {
                 speed.x -= 1f * Time.deltaTime;
             }
@@ -75,49 +76,44 @@ public class Follower : MonoBehaviour
             if (speed.x < speedDefault.x)
                 speed.x = speedDefault.x;
 
-            if (!target.gameObject.GetComponent<Player>().OnPlatform)
+            if (!player.OnPlatform)
             {
-                if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0)
+                if (player.CurrentVelocity.x > 0 || target.rotation.y == 0)
                 {
+                    offset = offsetDefault;
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
-                    offset = offsetDefault;
-                    if (target.gameObject.GetComponent<Player>().OnGround
-                        || target.gameObject.GetComponent<Player>().Jumping
-                        || target.gameObject.GetComponent<Player>().Gliding)
+                    if (player.OnGround || player.Jumping || player.Gliding)
                     {
-                        if (gameObject.transform.position.x 
-                            < target.gameObject.transform.position.x
+                        if (gameObject.transform.position.x < target.position.x
                             || speed.x == speedDefault.x)
                         {
                             transform.rotation = Quaternion.Euler(0, 0, 0);
                         }
                     }
                 }
-                else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0)
+                else if (player.CurrentVelocity.x < 0 || target.rotation.y != 0)
                 {
+                    offset = -offsetDefault;
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
-                    offset = -offsetDefault;
-                    if (target.gameObject.GetComponent<Player>().OnGround
-                        || target.gameObject.GetComponent<Player>().Jumping
-                        || target.gameObject.GetComponent<Player>().Gliding)
+                    if (player.OnGround || player.Jumping || player.Gliding)
                     {
-                        if (gameObject.transform.position.x 
-                            > target.gameObject.transform.position.x
+                        if (gameObject.transform.position.x > target.position.x
                             || speed.x == speedDefault.x)
                         {
+                            Debug.Log("TURNING");
                             transform.rotation = Quaternion.Euler(0, 180, 0);
                         }
                     }
                 }
             }
-            else if (target.gameObject.GetComponent<Player>().OnPlatform)
+            else if (player.OnPlatform)
             {
                 speed.x += speedDefault.x * 0.001f + Time.deltaTime;
                 if (speed.x > 1.5f)
                     speed.x = 1.5f;
-                if (target.gameObject.GetComponent<Player>().CurrentVelocity.x > 0
+                if (player.CurrentVelocity.x > 0
                     && gameObject.transform.position.x < target.gameObject.transform.position.x)
                 {
                     newPos = new Vector3(
@@ -125,7 +121,7 @@ public class Follower : MonoBehaviour
                     offset = offsetDefault;
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
-                else if (target.gameObject.GetComponent<Player>().CurrentVelocity.x < 0
+                else if (player.CurrentVelocity.x < 0
                     && gameObject.transform.position.x > target.gameObject.transform.position.x)
                 {
                     newPos = new Vector3(
