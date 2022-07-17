@@ -9,6 +9,8 @@ public class BlurControl : MonoBehaviour
     [SerializeField] private Material material;
 
     [SerializeField] private float blurAmount;
+
+    [SerializeField] private float maxBlur;
     [SerializeField] private float blurSpeed = 3.5f;
 
     [SerializeField] private bool blurActive;
@@ -25,7 +27,7 @@ public class BlurControl : MonoBehaviour
         else
             blurAmount -= blurSpeed * Time.deltaTime;
 
-        blurAmount = Mathf.Clamp(blurAmount, 0, 0.2f);
+        blurAmount = Mathf.Clamp(blurAmount, 0, maxBlur);
         material.SetFloat("_BlurAmount", blurAmount);
     }
 
