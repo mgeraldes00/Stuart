@@ -40,6 +40,9 @@ public class CameraCtrl : MonoBehaviour
         {
             Vector3 newPos;
 
+            if (player.CurrentVelocity.y < -20) speed.y = 0.1f;
+            else speed.y = 0.3f;
+
             if (player.CurrentVelocity.x > 0 || target.rotation.y == 0)
             {
                 newPos.x = target.position.x + offset.x;
