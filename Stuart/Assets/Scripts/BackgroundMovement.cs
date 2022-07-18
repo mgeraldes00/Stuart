@@ -46,6 +46,6 @@ public class BackgroundMovement : MonoBehaviour
                 xyPosition[0] + updateValue, xyPosition[1], 0);
         else
             transform.position = new Vector3(
-                xyPosition[0], xyPosition[1] + movement, 0);
+                xyPosition[0], xyPosition[1] + updateValue, 0);
     }
 }
