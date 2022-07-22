@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    private const float glideCooldownAmount = 0.5f;
+
     [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
     [SerializeField] private Transform follower;
@@ -42,13 +44,14 @@ public class Player : MonoBehaviour
     [SerializeField] private bool gliding;
     public bool Gliding => gliding;
     [SerializeField] private bool requestingDown;
+    [SerializeField] private bool buttonHold;
 
     [SerializeField] private bool isLocked;
     public bool IsLocked => isLocked;
 
     [SerializeField] private bool enteredScene;
 
-    private bool hasPlayed;
+    [SerializeField] private bool hasPlayed;
 
     private void Start()
     {
@@ -77,6 +80,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("VelocityX", Mathf.Abs(currentVelocity.x));
         animator.SetFloat("VelocityY", currentVelocity.y);
         animator.SetFloat("Gravity", rb.gravityScale);
+        animator.SetFloat("GlideCooldown", glideCooldown);
         animator.SetBool("grounded", onGround);
         animator.SetBool("onPlatform", onPlatform);
     }
@@ -107,6 +111,7 @@ public class Player : MonoBehaviour
                 jumping = false;
                 gliding = false;
                 hasPlayed = false;
+                glideCooldown = 0;
                 sprite.sortingOrder = defaultLayer - 2;
             }
             else if (onGround)
@@ -114,6 +119,7 @@ public class Player : MonoBehaviour
                 jumping = false;
                 gliding = false;
                 hasPlayed = false;
+                glideCooldown = 0;
                 sprite.sortingOrder = defaultLayer;
             }
             
@@ -127,16 +133,17 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    if (currentVelocity.y <= 0 && glideCooldown <= 0)
+                    if (currentVelocity.y <= -5f && glideCooldown <= 0)
                     {
-                        gliding = true;
-                        rb.gravityScale = 0.2f;
-                        //if (currentVelocity.y < -5 * fallGravityScale)
-                        currentVelocity.y -= currentVelocity.y * 0.8f;
+                        Glide();
+
+                        if (currentVelocity.y < -0.8f)
+                            currentVelocity.y -= currentVelocity.y * 0.8f;
 
                         sounds[0].Play();
-                        StartCoroutine(ResetGlideCooldown());
-                    }
+                        glideCooldown = glideCooldownAmount;
+                        //StartCoroutine(ResetGlideCooldown());
+                    } 
                 }
             }
             else if (Input.GetButton("Jump"))
@@ -149,14 +156,21 @@ public class Player : MonoBehaviour
 
                 if (currentVelocity.y >= 0 && !onPlatform && !onGround)
                     jumping = true;
-                if (jumping && currentVelocity.y <= 0)
+                if (jumping && currentVelocity.y <= 0
+                    || !jumping && currentVelocity.y <= -5f && glideCooldown <= 0 
+                    && !onGround && !onPlatform)
                 {
-                    gliding = true;
-                    rb.gravityScale = 0.2f;
+                    Glide();
+
+                    buttonHold = true;
 
                     if (!hasPlayed)
                     {
+                        if (currentVelocity.y < -0.8f)
+                            currentVelocity.y -= currentVelocity.y * 0.8f;
+
                         sounds[0].Play();
+                        glideCooldown = glideCooldownAmount;
                         //StartCoroutine(ResetGlideCooldown());
                     }
                     
@@ -166,6 +180,8 @@ public class Player : MonoBehaviour
             else if (Input.GetButtonUp("Jump"))
             {
                 jumping = false;
+                //hasPlayed = false;
+                buttonHold = false;
 
                 if (gliding)
                 {
@@ -179,7 +195,7 @@ public class Player : MonoBehaviour
                     rb.gravityScale = fallGravityScale;
             }
 
-            if (Input.GetButtonDown("Vertical") && onPlatform)
+            if (Input.GetButtonDown("Vertical") && onPlatform && !buttonHold)
             {
                 StartCoroutine(DownPlatform());
             }
@@ -195,6 +211,13 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
         }
+    }
+
+    private void Glide()
+    {
+        gliding = true;
+        rb.gravityScale = 0.2f;
+        //if (currentVelocity.y < -5 * fallGravityScale)
     }
 
     public IEnumerator EnterScene(float timeToEnter)
@@ -315,7 +338,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator ResetGlideCooldown()
     {
-        glideCooldown = 0.1f;
+        glideCooldown = glideCooldownAmount;
 
         do
         {
@@ -325,6 +348,7 @@ public class Player : MonoBehaviour
         while (glideCooldown > 0 && !onGround && !onPlatform);
 
         glideCooldown = 0;
+        hasPlayed = false;
     }
 
     private void OnDrawGizmosSelected()
