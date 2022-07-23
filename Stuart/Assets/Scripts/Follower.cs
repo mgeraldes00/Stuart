@@ -24,6 +24,9 @@ public class Follower : MonoBehaviour
 
     [SerializeField] private bool enteredScene;
 
+    public bool Talking;
+    private bool turning;
+
     private void Start()
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -274,7 +277,12 @@ public class Follower : MonoBehaviour
 
     public void Talk()
     {
-        speechBalloon.ShowBalloon();
+        if (!Talking)
+        {
+            speechBalloon.ShowBalloon();
+        }
+
+        StartCoroutine(ResetTalk());
     }
 
     public void Listen()
@@ -282,11 +290,30 @@ public class Follower : MonoBehaviour
         speechBalloon.HideBalloon();
     }
 
+    private IEnumerator ResetTalk()
+    {
+        Talking = true;
+        yield return new WaitForEndOfFrame();
+        Talking = false;
+    }
+
     public void Turn()
     {
-        if (transform.rotation == Quaternion.Euler(0, 0, 0))
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        else
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (!turning)
+        {
+            if (transform.rotation == Quaternion.Euler(0, 0, 0))
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            else
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        StartCoroutine(ResetTurn());
+    }
+
+    private IEnumerator ResetTurn()
+    {
+        turning = true;
+        yield return new WaitForEndOfFrame();
+        turning = false;
     }
 }

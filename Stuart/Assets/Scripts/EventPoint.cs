@@ -9,6 +9,8 @@ public class EventPoint : MonoBehaviour
 
     [SerializeField] private int eventIndex;
 
+    private bool interacted;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -20,8 +22,13 @@ public class EventPoint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            controller.BeginEvent(eventIndex);
+            if (!interacted)
+            {
+                Debug.Log("Collided with player");
+                controller.BeginEvent(eventIndex);
+            }
 
+            interacted = true;
             Destroy(gameObject);
         }
     }

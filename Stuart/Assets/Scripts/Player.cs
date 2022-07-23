@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool hasPlayed;
 
+    public bool Talking;
+    private bool turning;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -362,7 +365,14 @@ public class Player : MonoBehaviour
 
     public void Talk()
     {
-        speechBalloon.ShowBalloon();
+        Debug.Log("Talk");
+
+        if (!Talking)
+        {
+            speechBalloon.ShowBalloon();
+        }
+        
+        StartCoroutine(ResetTalk());
     }
 
     public void Listen()
@@ -370,11 +380,30 @@ public class Player : MonoBehaviour
         speechBalloon.HideBalloon();
     }
 
+    private IEnumerator ResetTalk()
+    {
+        Talking = true;
+        yield return new WaitForEndOfFrame();
+        Talking = false;
+    }
+
     public void Turn()
     {
-        if (transform.rotation == Quaternion.Euler(0, 0, 0))
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        else
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (!turning)
+        {
+            if (transform.rotation == Quaternion.Euler(0, 0, 0))
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            else
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        StartCoroutine(ResetTurn());
+    }
+
+    private IEnumerator ResetTurn()
+    {
+        turning = true;
+        yield return new WaitForEndOfFrame();
+        turning = false;
     }
 }

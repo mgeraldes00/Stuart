@@ -8,7 +8,7 @@ public class SpeechBalloon : MonoBehaviour
 {
     [SerializeField] private Transform agent;
 
-    [SerializeField] private Animator mask;
+    [SerializeField] private Animator mask, spriteAnim;
 
     [SerializeField] private TextMeshProUGUI text;
 
@@ -19,6 +19,7 @@ public class SpeechBalloon : MonoBehaviour
     [SerializeField] private int nextLine, currentIndex;
 
     [SerializeField] private float delay = 0.01f;
+
     [SerializeField] private bool speaking;
 
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class SpeechBalloon : MonoBehaviour
         currentIndex = nextLine - 1;
         
         StartCoroutine(ShowText());
+        spriteAnim.SetBool("talking", true);
     }
 
     public void HideBalloon()
@@ -50,6 +52,7 @@ public class SpeechBalloon : MonoBehaviour
             sound.Stop();
             speaking = false;
             StopAllCoroutines();
+            spriteAnim.SetBool("talking", false);
         }
     }
 
@@ -71,5 +74,6 @@ public class SpeechBalloon : MonoBehaviour
 
         sound.Stop();
         speaking = false;
+        spriteAnim.SetBool("talking", false);
     }
 }

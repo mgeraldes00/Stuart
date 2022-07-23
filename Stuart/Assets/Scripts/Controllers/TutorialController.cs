@@ -65,6 +65,7 @@ public class TutorialController : MonoBehaviour, IController
         switch (i)
         {
             case 1:
+                Debug.Log("Beginning event 1");
                 StartCoroutine(cam.Lock());
                 player.Lock();
                 StartCoroutine(follower.EnterScene(1.5f));
@@ -137,10 +138,19 @@ public class TutorialController : MonoBehaviour, IController
             if (extraParams != null)
             {
                 if (index == turningPoint)
+                {
+                    Debug.Log("Turning listener");
                     currentListener.SendMessage("Turn");
+                }
+                    
                 if (index == returnPoint)
+                {
+                    Debug.Log("Turning speaker");
                     currentSpeaker.SendMessage("Turn");
+                } 
             }
+
+            yield return new WaitForEndOfFrame();
 
             currentSpeaker.SendMessage("Talk");
             currentListener.SendMessage("Listen");
