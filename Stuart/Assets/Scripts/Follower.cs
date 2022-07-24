@@ -92,6 +92,7 @@ public class Follower : MonoBehaviour
                             || speed.x == speedDefault.x)
                         {
                             transform.rotation = Quaternion.Euler(0, 0, 0);
+                            animator.SetBool("movingRight", true);
                         }
                     }
                 }
@@ -107,6 +108,7 @@ public class Follower : MonoBehaviour
                         {
                             Debug.Log("TURNING");
                             transform.rotation = Quaternion.Euler(0, 180, 0);
+                            animator.SetBool("movingRight", false);
                         }
                     }
                 }
@@ -123,6 +125,7 @@ public class Follower : MonoBehaviour
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
                     offset = offsetDefault;
                     transform.rotation = Quaternion.Euler(0, 0, 0);
+                    animator.SetBool("movingRight", true);
                 }
                 else if (player.CurrentVelocity.x < 0
                     && gameObject.transform.position.x > target.gameObject.transform.position.x)
@@ -131,6 +134,7 @@ public class Follower : MonoBehaviour
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
                     offset = -offsetDefault;
                     transform.rotation = Quaternion.Euler(0, 180, 0);
+                    animator.SetBool("movingRight", false);
                 }
             }
             else
@@ -159,6 +163,7 @@ public class Follower : MonoBehaviour
             do
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetBool("movingRight", false);
                 rb.velocity = new Vector3(-2, 0, 0);
                 yield return null;
             }
@@ -169,6 +174,7 @@ public class Follower : MonoBehaviour
             do
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetBool("movingRight", true);
                 rb.velocity = new Vector3(2, 0, 0);
                 yield return null;
             }
@@ -207,6 +213,7 @@ public class Follower : MonoBehaviour
             if (gameObject.transform.position.x - targetPosition > distanceToAdjust)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetBool("movingRight", true);
                 targetSpeed = 3;
 
                 do
@@ -219,6 +226,7 @@ public class Follower : MonoBehaviour
             else
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetBool("movingRight", false);
                 targetSpeed = -3;
 
                 do
@@ -230,6 +238,7 @@ public class Follower : MonoBehaviour
             }
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("movingRight", true);
         }
         else
         {
@@ -258,6 +267,7 @@ public class Follower : MonoBehaviour
             }
 
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetBool("movingRight", false);
         }
 
         rb.velocity = Vector3.zero;
@@ -302,9 +312,15 @@ public class Follower : MonoBehaviour
         if (!turning)
         {
             if (transform.rotation == Quaternion.Euler(0, 0, 0))
+            {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetBool("movingRight", false);
+            }
             else
+            {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetBool("movingRight", true);
+            } 
         }
 
         StartCoroutine(ResetTurn());
