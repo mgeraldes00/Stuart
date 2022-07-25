@@ -7,9 +7,13 @@ public class Pickup : MonoBehaviour
     [SerializeField] private GameObject controllerObj;
     private IController controller;
 
-    [SerializeField] private float rotation = 0;
+    [SerializeField] private AudioSource coinAudio;
 
-    [SerializeField] float updateValue = 50;
+    [SerializeField] private float scale = 1.0f;
+
+    [SerializeField] float updateValue = 1;
+
+    private bool collected;
 
     // Start is called before the first frame update
     private void Start()
@@ -21,30 +25,26 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        rotation += updateValue * Time.deltaTime;
-
-        if (rotation > 180)
+        if (collected)
         {
-            rotation = 180;
-            updateValue = -updateValue;
-        }
+            scale -= updateValue * Time.deltaTime;
 
-        if (rotation < 0)
-        {
-            rotation = 0;
-            updateValue = -updateValue;
+            if (scale < 0) scale = 0;
+
+
+            gameObject.transform.localScale = new Vector3(scale, scale, scale);
         }
-        
-        //gameObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            collected = true;
             controller.CollectCoin();
 
-            Destroy(gameObject);
+            coinAudio.Play();
+            Destroy(gameObject, 1.0f);
         }
     }
 }

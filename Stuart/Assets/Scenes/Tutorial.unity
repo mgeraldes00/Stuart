@@ -1100,6 +1100,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8161f08fcf83c3f4b93995876c3239fa, type: 3}
+    - target: {fileID: 5335668292268201611, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5474135624191018160, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: m_Size.y
       value: 3.58
@@ -9383,10 +9387,18 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5324494599876986515, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6049965251572604765, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8161f08fcf83c3f4b93995876c3239fa, type: 3}
+    - target: {fileID: 6064446333968115660, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6406847067422849659, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
@@ -12381,36 +12393,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2567895688076085237, guid: 6b70a8f909a28974db9fe74f3576f93f, type: 3}
+      propertyPath: updateValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2567895688076085238, guid: 6b70a8f909a28974db9fe74f3576f93f, type: 3}
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b70a8f909a28974db9fe74f3576f93f, type: 3}
---- !u!1 &2567895687189104315 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2567895688076085238, guid: 6b70a8f909a28974db9fe74f3576f93f, type: 3}
-  m_PrefabInstance: {fileID: 2567895687189104314}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2567895687189104316
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2567895687189104315}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 69341e2193677824eb11a741f63ee30e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4564929513466502368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12468,7 +12460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
