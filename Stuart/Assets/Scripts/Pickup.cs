@@ -35,7 +35,7 @@ public class Pickup : MonoBehaviour
             updateValue = -updateValue;
         }
         
-        gameObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
+        //gameObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
