@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("GlideCooldown", glideCooldown);
         animator.SetBool("grounded", onGround);
         animator.SetBool("onPlatform", onPlatform);
+        animator.SetBool("gliding", gliding);
     }
 
     private void UpdateMovement()
