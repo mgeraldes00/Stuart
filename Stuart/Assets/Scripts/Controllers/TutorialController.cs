@@ -92,6 +92,7 @@ public class TutorialController : MonoBehaviour, IController
             case 2:
                 refPoints[0].SetActive(true);
                 refPoints[1].SetActive(false);
+                refPoints[2].SetActive(true);
                 break;
             case 3:
                 StartCoroutine(cam.Lock());
@@ -108,6 +109,7 @@ public class TutorialController : MonoBehaviour, IController
                     2.0f));
 
                 bounds[0].SetActive(false);
+                refPoints[2].SetActive(false);
                 break;
             case 4:
                 StartCoroutine(player.LeaveScene());
@@ -122,6 +124,12 @@ public class TutorialController : MonoBehaviour, IController
                 player.Think();
 
                 player.Invoke(nameof(player.Unlock), 2.2f);
+                player.Invoke(nameof(player.Listen), 2.0f);
+                break;
+            case 6:
+                playerSpeech.DefineThought(playerThought);
+                player.Think();
+
                 player.Invoke(nameof(player.Listen), 2.0f);
                 break;
         }
