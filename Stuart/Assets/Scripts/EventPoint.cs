@@ -11,7 +11,7 @@ public class EventPoint : MonoBehaviour
 
     [SerializeField] private string[] playerDialogue, followerDialogue;
 
-    [SerializeField] private bool hasDialogue;
+    [SerializeField] private bool hasDialogue, hasThought;
 
     private bool interacted;
 
@@ -26,16 +26,25 @@ public class EventPoint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (!interacted)
+            if (!hasThought)
             {
-                if (hasDialogue)
-                    controller.SetDialogue(playerDialogue, followerDialogue);
+                if (!interacted)
+                {
+                    if (hasDialogue)
+                        controller.SetDialogue(playerDialogue, followerDialogue);
+
+                    controller.BeginEvent(eventIndex);
+                }
+
+                interacted = true;
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                controller.SetThought(playerDialogue[0]);
 
                 controller.BeginEvent(eventIndex);
             }
-
-            interacted = true;
-            gameObject.SetActive(false);
         }
     }
 }

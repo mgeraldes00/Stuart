@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     public Vector3 CurrentVelocity => currentVelocity;
     [SerializeField] private TimeUpdater timeUpdater;
 
+    [SerializeField] private float time;
+
     private bool isInputLocked => (inputLockTimer > 0);
 
     private Rigidbody2D rb;
@@ -266,25 +268,41 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    public IEnumerator AdjustPosition(float distanceToAdjust = 0)
+    public IEnumerator AdjustPosition(
+        bool lookAtFollower = true, float distanceToAdjust = 0, float totalTime = 1.0f)
     {
-        float time = 0;
+        time = 0;
+
+        if (!onGround)
+        {
+            do
+            {
+                rb.gravityScale = fallGravityScale;
+
+                yield return null;
+            }
+            while(rb.velocity != Vector2.zero);
+        }
 
         do
         {
             rb.velocity = new Vector3(distanceToAdjust, 0, 0);
-            time += 0.01f;
+            time += 1 * Time.deltaTime;
             yield return null;
         }
-        while (time <= 1);
+        while (time <= totalTime);
 
-        yield return new WaitForSeconds(0.5f);
-        if (follower.position.x > gameObject.transform.position.x)
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        else
+        if (lookAtFollower)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            currentVelocity.x = -1;
+            yield return new WaitForSeconds(0.5f);
+
+            if (follower.position.x > gameObject.transform.position.x)
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                currentVelocity.x = -1;
+            }
         }
     }
 
@@ -363,11 +381,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Think()
+    {
+        if (!talking)
+        {
+            speechBalloon.ShowThoughtBalloon();
+        }
+        
+        StartCoroutine(ResetTalk());
+    }
+
     public void Talk()
     {
         if (!talking)
         {
-            speechBalloon.ShowBalloon();
+            speechBalloon.ShowDialogueBalloon();
         }
         
         StartCoroutine(ResetTalk());

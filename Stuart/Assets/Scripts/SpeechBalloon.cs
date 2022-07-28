@@ -36,7 +36,28 @@ public class SpeechBalloon : MonoBehaviour
         content = lines;
     }
 
-    public void ShowBalloon()
+    public void DefineThought(string line)
+    {
+        nextLine = 0;
+
+        content = new string[1];
+        content[0] = line;
+    }
+
+    public void ShowThoughtBalloon()
+    {
+        mask.SetBool("Talking", true);
+
+        text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        text.text = "";
+
+        nextLine++;
+        currentIndex = nextLine - 1;
+
+        StartCoroutine(ShowThought());
+    }
+
+    public void ShowDialogueBalloon()
     {
         mask.SetBool("Talking", true);
 
@@ -46,7 +67,7 @@ public class SpeechBalloon : MonoBehaviour
         nextLine++;
         currentIndex = nextLine - 1;
         
-        StartCoroutine(ShowText());
+        StartCoroutine(ShowSpeech());
         spriteAnim.SetBool("talking", true);
     }
 
@@ -63,7 +84,25 @@ public class SpeechBalloon : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowText()
+    private IEnumerator ShowThought()
+    {
+        string currentLine = "";
+        
+        yield return new WaitForSeconds(0.2f);
+
+        speaking = true;
+
+        for (int i = 0; i < content[currentIndex].Length; i++)
+        {
+            currentLine = content[currentIndex].Substring(0, i);
+            text.text = currentLine;
+            yield return new WaitForSeconds(delay);
+        }
+
+        speaking = false;
+    }
+
+    private IEnumerator ShowSpeech()
     {
         string currentLine = "";
         

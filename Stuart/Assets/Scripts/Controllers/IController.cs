@@ -5,6 +5,7 @@ public interface IController
     void InitializeScene();
     void ActivateBounds();
     void SetDialogue(string [] playerLines, string[] followerLines);
+    void SetThought(string thought);
     void BeginEvent(int i);
     void CollectCoin();
     IEnumerator Dialogue(

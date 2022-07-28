@@ -105,7 +105,6 @@ public class Follower : MonoBehaviour
                         if (gameObject.transform.position.x > target.position.x
                             || speed.x == speedDefault.x)
                         {
-                            Debug.Log("TURNING");
                             transform.rotation = Quaternion.Euler(0, 180, 0);
                             animator.SetBool("movingRight", false);
                         }
@@ -288,7 +287,7 @@ public class Follower : MonoBehaviour
     {
         if (!talking)
         {
-            speechBalloon.ShowBalloon();
+            speechBalloon.ShowDialogueBalloon();
         }
 
         StartCoroutine(ResetTalk());

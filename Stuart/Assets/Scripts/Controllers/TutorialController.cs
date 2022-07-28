@@ -12,9 +12,10 @@ public class TutorialController : MonoBehaviour, IController
 
     [SerializeField] private GameObject[] bounds;
 
-    [SerializeField] private GameObject fallPoint;
+    [SerializeField] private GameObject[] refPoints;
 
     [SerializeField] private string[] playerDialogue, followerDialogue;
+    [SerializeField] private string playerThought;
 
     [SerializeField] private int coinNum = 0, maxCoins = 1;
 
@@ -46,12 +47,6 @@ public class TutorialController : MonoBehaviour, IController
         fpsText.text = fps + " fps";
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-
     public void InitializeScene()
     {
         follower.Lock();
@@ -68,10 +63,15 @@ public class TutorialController : MonoBehaviour, IController
         StartCoroutine(cam.Unlock());
     }
 
-    public void SetDialogue(string [] playerLines, string[] followerLines)
+    public void SetDialogue(string[] playerLines, string[] followerLines)
     {
         playerDialogue = playerLines;
         followerDialogue = followerLines;
+    }
+
+    public void SetThought(string thought)
+    {
+        playerThought = thought;
     }
 
     public void BeginEvent(int i)
@@ -90,7 +90,8 @@ public class TutorialController : MonoBehaviour, IController
                     4.5f, new int[] { 5, 8 }));
                 break;
             case 2:
-                fallPoint.SetActive(true);
+                refPoints[0].SetActive(true);
+                refPoints[1].SetActive(false);
                 break;
             case 3:
                 StartCoroutine(cam.Lock());
@@ -111,6 +112,17 @@ public class TutorialController : MonoBehaviour, IController
             case 4:
                 StartCoroutine(player.LeaveScene());
                 StartCoroutine(follower.LeaveScene());
+                break;
+            case 5:
+                player.Lock();
+                player.Turn();
+                StartCoroutine(player.AdjustPosition(false, -2f, 2.0f));
+
+                playerSpeech.DefineThought(playerThought);
+                player.Think();
+
+                player.Invoke(nameof(player.Unlock), 2.2f);
+                player.Invoke(nameof(player.Listen), 2.0f);
                 break;
         }
     }
