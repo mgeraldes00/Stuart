@@ -1218,7 +1218,7 @@ PrefabInstance:
       objectReference: {fileID: 2121755255}
     - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: content.Array.size
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6083981149335786692, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: content.Array.data[0]
@@ -3642,11 +3642,14 @@ MonoBehaviour:
   cam: {fileID: 0}
   player: {fileID: 0}
   follower: {fileID: 0}
+  playerSpeech: {fileID: 0}
+  followerSpeech: {fileID: 0}
   bounds:
   - {fileID: 1528478932}
   - {fileID: 1400423565}
-  reunionPoint: {fileID: 218350496}
   fallPoint: {fileID: 17184915}
+  playerDialogue: []
+  followerDialogue: []
   coinNum: 0
   maxCoins: 1
   fps: 0
@@ -9271,7 +9274,7 @@ PrefabInstance:
       objectReference: {fileID: 1427172974}
     - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: content.Array.size
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3724437986573197015, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: content.Array.data[0]
@@ -10724,6 +10727,37 @@ PrefabInstance:
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: eventIndex
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: hasDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[0]
+      value: "quando apanhei a moeda, tive uma intensa sensa\xE7\xE3o de realiza\xE7\xE3o.
+        espero que hajam mais por a\xED.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[1]
+      value: "enfim... de qualquer forma, acho que s\xF3 podemos seguir em frente.
+        vamos l\xE1.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[0]
+      value: "ent\xE3o? valeu a pena?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[1]
+      value: bem, mais alguma coisa que te sintas vocacionado a seguir, ou podemos
+        ir descobrir o que raio se passa?.
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154946, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Size.x
@@ -12453,6 +12487,88 @@ PrefabInstance:
     - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: hasDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[0]
+      value: quim! que raio estamos a fazer aqui? fazes ideia de onde estamos sequer?.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[1]
+      value: "estranho... do nada dei por mim neste local, como se tivesse c\xE1
+        vindo ter sem querer.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[2]
+      value: hum....
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[3]
+      value: "consegues ver o que est\xE1 no cimo daquela torre? algo redondo e brilhante
+        como uma moeda dourada.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[4]
+      value: "\xE9 como se me estivesse a chamar... sinto que colecion\xE1-la \xE9
+        o meu prop\xF3sito.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[5]
+      value: "n\xE3o quero saber. neste momento, n\xE3o consigo pensar em mais nada
+        sen\xE3o ir l\xE1 acima. s\xF3 um segundo.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[6]
+      value: "enfim... de qualquer forma, acho que s\xF3 podemos seguir em frente.
+        vamos l\xE1.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[7]
+      value: "enfim... de qualquer forma, acho que s\xF3 podemos seguir em frente.
+        vamos l\xE1.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[0]
+      value: "a\xED est\xE1s tu, manecas! realmente, onde \xE9 que nos viemos meter?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[1]
+      value: "\xE9. como se algu\xE9m nos tivesse colocado aqui contra a nossa vontade.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[2]
+      value: "parece-me que sim. e \xE9 enorme, at\xE9 comicamente grande. realmente,
+        como foi ali parar...."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[3]
+      value: "est\xE1s maluco? olha para a altura daquela torre! n\xE3o tens amor
+        \xE0 vida?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[4]
+      value: que teimosia... bem, vou ver se fico bem posicionado para amparar uma
+        eventual queda..
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[5]
+      value: "ent\xE3o? valeu a pena?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[6]
+      value: bem, mais alguma coisa que te sintas vocacionado a seguir, ou podemos
+        ir descobrir o que raio se passa?.
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Name

@@ -29,6 +29,13 @@ public class SpeechBalloon : MonoBehaviour
         text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
+    public void DefineDialogue(string[] lines)
+    {
+        nextLine = 0;
+
+        content = lines;
+    }
+
     public void ShowBalloon()
     {
         mask.SetBool("Talking", true);

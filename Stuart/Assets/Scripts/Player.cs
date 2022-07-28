@@ -53,8 +53,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool hasPlayed;
 
-    public bool Talking;
-    private bool turning;
+    private bool talking, turning;
 
     private void Start()
     {
@@ -366,9 +365,7 @@ public class Player : MonoBehaviour
 
     public void Talk()
     {
-        Debug.Log("Talk");
-
-        if (!Talking)
+        if (!talking)
         {
             speechBalloon.ShowBalloon();
         }
@@ -383,9 +380,9 @@ public class Player : MonoBehaviour
 
     private IEnumerator ResetTalk()
     {
-        Talking = true;
+        talking = true;
         yield return new WaitForEndOfFrame();
-        Talking = false;
+        talking = false;
     }
 
     public void Turn()

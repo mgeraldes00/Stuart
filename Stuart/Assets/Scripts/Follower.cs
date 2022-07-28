@@ -24,8 +24,7 @@ public class Follower : MonoBehaviour
 
     [SerializeField] private bool enteredScene;
 
-    public bool Talking;
-    private bool turning;
+    private bool talking, turning;
 
     private void Start()
     {
@@ -287,7 +286,7 @@ public class Follower : MonoBehaviour
 
     public void Talk()
     {
-        if (!Talking)
+        if (!talking)
         {
             speechBalloon.ShowBalloon();
         }
@@ -302,9 +301,9 @@ public class Follower : MonoBehaviour
 
     private IEnumerator ResetTalk()
     {
-        Talking = true;
+        talking = true;
         yield return new WaitForEndOfFrame();
-        Talking = false;
+        talking = false;
     }
 
     public void Turn()

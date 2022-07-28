@@ -8,10 +8,13 @@ public class TutorialController : MonoBehaviour, IController
     [SerializeField] private CameraCtrl cam;
     [SerializeField] private Player player;
     [SerializeField] private Follower follower;
+    [SerializeField] private SpeechBalloon playerSpeech, followerSpeech;
 
     [SerializeField] private GameObject[] bounds;
-    [SerializeField] private Transform reunionPoint;
+
     [SerializeField] private GameObject fallPoint;
+
+    [SerializeField] private string[] playerDialogue, followerDialogue;
 
     [SerializeField] private int coinNum = 0, maxCoins = 1;
 
@@ -24,8 +27,13 @@ public class TutorialController : MonoBehaviour, IController
         Application.targetFrameRate = 300;
 
         cam = FindObjectOfType<CameraCtrl>();
+
         player = FindObjectOfType<Player>();
+        playerSpeech = 
+            player.gameObject.GetComponentInChildren<SpeechBalloon>();
         follower = FindObjectOfType<Follower>();
+        followerSpeech = 
+            follower.gameObject.GetComponentInChildren<SpeechBalloon>();
 
         InitializeScene();
 
@@ -60,16 +68,23 @@ public class TutorialController : MonoBehaviour, IController
         StartCoroutine(cam.Unlock());
     }
 
+    public void SetDialogue(string [] playerLines, string[] followerLines)
+    {
+        playerDialogue = playerLines;
+        followerDialogue = followerLines;
+    }
+
     public void BeginEvent(int i)
     {
         switch (i)
         {
             case 1:
-                Debug.Log("Beginning event 1");
                 StartCoroutine(cam.Lock());
                 player.Lock();
                 StartCoroutine(follower.EnterScene(1.5f));
 
+                playerSpeech.DefineDialogue(playerDialogue);
+                followerSpeech.DefineDialogue(followerDialogue);
                 StartCoroutine(Dialogue(
                     new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1 }, 
                     4.5f, new int[] { 5, 8 }));
@@ -85,6 +100,8 @@ public class TutorialController : MonoBehaviour, IController
                 StartCoroutine(player.AdjustPosition());
                 StartCoroutine(follower.AdjustPosition());
 
+                playerSpeech.DefineDialogue(playerDialogue);
+                followerSpeech.DefineDialogue(followerDialogue);
                 StartCoroutine(Dialogue(
                     new int[] { 1, 0, 1, 0 },
                     2.0f));
@@ -139,13 +156,11 @@ public class TutorialController : MonoBehaviour, IController
             {
                 if (index == turningPoint)
                 {
-                    Debug.Log("Turning listener");
                     currentListener.SendMessage("Turn");
                 }
                     
                 if (index == returnPoint)
                 {
-                    Debug.Log("Turning speaker");
                     currentSpeaker.SendMessage("Turn");
                 } 
             }

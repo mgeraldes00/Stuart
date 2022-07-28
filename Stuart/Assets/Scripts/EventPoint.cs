@@ -9,6 +9,10 @@ public class EventPoint : MonoBehaviour
 
     [SerializeField] private int eventIndex;
 
+    [SerializeField] private string[] playerDialogue, followerDialogue;
+
+    [SerializeField] private bool hasDialogue;
+
     private bool interacted;
 
     // Start is called before the first frame update
@@ -24,12 +28,14 @@ public class EventPoint : MonoBehaviour
         {
             if (!interacted)
             {
-                Debug.Log("Collided with player");
+                if (hasDialogue)
+                    controller.SetDialogue(playerDialogue, followerDialogue);
+
                 controller.BeginEvent(eventIndex);
             }
 
             interacted = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
