@@ -150,6 +150,7 @@ MonoBehaviour:
   fallGravityScale: 3
   currentVelocity: {x: 0, y: 0, z: 0}
   timeUpdater: {fileID: 0}
+  time: 0
   speechBalloon: {fileID: 0}
   sounds:
   - {fileID: 5324494599876986515}
@@ -160,8 +161,10 @@ MonoBehaviour:
   jumping: 0
   gliding: 0
   requestingDown: 0
+  buttonHold: 0
   isLocked: 0
   enteredScene: 0
+  hasPlayed: 0
 --- !u!50 &4870345705777911823
 Rigidbody2D:
   serializedVersion: 4
@@ -225,7 +228,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4870345705777911820}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -244,7 +247,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b70943a2848d04408c02c21de5c2b06, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e48dd882671ca914d8bd5ae7a6a8bf64, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

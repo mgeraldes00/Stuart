@@ -34,6 +34,8 @@ AudioMixerController:
     name: High Volume
   - guid: 5740155631f6e95469c6e22ebe2d13a8
     name: Low Volume
+  - guid: 3aabbf4f251b5f64da0d62f5f80a4141
+    name: Master Volume
   m_AudioMixerGroupViews:
   - guids:
     - 084814be29b064447813c39330a65941
@@ -89,7 +91,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     5740155631f6e95469c6e22ebe2d13a8: 0
     45c948cef6d431e44a9c07f7d9bb272a: -20
-    3aabbf4f251b5f64da0d62f5f80a4141: 0
+    3aabbf4f251b5f64da0d62f5f80a4141: -60.40684
   m_TransitionOverrides: {}
 --- !u!243 &2775196569524274784
 AudioMixerGroupController:

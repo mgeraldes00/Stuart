@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
+    [SerializeField] private AudioLeveler audioCtrl;
+
+    [SerializeField] private Animator sceneMask;
+
     [SerializeField] private string playerMask;
 
     [SerializeField] private bool isOnGoal;
@@ -13,6 +17,8 @@ public class Goal : MonoBehaviour
 
     private void Start()
     {
+        audioCtrl = FindObjectOfType<AudioLeveler>();
+
         levelIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -38,10 +44,20 @@ public class Goal : MonoBehaviour
     {
         if (isOnGoal)
         {
-            PlayerPrefs.SetInt("IsLastPanelPlayed", 1);
-            if (PlayerPrefs.GetInt("MaxPanelReached") < levelIndex)
-                PlayerPrefs.SetInt("MaxPanelReached", levelIndex);
-            SceneManager.LoadScene("Panels");
+            StartCoroutine(audioCtrl.AdjustVolume("Master Volume", 0, -60, 30));
+            StartCoroutine(EndLevel());
         }
+    }
+
+    private IEnumerator EndLevel()
+    {
+        yield return new WaitForSeconds(0.5f);
+        sceneMask.SetTrigger("endScene");
+
+        yield return new WaitForSeconds(2.5f);
+        PlayerPrefs.SetInt("IsLastPanelPlayed", 1);
+        if (PlayerPrefs.GetInt("MaxPanelReached") < levelIndex)
+            PlayerPrefs.SetInt("MaxPanelReached", levelIndex);
+        SceneManager.LoadScene("Panels");
     }
 }
