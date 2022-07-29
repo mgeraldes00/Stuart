@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PanelNavigation : MonoBehaviour
 {
@@ -16,10 +17,14 @@ public class PanelNavigation : MonoBehaviour
 
     [SerializeField] private GameObject[] panels;
 
+    [SerializeField] private Image coverMask;
+
     private Camera cam;
 
     private void Start()
     {
+        isLocked = true;
+
         cam = GetComponent<Camera>();
 
         maxPanelReached = PlayerPrefs.GetInt("MaxPanelReached");
@@ -85,6 +90,8 @@ public class PanelNavigation : MonoBehaviour
                     panels[currentPanel - 1].transform.position.y, -10);
             }
         }
+
+        StartCoroutine(AdjustCover(true, 1.0f));
     }
 
     private void Update()
@@ -122,7 +129,9 @@ public class PanelNavigation : MonoBehaviour
         {
             PlayerPrefs.SetInt("LastPanelPlayed", currentPanel);
             PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
-            SceneManager.LoadScene(currentPanel);
+            isLocked = true;
+            StartCoroutine(Zoom());
+            StartCoroutine(AdjustCover(false));
         }
     }
 
@@ -148,6 +157,55 @@ public class PanelNavigation : MonoBehaviour
         while (timeElapsed < duration);
 
         transform.position = new Vector3(targetPosition.x, targetPosition.y, -10);
+        isLocked = false;
+    }
+
+    private IEnumerator Zoom()
+    {
+        float timeElapsed = 0;
+
+        do
+        {
+            cam.orthographicSize = 
+                cam.orthographicSize - 2f * Time.deltaTime;
+            yield return null;
+        }
+        while(timeElapsed < duration);
+    }
+
+    private IEnumerator AdjustCover(bool reveal, float waitTime = 0)
+    {
+        float time = 0.0f, totalTime = 1.0f;
+        Color c = coverMask.color;
+
+        if (waitTime != 0)
+            yield return new WaitForSeconds(waitTime);
+
+        if (reveal)
+        {
+            do
+            {
+                time += Time.deltaTime;
+                c.a = 1.0f - Mathf.Clamp01(time / totalTime);
+                coverMask.color = c;
+                yield return null;
+            }
+            while(time < totalTime);
+        }
+        else 
+        {
+            do
+            {
+                time += Time.deltaTime;
+                c.a = 0.0f + Mathf.Clamp01(time / totalTime);
+                coverMask.color = c;
+                yield return null;
+            }
+            while(time < totalTime);
+
+            SceneManager.LoadScene(currentPanel);
+        }
+
         isLocked = false;
     }
 }
