@@ -20,13 +20,19 @@ public class SpeechBalloon : MonoBehaviour
 
     [SerializeField] private float delay = 0.01f;
 
-    [SerializeField] private bool speaking;
+    [SerializeField] private bool active, speaking;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         mask = GetComponent<Animator>();
         text = GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        if (active)
+            text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void DefineDialogue(string[] lines)
@@ -47,8 +53,9 @@ public class SpeechBalloon : MonoBehaviour
     public void ShowThoughtBalloon()
     {
         mask.SetBool("Talking", true);
+        active = true;
 
-        text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         text.text = "";
 
         nextLine++;
@@ -60,8 +67,9 @@ public class SpeechBalloon : MonoBehaviour
     public void ShowDialogueBalloon()
     {
         mask.SetBool("Talking", true);
+        active = true;
 
-        text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         text.text = "";
 
         nextLine++;
@@ -82,6 +90,8 @@ public class SpeechBalloon : MonoBehaviour
             StopAllCoroutines();
             spriteAnim.SetBool("talking", false);
         }
+
+        active = false;
     }
 
     private IEnumerator ShowThought()
