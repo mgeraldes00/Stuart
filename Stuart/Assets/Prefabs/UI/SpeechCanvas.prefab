@@ -374,5 +374,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a12c3de8b7ef5148ad458ab6e15bb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
   mask: {fileID: 0}
+  spriteAnim: {fileID: 0}
   text: {fileID: 0}
+  sound: {fileID: 0}
+  content: []
+  nextLine: 0
+  currentIndex: 0
+  delay: 0.01
+  active: 0
+  speaking: 0

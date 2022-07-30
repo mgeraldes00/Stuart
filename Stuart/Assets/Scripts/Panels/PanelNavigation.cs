@@ -91,6 +91,7 @@ public class PanelNavigation : MonoBehaviour
             }
         }
 
+        coverMask.enabled = true;
         StartCoroutine(AdjustCover(true, 1.0f));
     }
 

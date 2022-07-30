@@ -10,6 +10,8 @@ public class TutorialController : MonoBehaviour, IController
     [SerializeField] private Follower follower;
     [SerializeField] private SpeechBalloon playerSpeech, followerSpeech;
 
+    [SerializeField] private Image coverMask;
+
     [SerializeField] private GameObject[] bounds;
 
     [SerializeField] private GameObject[] refPoints;
@@ -36,6 +38,7 @@ public class TutorialController : MonoBehaviour, IController
         followerSpeech = 
             follower.gameObject.GetComponentInChildren<SpeechBalloon>();
 
+        coverMask.enabled = true;
         InitializeScene();
 
         InvokeRepeating(nameof(GetFPS), 1, 1);
