@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialController : MonoBehaviour, IController
+public class Level2Controller : MonoBehaviour, IController
 {
-    private const int maxCoins = 1;
+    private const int maxCoins = 0;
 
     [SerializeField] private CameraCtrl cam;
     [SerializeField] private Player player;
@@ -54,12 +54,13 @@ public class TutorialController : MonoBehaviour, IController
 
     public void InitializeScene()
     {
-        follower.Lock();
         StartCoroutine(player.EnterScene(2.0f));
+        StartCoroutine(follower.EnterScene(2.0f));
 
         Invoke("ActivateBounds", 5.0f);
     }
 
+    
     public void ActivateBounds()
     {
         for (int i = 0; i < bounds.Length; i++)
@@ -68,7 +69,7 @@ public class TutorialController : MonoBehaviour, IController
         StartCoroutine(cam.Unlock());
     }
 
-    public void SetDialogue(string[] playerLines, string[] followerLines)
+    public void SetDialogue(string [] playerLines, string[] followerLines)
     {
         playerDialogue = playerLines;
         followerDialogue = followerLines;
@@ -86,56 +87,20 @@ public class TutorialController : MonoBehaviour, IController
             case 1:
                 StartCoroutine(cam.Lock());
                 player.Lock();
-                StartCoroutine(follower.EnterScene(1.5f));
-
-                playerSpeech.DefineDialogue(playerDialogue);
-                followerSpeech.DefineDialogue(followerDialogue);
-                StartCoroutine(Dialogue(
-                    new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1 }, 
-                    4.5f, new int[] { 5, 8 }));
-                break;
-            case 2:
-                refPoints[0].SetActive(true);
-                refPoints[1].SetActive(false);
-                refPoints[2].SetActive(true);
-                break;
-            case 3:
-                StartCoroutine(cam.Lock());
-                player.Lock();
                 follower.Lock();
 
-                StartCoroutine(player.AdjustPosition());
-                StartCoroutine(follower.AdjustPosition());
-
                 playerSpeech.DefineDialogue(playerDialogue);
                 followerSpeech.DefineDialogue(followerDialogue);
-                StartCoroutine(Dialogue(
-                    new int[] { 1, 0, 1, 0 },
-                    2.0f));
 
-                bounds[0].SetActive(false);
-                refPoints[2].SetActive(false);
+                StartCoroutine(Dialogue(
+                    new int[] { 0, 1},
+                    1.0f));
+                
+                bounds[1].SetActive(false);
                 break;
-            case 4:
+            case 2:
                 StartCoroutine(player.LeaveScene());
                 StartCoroutine(follower.LeaveScene());
-                break;
-            case 5:
-                player.Lock();
-                player.Turn();
-                StartCoroutine(player.AdjustPosition(false, -2f, 2.0f));
-
-                playerSpeech.DefineThought(playerThought);
-                player.Think();
-
-                player.Invoke(nameof(player.Unlock), 2.2f);
-                player.Invoke(nameof(player.Listen), 2.0f);
-                break;
-            case 6:
-                playerSpeech.DefineThought(playerThought);
-                player.Think();
-
-                player.Invoke(nameof(player.Listen), 2.0f);
                 break;
         }
     }
@@ -143,11 +108,6 @@ public class TutorialController : MonoBehaviour, IController
     public void CollectCoin()
     {
         coinNum++;
-
-        if (coinNum == maxCoins)
-        {
-            BeginEvent(2);
-        }
     }
 
     public IEnumerator Dialogue(

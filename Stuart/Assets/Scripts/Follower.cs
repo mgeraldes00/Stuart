@@ -176,7 +176,7 @@ public class Follower : MonoBehaviour
                 rb.velocity = new Vector3(2, 0, 0);
                 yield return null;
             }
-            while (transform.position.x < enterPoint.position.x);
+            while (transform.position.x < enterPoint.position.x - 0.3f);
         }
         
         rb.velocity = Vector3.zero;
