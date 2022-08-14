@@ -1338,13 +1338,6 @@ MonoBehaviour:
   - {fileID: 1040178313}
   - {fileID: 722484779}
   - {fileID: 765077728}
-  - {fileID: 624841558}
-  - {fileID: 1825058415}
-  - {fileID: 2048333646}
-  - {fileID: 179284074}
-  - {fileID: 211314306}
-  - {fileID: 1234543598}
-  - {fileID: 1894357894}
   coverMask: {fileID: 1715305068}
 --- !u!114 &2112233125
 MonoBehaviour:

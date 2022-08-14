@@ -536,6 +536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 567403212}
+  - component: {fileID: 567403213}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -560,6 +561,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &567403213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567403211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c65d8b8997a657244b83cc8f2c7881ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: f415f548d4a37a54db3006283a23f740, type: 2}
+  blurAmount: 0
+  maxBlur: 15
+  blurSpeed: 20
+  blurActive: 0
 --- !u!114 &683302087 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3890966550968383643, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
@@ -912,15 +930,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7879517705669676290, guid: 29c15dcae30e47a4f928f387bba85c58, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.4245283
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7879517705669676290, guid: 29c15dcae30e47a4f928f387bba85c58, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.4245283
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7879517705669676290, guid: 29c15dcae30e47a4f928f387bba85c58, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.4245283
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7879517705669676291, guid: 29c15dcae30e47a4f928f387bba85c58, type: 3}
       propertyPath: cameraLimits.width
@@ -1743,11 +1761,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.data[0]
-      value: teste
+      value: teste.
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.data[0]
-      value: teste
+      value: teste.
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Name

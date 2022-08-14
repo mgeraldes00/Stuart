@@ -26,7 +26,6 @@ public class Level2Controller : MonoBehaviour, IController
     [SerializeField] private float fps;
     [SerializeField] private Text fpsText;
 
-    // Start is called before the first frame update
     private void Start()
     {
         Application.targetFrameRate = 300;
@@ -60,7 +59,6 @@ public class Level2Controller : MonoBehaviour, IController
         Invoke("ActivateBounds", 5.0f);
     }
 
-    
     public void ActivateBounds()
     {
         for (int i = 0; i < bounds.Length; i++)

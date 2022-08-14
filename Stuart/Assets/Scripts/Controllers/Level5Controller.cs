@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Level3Controller : MonoBehaviour, IController
+public class Level5Controller : MonoBehaviour, IController
 {
     private const int maxCoins = 0;
 
