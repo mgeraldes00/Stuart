@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool enteredScene;
 
-    [SerializeField] private bool hasPlayed;
+    [SerializeField] private bool hasPlayed, canLand;
 
     private bool talking, turning;
 
@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
     {
         currentVelocity = rb.velocity;
         onGround = IsOnGround();
+
         onPlatform = IsOnPlatform();
 
         if (enteredScene && !isLocked)
@@ -332,7 +333,12 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(
             groundProbe.position, groundProbeRadius, platformMask);
 
-        return (collider != null && !requestingDown);
+        if (currentVelocity.y <= 0 && jumping 
+            || currentVelocity.y <= 0 && gliding
+            || !jumping && !gliding)
+            return (collider != null && !requestingDown);
+
+        return false;
     }
 
     private IEnumerator DownPlatform()
