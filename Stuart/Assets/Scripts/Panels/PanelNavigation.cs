@@ -16,6 +16,7 @@ public class PanelNavigation : MonoBehaviour
     private bool isLocked;
 
     [SerializeField] private GameObject[] panels;
+    [SerializeField] private Panel[] panelGroups;
 
     [SerializeField] private Image coverMask;
 
@@ -26,6 +27,11 @@ public class PanelNavigation : MonoBehaviour
         isLocked = true;
 
         cam = GetComponent<Camera>();
+
+        panelGroups = new Panel[panels.Length];
+
+        for (int i = 0; i < panels.Length; i++)
+            panelGroups[i] = panels[i].GetComponent<Panel>();
 
         maxPanelReached = PlayerPrefs.GetInt("MaxPanelReached");
         lastPanelPlayed = PlayerPrefs.GetInt("LastPanelPlayed");
@@ -68,14 +74,16 @@ public class PanelNavigation : MonoBehaviour
             {
                 for (int i = 0; i < maxPanelReached; i++)
                 {
-                    panels[i].GetComponent<SpriteRenderer>().color = Color.grey;
+                    //panels[i].GetComponent<SpriteRenderer>().color = Color.grey;
+                    panelGroups[i].SetImage(Color.grey);
                 }
 
                 if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 0
                     && maxPanelReached < currentPanel)
                 {
-                    panels[currentPanel - 1].GetComponent<SpriteRenderer>().
-                        color = Color.white;
+                    /*panels[currentPanel - 1].GetComponent<SpriteRenderer>().
+                        color = Color.white;*/
+                    panelGroups[currentPanel - 1].SetImage(Color.white);
                 }
             }
             
@@ -84,7 +92,7 @@ public class PanelNavigation : MonoBehaviour
 
             if (currentPanel > 0)
             {
-                cam.orthographicSize = 2.1f;
+                cam.orthographicSize = 2.5f;
                 transform.position = new Vector3(
                     panels[currentPanel - 1].transform.position.x,
                     panels[currentPanel - 1].transform.position.y, -10);
@@ -144,11 +152,11 @@ public class PanelNavigation : MonoBehaviour
 
         do
         {
-            if (cam.orthographicSize > 2.1f)
+            if (cam.orthographicSize > 2.5f)
                 cam.orthographicSize = 
                     cam.orthographicSize - 2f * Time.deltaTime;
             else
-                cam.orthographicSize = 2.1f;
+                cam.orthographicSize = 2.5f;
             transform.position = Vector3.Lerp(
                 startPosition, new Vector3(targetPosition.x, targetPosition.y, -10), 
                 timeElapsed / duration);
