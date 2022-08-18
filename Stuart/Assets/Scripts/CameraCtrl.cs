@@ -86,7 +86,7 @@ public class CameraCtrl : MonoBehaviour
 
         do
         {
-            camSize -= 0.001f;
+            camSize -= 0.005f;
             cam.orthographicSize = camSize;
             
             yield return null;
@@ -100,7 +100,7 @@ public class CameraCtrl : MonoBehaviour
 
         do
         {
-            camSize += 0.001f;
+            camSize += 0.005f;
             cam.orthographicSize = camSize;
 
             yield return null;
