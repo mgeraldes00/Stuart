@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private const float glideCooldownAmount = 0.5f;
+    private readonly float[] colliderSize = new float[]{1f, 2.55f};
+    private readonly float[] colliderSizeJump = new float[]{2f, 2.55f};
 
     [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
@@ -118,6 +120,8 @@ public class Player : MonoBehaviour
                 gliding = false;
                 hasPlayed = false;
                 glideCooldown = 0;
+                gameObject.GetComponent<CapsuleCollider2D>().size = 
+                    new Vector2(colliderSize[0], colliderSize[1]);
                 sprite.sortingOrder = defaultLayer - 2;
             }
             else if (onGround)
@@ -126,6 +130,8 @@ public class Player : MonoBehaviour
                 gliding = false;
                 hasPlayed = false;
                 glideCooldown = 0;
+                gameObject.GetComponent<CapsuleCollider2D>().size = 
+                    new Vector2(colliderSize[0], colliderSize[1]);
                 sprite.sortingOrder = defaultLayer;
             }
             
@@ -161,7 +167,11 @@ public class Player : MonoBehaviour
                 }
 
                 if (currentVelocity.y >= 0 && !onPlatform && !onGround)
+                {
                     jumping = true;
+                    gameObject.GetComponent<CapsuleCollider2D>().size = 
+                        new Vector2(colliderSizeJump[0], colliderSizeJump[1]);
+                }
                 if (jumping && currentVelocity.y <= 0
                     || !jumping && currentVelocity.y <= -5f && glideCooldown <= 0 
                     && !onGround && !onPlatform)
