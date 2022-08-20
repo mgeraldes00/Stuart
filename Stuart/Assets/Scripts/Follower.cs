@@ -113,11 +113,18 @@ public class Follower : MonoBehaviour
             }
             else if (player.OnPlatform)
             {
-                speed.x += speedDefault.x * 0.001f + Time.deltaTime;
+                if (currentVelocity.x > 1.5f || currentVelocity.x < -1.5f)
+                    speed.x += speedDefault.x * 0.001f + Time.deltaTime;
+                else
+                    speed.x -= speedDefault.x * 0.001f + Time.deltaTime;
                 if (speed.x > 1.5f)
                     speed.x = 1.5f;
+                if (speed.x < 0.15f)
+                    speed.x = 0.15f;
+
                 if (player.CurrentVelocity.x > 0
-                    && gameObject.transform.position.x < target.gameObject.transform.position.x)
+                    && gameObject.transform.position.x < target.gameObject.transform.position.x
+                    || player.CurrentVelocity.x > 0 && currentVelocity.x > 0)
                 {
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
@@ -126,7 +133,8 @@ public class Follower : MonoBehaviour
                     animator.SetBool("movingRight", true);
                 }
                 else if (player.CurrentVelocity.x < 0
-                    && gameObject.transform.position.x > target.gameObject.transform.position.x)
+                    && gameObject.transform.position.x > target.gameObject.transform.position.x
+                    || player.CurrentVelocity.x < 0 && currentVelocity.x < 0)
                 {
                     newPos = new Vector3(
                         target.position.x + offset.x, gameObject.transform.position.y, 0);
@@ -145,8 +153,9 @@ public class Follower : MonoBehaviour
 
             Vector3 delta = new Vector3(
                 newPos.x - transform.position.x, newPos.y, newPos.z);
-
-            newPos.x = transform.position.x + delta.x * Time.deltaTime / speed.x;
+                    
+            newPos.x = 
+                transform.position.x + delta.x * Time.deltaTime / speed.x;
 
             transform.position = newPos;
         }
