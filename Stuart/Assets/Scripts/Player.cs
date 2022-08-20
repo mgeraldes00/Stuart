@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private const float glideCooldownAmount = 0.5f;
     private readonly float[] colliderSize = new float[]{1f, 2.55f};
     private readonly float[] colliderSizeJump = new float[]{2f, 2.55f};
+    private float colliderInc;
 
     [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator animator;
+    private CapsuleCollider2D bodyCollider;
 
     [SerializeField] private SpeechBalloon speechBalloon;
 
@@ -61,9 +63,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        colliderInc = colliderSize[0];
+
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        bodyCollider = GetComponent<CapsuleCollider2D>();
 
         speechBalloon = GetComponentInChildren<SpeechBalloon>();
 
@@ -120,8 +125,9 @@ public class Player : MonoBehaviour
                 gliding = false;
                 hasPlayed = false;
                 glideCooldown = 0;
-                gameObject.GetComponent<CapsuleCollider2D>().size = 
+                bodyCollider.size = 
                     new Vector2(colliderSize[0], colliderSize[1]);
+                colliderInc = colliderSize[0];
                 sprite.sortingOrder = defaultLayer - 2;
             }
             else if (onGround)
@@ -130,8 +136,9 @@ public class Player : MonoBehaviour
                 gliding = false;
                 hasPlayed = false;
                 glideCooldown = 0;
-                gameObject.GetComponent<CapsuleCollider2D>().size = 
+                bodyCollider.size = 
                     new Vector2(colliderSize[0], colliderSize[1]);
+                colliderInc = colliderSize[0];
                 sprite.sortingOrder = defaultLayer;
             }
             
@@ -142,6 +149,8 @@ public class Player : MonoBehaviour
                     rb.gravityScale = 1.0f;
                     currentVelocity.y = jumpSpeed;
                     jumpTime = Time.time;
+
+                    StartCoroutine(ColliderIncrease());
                 }
                 else
                 {
@@ -169,8 +178,6 @@ public class Player : MonoBehaviour
                 if (currentVelocity.y >= 0 && !onPlatform && !onGround)
                 {
                     jumping = true;
-                    gameObject.GetComponent<CapsuleCollider2D>().size = 
-                        new Vector2(colliderSizeJump[0], colliderSizeJump[1]);
                 }
                 if (jumping && currentVelocity.y <= 0
                     || !jumping && currentVelocity.y <= -5f && glideCooldown <= 0 
@@ -355,7 +362,7 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(ResetDownRequest());
 
-        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        bodyCollider.enabled = false;
 
         do
         {
@@ -363,7 +370,7 @@ public class Player : MonoBehaviour
         }
         while (!onPlatform && !onGround);
         
-        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+        bodyCollider.enabled = true;
     }
 
     private IEnumerator ResetDownRequest()
@@ -386,6 +393,30 @@ public class Player : MonoBehaviour
 
         glideCooldown = 0;
         hasPlayed = false;
+    }
+
+    private IEnumerator ColliderIncrease()
+    {
+        do
+        {
+            bodyCollider.size = 
+            new Vector2(
+                colliderInc + 0.09f * Time.deltaTime, 
+                colliderSizeJump[1]
+            );
+            colliderInc += 0.09f;
+
+            /*if(bodyCollider.size[0] > colliderSizeJump[0])
+            {
+                colliderInc = colliderSizeJump[0];
+                bodyCollider.size =
+                    new Vector2(
+                        colliderSizeJump[0], colliderSizeJump[1]
+                    );
+            }*/
+            yield return null;
+        }
+        while(bodyCollider.size[0] <= colliderSizeJump[0]);
     }
 
     private void OnDrawGizmosSelected()
