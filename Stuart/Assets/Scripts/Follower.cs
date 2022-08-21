@@ -70,7 +70,7 @@ public class Follower : MonoBehaviour
             Vector3 newPos = new Vector3(
                 target.position.x + offset.x, gameObject.transform.position.y, 0);
 
-            if (player.OnGround && speed.x > speedDefault.x)
+            if (!player.Platforming && speed.x > speedDefault.x)
             {
                 speed.x -= 1f * Time.deltaTime;
             }
@@ -78,7 +78,7 @@ public class Follower : MonoBehaviour
             if (speed.x < speedDefault.x)
                 speed.x = speedDefault.x;
 
-            if (!player.OnPlatform)
+            if (!player.Platforming && !player.HoveringPlatform)
             {
                 if (player.CurrentVelocity.x > 0 || target.rotation.y == 0)
                 {
@@ -111,7 +111,7 @@ public class Follower : MonoBehaviour
                     }
                 }
             }
-            else if (player.OnPlatform)
+            else if (player.Platforming || player.HoveringPlatform)
             {
                 if (currentVelocity.x > 1.5f || currentVelocity.x < -1.5f)
                     speed.x += speedDefault.x * 0.001f + Time.deltaTime;
@@ -123,25 +123,46 @@ public class Follower : MonoBehaviour
                     speed.x = 0.15f;
 
                 if (player.CurrentVelocity.x > 0
-                    && gameObject.transform.position.x < target.gameObject.transform.position.x
-                    || player.CurrentVelocity.x > 0 && currentVelocity.x > 0)
+                    && gameObject.transform.position.x 
+                    < target.gameObject.transform.position.x
+                    || player.CurrentVelocity.x > 0 && currentVelocity.x > 0
+                    || player.HoveringPlatform 
+                    && gameObject.transform.position.x 
+                    < target.gameObject.transform.position.x)
                 {
+                    offset = offsetDefault * 5;
                     newPos = new Vector3(
-                        target.position.x + offset.x, gameObject.transform.position.y, 0);
-                    offset = offsetDefault;
+                        target.position.x + offset.x, 
+                        gameObject.transform.position.y, 0);
+                    
+                }
+                else if (player.CurrentVelocity.x < 0
+                    && gameObject.transform.position.x > 
+                    target.gameObject.transform.position.x
+                    || player.CurrentVelocity.x < 0 && currentVelocity.x < 0
+                    || player.HoveringPlatform
+                    && gameObject.transform.position.x 
+                    > target.gameObject.transform.position.x)
+                {
+                    offset = -offsetDefault * 5;
+                    newPos = new Vector3(
+                        target.position.x + offset.x, 
+                        gameObject.transform.position.y, 0);
+                }
+                if (gameObject.transform.position.x <
+                    target.gameObject.transform.position.x + (offset.x + 0.1f)
+                    && offset.x < 0)
+                {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     animator.SetBool("movingRight", true);
                 }
-                else if (player.CurrentVelocity.x < 0
-                    && gameObject.transform.position.x > target.gameObject.transform.position.x
-                    || player.CurrentVelocity.x < 0 && currentVelocity.x < 0)
+                else if (gameObject.transform.position.x >
+                    target.gameObject.transform.position.x + (offset.x - 0.1f)
+                    && offset.x > 0)
                 {
-                    newPos = new Vector3(
-                        target.position.x + offset.x, gameObject.transform.position.y, 0);
-                    offset = -offsetDefault;
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                     animator.SetBool("movingRight", false);
-                }
+                } 
             }
             else
             {   	

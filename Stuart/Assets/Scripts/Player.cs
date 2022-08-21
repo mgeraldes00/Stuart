@@ -43,8 +43,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float inputLockTimer = 0;
     [SerializeField] private bool onGround;
     public bool OnGround => onGround;
-    [SerializeField] private bool onPlatform;
+    [SerializeField] private bool onPlatform, platforming, hoveringPlatform;
     public bool OnPlatform => onPlatform;
+    public bool Platforming => platforming;
+    public bool HoveringPlatform => hoveringPlatform;
     [SerializeField] private bool jumping;
     public bool Jumping => jumping;
     [SerializeField] private bool gliding;
@@ -81,8 +83,20 @@ public class Player : MonoBehaviour
     {
         currentVelocity = rb.velocity;
         onGround = IsOnGround();
-
         onPlatform = IsOnPlatform();
+        hoveringPlatform = IsHovering();
+
+        if (onPlatform)
+        {
+            sprite.sortingOrder = defaultLayer - 2;
+            platforming = true;
+        }
+            
+        if (onGround)
+        {
+            sprite.sortingOrder = defaultLayer;
+            platforming = false;
+        }
 
         if (enteredScene && !isLocked)
         {
@@ -119,7 +133,7 @@ public class Player : MonoBehaviour
                 else timeUpdater.SetScale(0.0f);
             }
 
-            if (onPlatform)
+            if (onPlatform || onGround)
             {
                 jumping = false;
                 gliding = false;
@@ -128,18 +142,6 @@ public class Player : MonoBehaviour
                 bodyCollider.size = 
                     new Vector2(colliderSize[0], colliderSize[1]);
                 colliderInc = colliderSize[0];
-                sprite.sortingOrder = defaultLayer - 2;
-            }
-            else if (onGround)
-            {
-                jumping = false;
-                gliding = false;
-                hasPlayed = false;
-                glideCooldown = 0;
-                bodyCollider.size = 
-                    new Vector2(colliderSize[0], colliderSize[1]);
-                colliderInc = colliderSize[0];
-                sprite.sortingOrder = defaultLayer;
             }
             
             if (Input.GetButtonDown("Jump"))
@@ -327,6 +329,10 @@ public class Player : MonoBehaviour
     public void Lock()
     {
         isLocked = true;
+        jumping = false;
+        gliding = false;
+        buttonHold = false;
+        sprite.sortingOrder = defaultLayer;
 
         rb.gravityScale = fallGravityScale;
         //rb.velocity = Vector3.zero;
@@ -354,6 +360,17 @@ public class Player : MonoBehaviour
             || currentVelocity.y <= 0 && gliding
             || !jumping && !gliding)
             return (collider != null && !requestingDown);
+
+        return false;
+    }
+
+    private bool IsHovering()
+    {
+        Collider2D collider = Physics2D.OverlapCircle(
+            groundProbe.position, groundProbeRadius * 10, platformMask);
+
+        if (jumping || !onGround)
+            return (collider != null && !platforming);
 
         return false;
     }
