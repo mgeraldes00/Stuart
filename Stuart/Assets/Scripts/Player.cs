@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private const float glideCooldownAmount = 0.5f;
-    private readonly float[] colliderSize = new float[]{1f, 2.55f};
-    private readonly float[] colliderSizeJump = new float[]{2f, 2.55f};
+    private readonly float[] colliderSize = new float[]{1f, 0.2f};
+    private readonly float[] colliderSizeJump = new float[]{2f, 0.2f};
+    private readonly float[] colliderSizeJumpAlt = new float[]{1.75f, 2f};
+    private readonly float[] colliderSizePlatform = new float[]{1f, 2f};
     private float colliderInc;
 
     [SerializeField] private float horizontalSpeed = 5.0f;
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundProbe;
     [SerializeField] private Transform enterPoint, leavePoint;
     [SerializeField] private float groundProbeRadius = 5.0f;
+    [SerializeField] private Vector2 groundProbeSize;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask platformMask;
     [SerializeField] private int defaultLayer = 3;
@@ -32,7 +35,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator animator;
-    private CapsuleCollider2D bodyCollider;
+    //private CapsuleCollider2D bodyCollider;
+    [SerializeField] private BoxCollider2D platformCollider;
 
     [SerializeField] private SpeechBalloon speechBalloon;
 
@@ -51,7 +55,7 @@ public class Player : MonoBehaviour
     public bool Jumping => jumping;
     [SerializeField] private bool gliding;
     public bool Gliding => gliding;
-    [SerializeField] private bool requestingDown;
+    [SerializeField] private bool requestingDown, colliderDecrease;
     [SerializeField] private bool buttonHold;
 
     [SerializeField] private bool isLocked;
@@ -70,7 +74,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        bodyCollider = GetComponent<CapsuleCollider2D>();
+        //bodyCollider = GetComponent<CapsuleCollider2D>();
 
         speechBalloon = GetComponentInChildren<SpeechBalloon>();
 
@@ -90,12 +94,18 @@ public class Player : MonoBehaviour
         {
             sprite.sortingOrder = defaultLayer - 2;
             platforming = true;
+            /*if (colliderDecrease)
+                StartCoroutine(ColliderIncrease(false, 1.5f));*/
+            //colliderInc = colliderSize[0];
         }
             
         if (onGround)
         {
             sprite.sortingOrder = defaultLayer;
             platforming = false;
+            /*if (colliderDecrease)
+                StartCoroutine(ColliderIncrease(false));*/
+            //colliderInc = colliderSize[0];
         }
 
         if (enteredScene && !isLocked)
@@ -139,9 +149,8 @@ public class Player : MonoBehaviour
                 gliding = false;
                 hasPlayed = false;
                 glideCooldown = 0;
-                bodyCollider.size = 
-                    new Vector2(colliderSize[0], colliderSize[1]);
-                colliderInc = colliderSize[0];
+                /*bodyCollider.size = 
+                    new Vector2(colliderSize[0], colliderSize[1]);*/
             }
             
             if (Input.GetButtonDown("Jump"))
@@ -151,8 +160,6 @@ public class Player : MonoBehaviour
                     rb.gravityScale = 1.0f;
                     currentVelocity.y = jumpSpeed;
                     jumpTime = Time.time;
-
-                    StartCoroutine(ColliderIncrease());
                 }
                 else
                 {
@@ -345,16 +352,22 @@ public class Player : MonoBehaviour
     
     private bool IsOnGround()
     {
-        Collider2D collider = Physics2D.OverlapCircle(
-            groundProbe.position, groundProbeRadius, groundMask);
+        /*Collider2D collider = Physics2D.OverlapCircle(
+            groundProbe.position, groundProbeRadius, groundMask);*/
+
+        Collider2D collider = Physics2D.OverlapBox(
+            groundProbe.position, groundProbeSize, 0, groundMask);
 
         return (collider != null);
     }
 
     private bool IsOnPlatform()
     {
-        Collider2D collider = Physics2D.OverlapCircle(
-            groundProbe.position, groundProbeRadius, platformMask);
+        /*Collider2D collider = Physics2D.OverlapCircle(
+            groundProbe.position, groundProbeRadius, platformMask);*/
+
+        Collider2D collider = Physics2D.OverlapBox(
+            groundProbe.position, groundProbeSize, 0, platformMask);
 
         if (currentVelocity.y <= 0 && jumping 
             || currentVelocity.y <= 0 && gliding
@@ -379,7 +392,8 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(ResetDownRequest());
 
-        bodyCollider.enabled = false;
+        //bodyCollider.enabled = false;
+        platformCollider.enabled = false;
 
         do
         {
@@ -387,7 +401,8 @@ public class Player : MonoBehaviour
         }
         while (!onPlatform && !onGround);
         
-        bodyCollider.enabled = true;
+        //bodyCollider.enabled = true;
+        platformCollider.enabled = true;
     }
 
     private IEnumerator ResetDownRequest()
@@ -412,36 +427,13 @@ public class Player : MonoBehaviour
         hasPlayed = false;
     }
 
-    private IEnumerator ColliderIncrease()
-    {
-        do
-        {
-            bodyCollider.size = 
-            new Vector2(
-                colliderInc + 0.09f * Time.deltaTime, 
-                colliderSizeJump[1]
-            );
-            colliderInc += 0.09f;
-
-            /*if(bodyCollider.size[0] > colliderSizeJump[0])
-            {
-                colliderInc = colliderSizeJump[0];
-                bodyCollider.size =
-                    new Vector2(
-                        colliderSizeJump[0], colliderSizeJump[1]
-                    );
-            }*/
-            yield return null;
-        }
-        while(bodyCollider.size[0] <= colliderSizeJump[0]);
-    }
-
     private void OnDrawGizmosSelected()
     {
         if (groundProbe != null)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(groundProbe.position, groundProbeRadius);
+            Gizmos.DrawCube(groundProbe.position, groundProbeSize);
         }
     }
 

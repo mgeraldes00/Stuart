@@ -4496,6 +4496,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &771299542 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3980510210742921497, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+  m_PrefabInstance: {fileID: 1477103557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &782533381
 GameObject:
   m_ObjectHideFlags: 0
@@ -9186,6 +9191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 406197585876906762, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1346770039180653798, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_Padding.z
       value: 4
@@ -9248,6 +9257,22 @@ PrefabInstance:
       value: "enfim... de qualquer forma, acho que s\xF3 podemos seguir em frente.
         vamos l\xE1.."
       objectReference: {fileID: 0}
+    - target: {fileID: 4870345704926764864, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870345704926764864, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870345704926764865, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870345705777911816, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4870345705777911817, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9304,6 +9329,22 @@ PrefabInstance:
       propertyPath: timeUpdater
       value: 
       objectReference: {fileID: 1645447789}
+    - target: {fileID: 4870345705777911819, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: colliderDecrease
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870345705777911819, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: platformCollider
+      value: 
+      objectReference: {fileID: 771299542}
+    - target: {fileID: 4870345705777911819, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: groundProbeSize.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870345705777911819, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: groundProbeSize.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4870345705777911820, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -12627,7 +12668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
