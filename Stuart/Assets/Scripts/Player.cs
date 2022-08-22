@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private const float glideCooldownAmount = 0.5f;
-    private readonly float[] colliderSize = new float[]{1f, 0.2f};
+    /*private readonly float[] colliderSize = new float[]{1f, 0.2f};
     private readonly float[] colliderSizeJump = new float[]{2f, 0.2f};
     private readonly float[] colliderSizeJumpAlt = new float[]{1.75f, 2f};
     private readonly float[] colliderSizePlatform = new float[]{1f, 2f};
-    private float colliderInc;
+    private float colliderInc;*/
 
     [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
@@ -69,8 +69,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        colliderInc = colliderSize[0];
-
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -369,6 +367,10 @@ public class Player : MonoBehaviour
         Collider2D collider = Physics2D.OverlapBox(
             groundProbe.position, groundProbeSize, 0, platformMask);
 
+        /*Collider2D collider = Physics2D.OverlapCapsule(
+            groundProbe.position, groundProbeSize, 
+            CapsuleDirection2D.Horizontal, 0, platformMask);*/
+
         if (currentVelocity.y <= 0 && jumping 
             || currentVelocity.y <= 0 && gliding
             || !jumping && !gliding)
@@ -380,7 +382,7 @@ public class Player : MonoBehaviour
     private bool IsHovering()
     {
         Collider2D collider = Physics2D.OverlapCircle(
-            groundProbe.position, groundProbeRadius * 10, platformMask);
+            groundProbe.position, groundProbeRadius * 9, platformMask);
 
         if (jumping || !onGround)
             return (collider != null && !platforming);
@@ -434,6 +436,9 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(groundProbe.position, groundProbeRadius);
             Gizmos.DrawCube(groundProbe.position, groundProbeSize);
+            /*Gizmos.DrawMesh(
+                probeMesh, 0, groundProbe.position, Quaternion.Euler(0, 0, 0), 
+                groundProbeSize);*/
         }
     }
 
