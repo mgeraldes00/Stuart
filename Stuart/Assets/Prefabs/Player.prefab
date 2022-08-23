@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1047466003491857893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 392813099190364789}
+  m_Layer: 0
+  m_Name: Probes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &392813099190364789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047466003491857893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4870345704926764864}
+  - {fileID: 7158070950981522885}
+  - {fileID: 6388348152850154367}
+  m_Father: {fileID: 4870345705777911817}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2091513784495828356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6388348152850154367}
+  m_Layer: 7
+  m_Name: Platform Probe Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6388348152850154367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091513784495828356}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.35, y: -0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 392813099190364789}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4870345704926764865
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,11 +86,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4870345704926764865}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -1.52, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.10000038, y: -0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4870345705777911817}
+  m_Father: {fileID: 392813099190364789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4870345705777911820
@@ -63,7 +126,7 @@ Transform:
   m_LocalPosition: {x: -21, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4870345704926764864}
+  - {fileID: 392813099190364789}
   - {fileID: 1696720037038258769}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -131,14 +194,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdae02390c792194bbefe3a030d8b0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probeMesh: {fileID: 0}
   horizontalSpeed: 5
   jumpSpeed: 7
   follower: {fileID: 0}
   groundProbe: {fileID: 4870345704926764864}
+  platformProbeLeft: {fileID: 7158070950981522885}
+  platformProbeRight: {fileID: 6388348152850154367}
   enterPoint: {fileID: 0}
   leavePoint: {fileID: 0}
   groundProbeRadius: 0.1
+  platformProbeRadius: 0.05
   groundProbeSize: {x: 1.5, y: 0.2}
   groundMask:
     serializedVersion: 2
@@ -162,6 +227,8 @@ MonoBehaviour:
   onPlatform: 0
   platforming: 0
   hoveringPlatform: 0
+  balancingLeft: 0
+  balancingRight: 0
   jumping: 0
   gliding: 0
   requestingDown: 0
@@ -320,10 +387,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1, y: -0.145}
+  m_Offset: {x: 0.1, y: 1.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.44, y: 0.5}
+    pivot: {x: 0.44, y: 0.05}
     oldSize: {x: 3.1030302, y: 3.1030302}
     newSize: {x: 3.1030302, y: 3.1030302}
     adaptiveTilingThreshold: 0.5
@@ -333,6 +400,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2.55}
   m_EdgeRadius: 0
+--- !u!1 &7331515181855782437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7158070950981522885}
+  m_Layer: 7
+  m_Name: Platform Probe Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7158070950981522885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331515181855782437}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.35, y: -0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 392813099190364789}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4155554579851643193
 PrefabInstance:
   m_ObjectHideFlags: 0

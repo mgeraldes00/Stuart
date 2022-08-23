@@ -16,8 +16,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5.0f;
     [SerializeField] private Transform follower;
     [SerializeField] private Transform groundProbe;
+    [SerializeField] private Transform platformProbeLeft, platformProbeRight;
     [SerializeField] private Transform enterPoint, leavePoint;
     [SerializeField] private float groundProbeRadius = 5.0f;
+    [SerializeField] private float platformProbeRadius = 1.0f;
     [SerializeField] private Vector2 groundProbeSize;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask platformMask;
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
     public bool OnPlatform => onPlatform;
     public bool Platforming => platforming;
     public bool HoveringPlatform => hoveringPlatform;
+    [SerializeField] private bool balancingLeft, balancingRight;
     [SerializeField] private bool jumping;
     public bool Jumping => jumping;
     [SerializeField] private bool gliding;
@@ -87,6 +90,8 @@ public class Player : MonoBehaviour
         onGround = IsOnGround();
         onPlatform = IsOnPlatform();
         hoveringPlatform = IsHovering();
+        balancingLeft = IsBalancingLeft();
+        balancingRight = IsBalancingRight();
 
         if (onPlatform)
         {
@@ -118,6 +123,8 @@ public class Player : MonoBehaviour
         animator.SetBool("grounded", onGround);
         animator.SetBool("onPlatform", onPlatform);
         animator.SetBool("gliding", gliding);
+        animator.SetBool("balancingLeft", balancingLeft);
+        animator.SetBool("balancingRight", balancingRight);
     }
 
     private void UpdateMovement()
@@ -234,10 +241,12 @@ public class Player : MonoBehaviour
 
             if ((currentVelocity.x > 0) && (transform.right.x < 0))
             {
+                Debug.Log("Looking right");
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             else if ((currentVelocity.x < 0) && (transform.right.x > 0))
             {
+                Debug.Log("Looking left");
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
         }
@@ -389,6 +398,28 @@ public class Player : MonoBehaviour
 
         return false;
     }
+    
+    private bool IsBalancingLeft()
+    {
+        Collider2D collider = Physics2D.OverlapCircle(
+            platformProbeLeft.position, platformProbeRadius, platformMask);
+
+        if (transform.rotation != Quaternion.Euler(0, 0, 0) && onPlatform)
+            return (collider == null);
+
+        return false;
+    }
+
+    private bool IsBalancingRight()
+    {
+        Collider2D collider = Physics2D.OverlapCircle(
+            platformProbeRight.position, platformProbeRadius, platformMask);
+
+        if (transform.rotation == Quaternion.Euler(0, 0, 0) && onPlatform)
+            return (collider == null);
+
+        return false;
+    }
 
     private IEnumerator DownPlatform()
     {
@@ -435,6 +466,8 @@ public class Player : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(groundProbe.position, groundProbeRadius);
+            Gizmos.DrawSphere(platformProbeLeft.position, platformProbeRadius);
+            Gizmos.DrawSphere(platformProbeRight.position, platformProbeRadius);
             Gizmos.DrawCube(groundProbe.position, groundProbeSize);
             /*Gizmos.DrawMesh(
                 probeMesh, 0, groundProbe.position, Quaternion.Euler(0, 0, 0), 
