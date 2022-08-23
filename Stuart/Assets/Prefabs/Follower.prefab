@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3106303866032782815, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_Padding.z
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3106303866032782815, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_Softness.y
@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

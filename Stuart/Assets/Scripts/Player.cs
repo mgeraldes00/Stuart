@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     public bool OnPlatform => onPlatform;
     public bool Platforming => platforming;
     public bool HoveringPlatform => hoveringPlatform;
+    [SerializeField] private bool onPlatformLeft, onPlatformRight;
     [SerializeField] private bool balancingLeft, balancingRight;
     [SerializeField] private bool jumping;
     public bool Jumping => jumping;
@@ -90,8 +91,8 @@ public class Player : MonoBehaviour
         onGround = IsOnGround();
         onPlatform = IsOnPlatform();
         hoveringPlatform = IsHovering();
-        balancingLeft = IsBalancingLeft();
-        balancingRight = IsBalancingRight();
+        balancingLeft = IsBalancingBack();
+        balancingRight = IsBalancingFront();
 
         if (onPlatform)
         {
@@ -398,25 +399,54 @@ public class Player : MonoBehaviour
 
         return false;
     }
-    
-    private bool IsBalancingLeft()
+
+    public void SetBalancing(int side = -1)
     {
-        Collider2D collider = Physics2D.OverlapCircle(
+        switch (side)
+        {
+            case -1:
+                onPlatformLeft = false;
+                onPlatformRight = false;
+                break;
+            case 0:
+                onPlatformLeft = true;
+                onPlatformRight = false;
+                break;
+            case 1:
+                onPlatformRight = true;
+                onPlatformLeft = false;
+                break;
+        }
+    }
+    
+    private bool IsBalancingBack()
+    {
+        /*Collider2D collider = Physics2D.OverlapCircle(
+            platformProbeRight.position, platformProbeRadius, platformMask);
+        Collider2D colliderSec = Physics2D.OverlapCircle(
             platformProbeLeft.position, platformProbeRadius, platformMask);
 
-        if (transform.rotation != Quaternion.Euler(0, 0, 0) && onPlatform)
-            return (collider == null);
+        return (collider == null && onPlatform);*/
+
+        if (onPlatform)
+            return (onPlatformLeft && transform.rotation == Quaternion.Euler(0, 0, 0)
+                || onPlatformRight && transform.rotation != Quaternion.Euler(0, 0, 0));
 
         return false;
     }
 
-    private bool IsBalancingRight()
+    private bool IsBalancingFront()
     {
-        Collider2D collider = Physics2D.OverlapCircle(
+        /*Collider2D collider = Physics2D.OverlapCircle(
+            platformProbeLeft.position, platformProbeRadius, platformMask);
+        Collider2D colliderSec = Physics2D.OverlapCircle(
             platformProbeRight.position, platformProbeRadius, platformMask);
 
-        if (transform.rotation == Quaternion.Euler(0, 0, 0) && onPlatform)
-            return (collider == null);
+        return (collider == null && onPlatform);*/
+
+        if (onPlatform)
+            return (onPlatformRight && transform.rotation == Quaternion.Euler(0, 0, 0)
+                || onPlatformLeft && transform.rotation != Quaternion.Euler(0, 0, 0));
 
         return false;
     }

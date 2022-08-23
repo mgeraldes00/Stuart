@@ -5,19 +5,48 @@ using UnityEngine;
 public class PlatformEffect : MonoBehaviour
 {
     private CameraCtrl cam;
+    private Player player;
 
-    [SerializeField] private float offsetValue;
+    [SerializeField] private float offsetValue = 0;
+
+    [SerializeField] private bool edge;
+
+    [SerializeField] private int side;
 
     private void Start()
     {
-        cam = FindObjectOfType<CameraCtrl>();        
+        if (offsetValue != 0)
+            cam = FindObjectOfType<CameraCtrl>();
+
+        if (edge)
+            player = FindObjectOfType<Player>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            cam.OffsetY = offsetValue;
+            if (offsetValue != 0)
+                cam.OffsetY = offsetValue;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {   
+        if (edge)
+        {
+            if (other.tag == "Player")
+                player.SetBalancing(side);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (edge)
+        {
+            if (other.tag == "Player")
+                player.SetBalancing(-1);
         }
     }
 }

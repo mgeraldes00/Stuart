@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091513784495828356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.35, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0.4, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 392813099190364789}
@@ -227,6 +227,8 @@ MonoBehaviour:
   onPlatform: 0
   platforming: 0
   hoveringPlatform: 0
+  onPlatformLeft: 0
+  onPlatformRight: 0
   balancingLeft: 0
   balancingRight: 0
   jumping: 0
@@ -424,7 +426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7331515181855782437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.4, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 392813099190364789}
@@ -527,7 +529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
