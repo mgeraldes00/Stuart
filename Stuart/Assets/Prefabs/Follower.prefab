@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3106303866032782815, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_Padding.z
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3106303866032782815, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_Softness.y

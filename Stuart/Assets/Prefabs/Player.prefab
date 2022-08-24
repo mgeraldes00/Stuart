@@ -169,7 +169,6 @@ MonoBehaviour:
   enterPoint: {fileID: 0}
   leavePoint: {fileID: 0}
   groundProbeRadius: 0.1
-  platformProbeRadius: 0.05
   groundProbeSize: {x: 1.5, y: 0.2}
   groundMask:
     serializedVersion: 2
@@ -465,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 3323809622367531880, guid: bf2dcafddd013b84591394a84b61c6bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
