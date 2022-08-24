@@ -90,13 +90,30 @@ public class Level3Controller : MonoBehaviour, IController
                 playerSpeech.DefineDialogue(playerDialogue);
                 followerSpeech.DefineDialogue(followerDialogue);
 
+                StartCoroutine(player.AdjustPosition());
+                StartCoroutine(follower.AdjustPosition(false));
+
                 StartCoroutine(Dialogue(
-                    new int[] { 0, 1},
+                    new int[] { 0, 1 },
+                    2.0f));
+                break;
+            // Event : final
+            case 2:
+                StartCoroutine(cam.Lock());
+                player.Lock();
+                follower.Lock();
+
+                playerSpeech.DefineDialogue(playerDialogue);
+                followerSpeech.DefineDialogue(followerDialogue);
+
+                StartCoroutine(Dialogue(
+                    new int[] { 0, 1 },
                     1.0f));
                 
                 bounds[1].SetActive(false);
                 break;
-            case 2:
+            // Event : leave scene
+            case 3:
                 StartCoroutine(player.LeaveScene());
                 StartCoroutine(follower.LeaveScene());
                 break;

@@ -230,72 +230,139 @@ public class Follower : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    public IEnumerator AdjustPosition(float distanceToAdjust = 5)
+    public IEnumerator AdjustPosition(
+        bool moveAway = true, float distanceToAdjust = 5)
     {
         float targetPosition = 0;
         float targetSpeed;
 
         if (target.position.x > gameObject.transform.position.x)
         {
-            targetPosition = target.position.x - distanceToAdjust;
+            if (moveAway)
+                targetPosition = target.position.x - distanceToAdjust;
+            else
+                targetPosition = target.position.x + distanceToAdjust;
             if (gameObject.transform.position.x - targetPosition > distanceToAdjust)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                animator.SetBool("movingRight", true);
-                targetSpeed = 3;
+                if (moveAway)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    animator.SetBool("movingRight", true);
+                    targetSpeed = 3;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    animator.SetBool("movingRight", false);
+                    targetSpeed = -3;
+                }
 
                 do
                 {
                     rb.velocity = new Vector3(targetSpeed, 0, 0);
                     yield return null;
                 }
-                while (transform.position.x < targetPosition);
+                while (moveAway && transform.position.x < targetPosition
+                    || !moveAway && transform.position.x > targetPosition);
+            }
+            else
+            {
+                if (moveAway)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    animator.SetBool("movingRight", false);
+                    targetSpeed = -3;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    animator.SetBool("movingRight", true);
+                    targetSpeed = 3;
+                }
+
+                do
+                {
+                    rb.velocity = new Vector3(targetSpeed, 0, 0);
+                    yield return null;
+                }
+                while (moveAway && transform.position.x > targetPosition
+                    || !moveAway && transform.position.x < targetPosition);
+            }
+
+            if (moveAway)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetBool("movingRight", true);
             }
             else
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 animator.SetBool("movingRight", false);
-                targetSpeed = -3;
-
-                do
-                {
-                    rb.velocity = new Vector3(targetSpeed, 0, 0);
-                    yield return null;
-                }
-                while (transform.position.x > targetPosition);
             }
-
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            animator.SetBool("movingRight", true);
         }
         else
         {
-            targetPosition = target.position.x + distanceToAdjust;
+            if (moveAway)
+                targetPosition = target.position.x + distanceToAdjust;
+            else
+                targetPosition = target.position.x - distanceToAdjust;
             if (targetPosition - gameObject.transform.position.x > distanceToAdjust)
             {
-                targetSpeed = -3;
+                if (moveAway)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    animator.SetBool("movingRight", false);
+                    targetSpeed = -3;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    animator.SetBool("movingRight", true);
+                    targetSpeed = 3;
+                }
 
                 do
                 {
                     rb.velocity = new Vector3(targetSpeed, 0, 0);
                     yield return null;
                 }
-                while (transform.position.x > targetPosition);
+                while (moveAway && transform.position.x > targetPosition
+                    || !moveAway && transform.position.x < targetPosition);
             }
             else
             {
-                targetSpeed = 3;
+                if (moveAway)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    animator.SetBool("movingRight", true);
+                    targetSpeed = 3;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    animator.SetBool("movingRight", false);
+                    targetSpeed = -3;
+                }
 
                 do
                 {
                     rb.velocity = new Vector3(targetSpeed, 0, 0);
                     yield return null;
                 }
-                while (transform.position.x < targetPosition);
+                while (moveAway && transform.position.x < targetPosition
+                    || !moveAway && transform.position.x > targetPosition);
             }
 
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            animator.SetBool("movingRight", false);
+            if (moveAway)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                animator.SetBool("movingRight", false);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                animator.SetBool("movingRight", true);
+            }
         }
 
         rb.velocity = Vector3.zero;
