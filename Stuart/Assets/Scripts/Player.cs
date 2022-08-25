@@ -342,7 +342,7 @@ public class Player : MonoBehaviour
         sprite.sortingOrder = defaultLayer;
 
         rb.gravityScale = fallGravityScale;
-        //rb.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
 
     public void Unlock()
