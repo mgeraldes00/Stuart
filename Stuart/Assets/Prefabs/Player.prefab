@@ -28,8 +28,70 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4870345704926764864}
+  - {fileID: 2090629091054541908}
+  - {fileID: 7750568978971463465}
   m_Father: {fileID: 4870345705777911817}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2042646795630947672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7750568978971463465}
+  m_Layer: 7
+  m_Name: Platform Edge Probe Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7750568978971463465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042646795630947672}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.45, y: -1.525, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 392813099190364789}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2980271740646785558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090629091054541908}
+  m_Layer: 7
+  m_Name: Platform Edge Probe Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2090629091054541908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2980271740646785558}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.42, y: -1.525, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 392813099190364789}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4870345704926764865
 GameObject:
@@ -166,9 +228,12 @@ MonoBehaviour:
   jumpSpeed: 7
   follower: {fileID: 0}
   groundProbe: {fileID: 4870345704926764864}
+  platformProbeFront: {fileID: 7750568978971463465}
+  platformProbeBack: {fileID: 2090629091054541908}
   enterPoint: {fileID: 0}
   leavePoint: {fileID: 0}
   groundProbeRadius: 0.1
+  platformProbeRadius: 0.1
   groundProbeSize: {x: 1.5, y: 0.2}
   groundMask:
     serializedVersion: 2
@@ -176,6 +241,9 @@ MonoBehaviour:
   platformMask:
     serializedVersion: 2
     m_Bits: 256
+  edgeMask:
+    serializedVersion: 2
+    m_Bits: 2048
   defaultLayer: 3
   maxJumpTime: 1.5
   fallGravityScale: 3
@@ -194,8 +262,8 @@ MonoBehaviour:
   hoveringPlatform: 0
   onPlatformLeft: 0
   onPlatformRight: 0
-  balancingLeft: 0
-  balancingRight: 0
+  balancingFront: 0
+  balancingBack: 0
   jumping: 0
   gliding: 0
   requestingDown: 0

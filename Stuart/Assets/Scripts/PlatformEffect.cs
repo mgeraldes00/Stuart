@@ -46,7 +46,7 @@ public class PlatformEffect : MonoBehaviour
         if (edge)
         {
             if (other.tag == "Player")
-                player.SetBalancing(-1);
+                player.SetBalancing();
         }
     }
 }

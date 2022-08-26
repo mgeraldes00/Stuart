@@ -16,11 +16,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5.0f;
     [SerializeField] private Transform follower;
     [SerializeField] private Transform groundProbe;
+    [SerializeField] private Transform platformProbeFront, platformProbeBack;
     [SerializeField] private Transform enterPoint, leavePoint;
     [SerializeField] private float groundProbeRadius = 5.0f;
+    [SerializeField] private float platformProbeRadius = 1.0f;
     [SerializeField] private Vector2 groundProbeSize;
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private LayerMask platformMask;
+    [SerializeField] private LayerMask groundMask, platformMask, edgeMask;
     [SerializeField] private int defaultLayer = 3;
     [SerializeField] private float maxJumpTime = 0.1f;
     [SerializeField] private float fallGravityScale = 5.0f;
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
     public bool Platforming => platforming;
     public bool HoveringPlatform => hoveringPlatform;
     [SerializeField] private bool onPlatformLeft, onPlatformRight;
-    [SerializeField] private bool balancingLeft, balancingRight;
+    [SerializeField] private bool balancingFront, balancingBack;
     [SerializeField] private bool jumping;
     public bool Jumping => jumping;
     [SerializeField] private bool gliding;
@@ -89,8 +90,8 @@ public class Player : MonoBehaviour
         onGround = IsOnGround();
         onPlatform = IsOnPlatform();
         hoveringPlatform = IsHovering();
-        balancingLeft = IsBalancingBack();
-        balancingRight = IsBalancingFront();
+        balancingBack = IsBalancingBack();
+        balancingFront = IsBalancingFront();
 
         if (onPlatform)
         {
@@ -122,8 +123,8 @@ public class Player : MonoBehaviour
         animator.SetBool("grounded", onGround);
         animator.SetBool("onPlatform", onPlatform);
         animator.SetBool("gliding", gliding);
-        animator.SetBool("balancingLeft", balancingLeft);
-        animator.SetBool("balancingRight", balancingRight);
+        animator.SetBool("balancingLeft", balancingBack);
+        animator.SetBool("balancingRight", balancingFront);
     }
 
     private void UpdateMovement()
@@ -413,34 +414,34 @@ public class Player : MonoBehaviour
     
     private bool IsBalancingBack()
     {
-        /*Collider2D collider = Physics2D.OverlapCircle(
-            platformProbeRight.position, platformProbeRadius, platformMask);
+        Collider2D collider = Physics2D.OverlapCircle(
+            platformProbeFront.position, platformProbeRadius, edgeMask);
         Collider2D colliderSec = Physics2D.OverlapCircle(
-            platformProbeLeft.position, platformProbeRadius, platformMask);
+            platformProbeBack.position, platformProbeRadius, platformMask);
 
-        return (collider == null && onPlatform);*/
+        return (collider != null && colliderSec == null && onPlatform);
 
-        if (onPlatform)
+        /*if (onPlatform)
             return (onPlatformLeft && transform.rotation == Quaternion.Euler(0, 0, 0)
                 || onPlatformRight && transform.rotation != Quaternion.Euler(0, 0, 0));
 
-        return false;
+        return false;*/
     }
 
     private bool IsBalancingFront()
     {
-        /*Collider2D collider = Physics2D.OverlapCircle(
-            platformProbeLeft.position, platformProbeRadius, platformMask);
+        Collider2D collider = Physics2D.OverlapCircle(
+            platformProbeBack.position, platformProbeRadius, edgeMask);
         Collider2D colliderSec = Physics2D.OverlapCircle(
-            platformProbeRight.position, platformProbeRadius, platformMask);
+            platformProbeFront.position, platformProbeRadius, platformMask);
 
-        return (collider == null && onPlatform);*/
+        return (collider != null && colliderSec == null && onPlatform);
 
-        if (onPlatform)
+        /*if (onPlatform)
             return (onPlatformRight && transform.rotation == Quaternion.Euler(0, 0, 0)
                 || onPlatformLeft && transform.rotation != Quaternion.Euler(0, 0, 0));
 
-        return false;
+        return false;*/
     }
 
     private IEnumerator DownPlatform()
@@ -487,8 +488,10 @@ public class Player : MonoBehaviour
         if (groundProbe != null)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(groundProbe.position, groundProbeRadius);
             Gizmos.DrawCube(groundProbe.position, groundProbeSize);
+            Gizmos.DrawSphere(groundProbe.position, groundProbeRadius);
+            Gizmos.DrawSphere(platformProbeFront.position, platformProbeRadius);
+            Gizmos.DrawSphere(platformProbeBack.position, platformProbeRadius);
             /*Gizmos.DrawMesh(
                 probeMesh, 0, groundProbe.position, Quaternion.Euler(0, 0, 0), 
                 groundProbeSize);*/
