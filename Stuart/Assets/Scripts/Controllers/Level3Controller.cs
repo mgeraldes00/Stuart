@@ -18,6 +18,8 @@ public class Level3Controller : MonoBehaviour, IController
 
     [SerializeField] private GameObject[] refPoints;
 
+    [SerializeField] private GameObject[] props;
+
     [SerializeField] private string[] playerDialogue, followerDialogue;
     [SerializeField] private string playerThought;
 
@@ -97,7 +99,7 @@ public class Level3Controller : MonoBehaviour, IController
                     new int[] { 0, 1 },
                     2.0f));
                 break;
-            // Event : final
+            // Event : separation point
             case 2:
                 StartCoroutine(cam.Lock());
                 player.Lock();
@@ -106,14 +108,21 @@ public class Level3Controller : MonoBehaviour, IController
                 playerSpeech.DefineDialogue(playerDialogue);
                 followerSpeech.DefineDialogue(followerDialogue);
 
+                StartCoroutine(player.AdjustPosition(true, 5, 2.5f));
+                StartCoroutine(follower.AdjustPosition(false));
+
                 StartCoroutine(Dialogue(
                     new int[] { 0, 1 },
-                    1.0f));
+                    3.5f, new int[] {-1, -1}));
                 
                 bounds[1].SetActive(false);
                 break;
-            // Event : leave scene
+            // Event : final
             case 3:
+
+                break;
+            // Event : leave scene
+            case 4:
                 StartCoroutine(player.LeaveScene());
                 StartCoroutine(follower.LeaveScene());
                 break;
@@ -181,7 +190,17 @@ public class Level3Controller : MonoBehaviour, IController
         currentSpeaker.SendMessage("Listen");
         
         yield return new WaitForSeconds(0.2f);
-        follower.Unlock();
+        if (extraParams == null)
+            follower.Unlock();
+        else
+        {
+            yield return new WaitForSeconds(0.2f);
+            follower.Turn();
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(follower.LeaveScene());
+            props[0].SetActive(true);
+            // Play prop sound
+        }
         yield return new WaitForSeconds(0.8f);
         player.Unlock();
         StartCoroutine(cam.Unlock());
