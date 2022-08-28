@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4169282630207602850}
   m_Layer: 0
-  m_Name: Ladder
+  m_Name: Ladder Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,15 +197,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159652522249880483, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_Color.b
-      value: 0.24528301
+      value: 0.122641504
       objectReference: {fileID: 0}
     - target: {fileID: 1159652522249880483, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_Color.g
-      value: 0.24528301
+      value: 0.122641504
       objectReference: {fileID: 0}
     - target: {fileID: 1159652522249880483, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_Color.r
-      value: 0.24528301
+      value: 0.122641504
       objectReference: {fileID: 0}
     - target: {fileID: 1159652522249880509, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -351,15 +351,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159652522249880483, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_Color.b
-      value: 0.24528301
+      value: 0.122641504
       objectReference: {fileID: 0}
     - target: {fileID: 1159652522249880483, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_Color.g
-      value: 0.24528301
+      value: 0.122641504
       objectReference: {fileID: 0}
     - target: {fileID: 1159652522249880483, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_Color.r
-      value: 0.24528301
+      value: 0.122641504
       objectReference: {fileID: 0}
     - target: {fileID: 1159652522249880509, guid: 9c1c88e277584b24f89ad51a462b0749, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
