@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundProbeRadius = 5.0f;
     [SerializeField] private float platformProbeRadius = 1.0f;
     [SerializeField] private Vector2 groundProbeSize;
-    [SerializeField] private LayerMask groundMask, platformMask, edgeMask;
+    [SerializeField] private LayerMask groundMask, platformMask, edgeMask, boundMask;
     [SerializeField] private int defaultLayer = 3;
     [SerializeField] private float maxJumpTime = 0.1f;
     [SerializeField] private float fallGravityScale = 5.0f;
@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     public bool OnPlatform => onPlatform;
     public bool Platforming => platforming;
     public bool HoveringPlatform => hoveringPlatform;
+    [SerializeField] private bool onBound;
     [SerializeField] private bool onPlatformLeft, onPlatformRight;
     [SerializeField] private bool balancingFront, balancingBack;
     [SerializeField] private bool jumping;
@@ -89,6 +90,7 @@ public class Player : MonoBehaviour
         currentVelocity = rb.velocity;
         onGround = IsOnGround();
         onPlatform = IsOnPlatform();
+        onBound = IsOnBound();
         hoveringPlatform = IsHovering();
         balancingBack = IsBalancingBack();
         balancingFront = IsBalancingFront();
@@ -383,6 +385,14 @@ public class Player : MonoBehaviour
         return false;
     }
 
+    private bool IsOnBound()
+    {
+        Collider2D collider = Physics2D.OverlapBox(
+            groundProbe.position, groundProbeSize, 0, boundMask);
+
+        return (collider != null);
+    }
+
     private bool IsHovering()
     {
         Collider2D collider = Physics2D.OverlapCircle(
@@ -456,7 +466,7 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
-        while (!onPlatform && !onGround);
+        while (!onPlatform && !onGround && !onBound);
         
         //bodyCollider.enabled = true;
         platformCollider.enabled = true;

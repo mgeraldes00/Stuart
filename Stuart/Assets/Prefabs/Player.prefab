@@ -244,6 +244,9 @@ MonoBehaviour:
   edgeMask:
     serializedVersion: 2
     m_Bits: 2048
+  boundMask:
+    serializedVersion: 2
+    m_Bits: 512
   defaultLayer: 3
   maxJumpTime: 1.5
   fallGravityScale: 3
@@ -260,6 +263,7 @@ MonoBehaviour:
   onPlatform: 0
   platforming: 0
   hoveringPlatform: 0
+  onBound: 0
   onPlatformLeft: 0
   onPlatformRight: 0
   balancingFront: 0
