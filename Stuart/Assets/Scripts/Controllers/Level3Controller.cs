@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Level3Controller : MonoBehaviour, IController
 {
-    private const int maxCoins = 0;
+    private const int maxCoins = 3;
 
     [SerializeField] private CameraCtrl cam;
     [SerializeField] private Player player;
@@ -124,7 +124,22 @@ public class Level3Controller : MonoBehaviour, IController
             // Event : leave scene
             case 4:
                 StartCoroutine(player.LeaveScene());
-                StartCoroutine(follower.LeaveScene());
+                break;
+            // Event : liberate exit
+            case 5:
+
+                break;
+            // Event : not enough coins
+            case 6:
+                player.Lock();
+                player.Turn();
+                StartCoroutine(player.AdjustPosition(false, -2f, 2.0f));
+
+                playerSpeech.DefineThought(playerThought);
+                player.Think();
+
+                player.Invoke(nameof(player.Unlock), 2.2f);
+                player.Invoke(nameof(player.Listen), 2.0f);
                 break;
         }
     }
@@ -132,6 +147,11 @@ public class Level3Controller : MonoBehaviour, IController
     public void CollectCoin()
     {
         coinNum++;
+
+        if (coinNum == maxCoins)
+        {
+            refPoints[0].SetActive(false);
+        }
     }
 
     public IEnumerator Dialogue(
