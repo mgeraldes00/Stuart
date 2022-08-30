@@ -32,7 +32,7 @@ public class PlatformEffect : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    /*private void OnTriggerStay2D(Collider2D other)
     {   
         if (edge)
         {
@@ -48,5 +48,5 @@ public class PlatformEffect : MonoBehaviour
             if (other.tag == "Player")
                 player.SetBalancing();
         }
-    }
+    }*/
 }

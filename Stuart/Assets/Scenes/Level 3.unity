@@ -1865,6 +1865,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2124323993, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3890966549438796803, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
       propertyPath: m_Name
       value: Canvas Main
@@ -1952,10 +1956,6 @@ PrefabInstance:
     - target: {fileID: 3890966549438796807, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5375103547910802449, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5375103547910802449, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2332,6 +2332,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2695789609922467496, guid: 9d0681d17994a97458ef3dd3d9bdfa0b, type: 3}
   m_PrefabInstance: {fileID: 962349485}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &986924148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 206492441, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
+  m_PrefabInstance: {fileID: 916297581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1006125734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2625,6 +2636,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
   m_PrefabInstance: {fileID: 1169397533}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1208159220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2124323993, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
+  m_PrefabInstance: {fileID: 916297581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1218377710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,6 +3243,9 @@ MonoBehaviour:
   playerSpeech: {fileID: 0}
   followerSpeech: {fileID: 0}
   coverMask: {fileID: 916297583}
+  coinImage: {fileID: 1208159220}
+  coinText: {fileID: 986924148}
+  uiRevealed: 0
   bounds:
   - {fileID: 2126499033}
   - {fileID: 614617552}

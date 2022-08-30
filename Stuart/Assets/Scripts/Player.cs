@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     public bool Platforming => platforming;
     public bool HoveringPlatform => hoveringPlatform;
     [SerializeField] private bool onBound;
-    [SerializeField] private bool onPlatformLeft, onPlatformRight;
+    //[SerializeField] private bool onPlatformLeft, onPlatformRight;
     [SerializeField] private bool balancingFront, balancingBack;
     [SerializeField] private bool jumping;
     public bool Jumping => jumping;
@@ -404,7 +404,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public void SetBalancing(int side = -1)
+    /*public void SetBalancing(int side = -1)
     {
         switch (side)
         {
@@ -421,7 +421,7 @@ public class Player : MonoBehaviour
                 onPlatformLeft = false;
                 break;
         }
-    }
+    }*/
     
     private bool IsBalancingBack()
     {

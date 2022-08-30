@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Level3Controller : MonoBehaviour, IController
 {
@@ -13,6 +14,10 @@ public class Level3Controller : MonoBehaviour, IController
     [SerializeField] private SpeechBalloon playerSpeech, followerSpeech;
 
     [SerializeField] private Image coverMask;
+    [SerializeField] private Image coinImage;
+    [SerializeField] private TextMeshProUGUI coinText;
+
+    [SerializeField] private bool uiRevealed;
 
     [SerializeField] private GameObject[] bounds;
 
@@ -135,11 +140,14 @@ public class Level3Controller : MonoBehaviour, IController
                 player.Turn();
                 StartCoroutine(player.AdjustPosition(false, -2f, 2.0f));
 
+                if (!uiRevealed)
+                    StartCoroutine(ShowCoinUI());
+
                 playerSpeech.DefineThought(playerThought);
                 player.Think();
 
-                player.Invoke(nameof(player.Unlock), 2.2f);
-                player.Invoke(nameof(player.Listen), 2.0f);
+                player.Invoke(nameof(player.Unlock), 2.5f);
+                player.Invoke(nameof(player.Listen), 3.0f);
                 break;
         }
     }
@@ -148,10 +156,36 @@ public class Level3Controller : MonoBehaviour, IController
     {
         coinNum++;
 
+        coinText.text = $"{coinNum}/{maxCoins}";
+
         if (coinNum == maxCoins)
         {
             refPoints[0].SetActive(false);
         }
+    }
+
+    private IEnumerator ShowCoinUI()
+    {
+        float fadeTime = 1;
+        float elapsedTime = 0;
+
+        Color cImg = coinImage.color;
+        Color cTxt = coinText.color;
+
+        do
+        {
+            elapsedTime += Time.deltaTime;
+
+            cImg.a = Mathf.Clamp01(elapsedTime / fadeTime);
+            cTxt.a = Mathf.Clamp01(elapsedTime / fadeTime);
+
+            coinImage.color = cImg;
+            coinText.color = cTxt;
+            yield return null;
+        }
+        while (elapsedTime < fadeTime);
+
+        uiRevealed = true;
     }
 
     public IEnumerator Dialogue(
