@@ -114,13 +114,13 @@ public class Level3Controller : MonoBehaviour, IController
                 followerSpeech.DefineDialogue(followerDialogue);
 
                 StartCoroutine(player.AdjustPosition(true, 5, 2.5f));
-                StartCoroutine(follower.AdjustPosition(false));
+                StartCoroutine(follower.AdjustPosition(false, 7));
 
                 StartCoroutine(Dialogue(
                     new int[] { 0, 1 },
                     3.5f, new int[] {-1, -1}));
                 
-                bounds[1].SetActive(false);
+                //bounds[1].SetActive(false);
                 break;
             // Event : final
             case 3:

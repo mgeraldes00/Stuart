@@ -264,8 +264,6 @@ MonoBehaviour:
   platforming: 0
   hoveringPlatform: 0
   onBound: 0
-  onPlatformLeft: 0
-  onPlatformRight: 0
   balancingFront: 0
   balancingBack: 0
   jumping: 0
