@@ -113,12 +113,12 @@ public class Level3Controller : MonoBehaviour, IController
                 playerSpeech.DefineDialogue(playerDialogue);
                 followerSpeech.DefineDialogue(followerDialogue);
 
-                StartCoroutine(player.AdjustPosition(true, 5, 2.5f));
+                StartCoroutine(player.AdjustPosition(true, 5, 3.5f));
                 StartCoroutine(follower.AdjustPosition(false, 7));
 
                 StartCoroutine(Dialogue(
                     new int[] { 0, 1 },
-                    3.5f, new int[] {-1, -1}));
+                    4.5f, new int[] {-1, -1}));
                 
                 //bounds[1].SetActive(false);
                 break;
