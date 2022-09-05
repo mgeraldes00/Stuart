@@ -1031,8 +1031,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1114227094}
   - component: {fileID: 1114227095}
+  - component: {fileID: 1114227096}
   m_Layer: 0
-  m_Name: shade1
+  m_Name: stuart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,17 +1093,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 14ae0e255d00e6b44a53d6aec3494b6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afb3b76e11511cf4c9c7181d703afb66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.18, y: 5.13}
+  m_Size: {x: 4.3166666, y: 4.275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1114227096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114227093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59246c4ed497a2644b3d384e63711c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: afb3b76e11511cf4c9c7181d703afb66, type: 3}
+  - {fileID: 21300000, guid: 51502c9f876621a4c8d2ccdf1e3e4bdd, type: 3}
+  swapTime: 0.25
 --- !u!1001 &1128776293
 PrefabInstance:
   m_ObjectHideFlags: 0
