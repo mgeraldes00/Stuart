@@ -7,6 +7,8 @@ public class Pickup : MonoBehaviour
     [SerializeField] private GameObject controllerObj;
     private IController controller;
 
+    private Collider2D coinCollider;
+
     [SerializeField] private AudioSource coinAudio;
 
     [SerializeField] private float scale = 1.0f;
@@ -20,6 +22,8 @@ public class Pickup : MonoBehaviour
     {
         controllerObj = GameObject.Find("Controller");
         controller = controllerObj.GetComponent<IController>();
+
+        coinCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -44,6 +48,9 @@ public class Pickup : MonoBehaviour
             controller.CollectCoin();
 
             coinAudio.Play();
+
+            coinCollider.enabled = false;
+
             Destroy(gameObject, 1.0f);
         }
     }

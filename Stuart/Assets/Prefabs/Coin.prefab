@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6804715468711405750}
   - component: {fileID: 6759928053720170407}
   - component: {fileID: 4426904214721587818}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerObj: {fileID: 0}
   coinAudio: {fileID: 6759928053720170407}
-  rotation: 0
   scale: 1
   updateValue: 50
 --- !u!70 &6804715468711405750

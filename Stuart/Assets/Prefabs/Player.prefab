@@ -247,6 +247,9 @@ MonoBehaviour:
   boundMask:
     serializedVersion: 2
     m_Bits: 512
+  coinMask:
+    serializedVersion: 2
+    m_Bits: 4096
   defaultLayer: 3
   maxJumpTime: 1.5
   fallGravityScale: 3
@@ -264,6 +267,7 @@ MonoBehaviour:
   platforming: 0
   hoveringPlatform: 0
   onBound: 0
+  onCoin: 0
   balancingFront: 0
   balancingBack: 0
   jumping: 0
