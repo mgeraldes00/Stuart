@@ -74,7 +74,8 @@ public class Level3Controller : MonoBehaviour, IController
         StartCoroutine(cam.Unlock());
     }
 
-    public void SetDialogue(string [] playerLines, string[] followerLines)
+    public void SetDialogue(
+        string [] playerLines, string[] followerLines, string[] otherLines)
     {
         playerDialogue = playerLines;
         followerDialogue = followerLines;

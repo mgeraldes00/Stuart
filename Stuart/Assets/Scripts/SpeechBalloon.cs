@@ -76,7 +76,8 @@ public class SpeechBalloon : MonoBehaviour
         currentIndex = nextLine - 1;
         
         StartCoroutine(ShowSpeech());
-        spriteAnim.SetBool("talking", true);
+        if (spriteAnim != null)
+            spriteAnim.SetBool("talking", true);
     }
 
     public void HideBalloon()
@@ -88,7 +89,8 @@ public class SpeechBalloon : MonoBehaviour
             sound.Stop();
             speaking = false;
             StopAllCoroutines();
-            spriteAnim.SetBool("talking", false);
+            if (spriteAnim != null)
+                spriteAnim.SetBool("talking", false);
         }
 
         active = false;
@@ -130,6 +132,7 @@ public class SpeechBalloon : MonoBehaviour
 
         sound.Stop();
         speaking = false;
-        spriteAnim.SetBool("talking", false);
+        if (spriteAnim != null)
+            spriteAnim.SetBool("talking", false);
     }
 }

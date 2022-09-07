@@ -12,7 +12,7 @@ public class EventPoint : MonoBehaviour
     [SerializeField] private int eventIndex;
     [SerializeField] private float resetTime = 0;
 
-    [SerializeField] private string[] playerDialogue, followerDialogue;
+    [SerializeField] private string[] playerDialogue, followerDialogue, otherDialogue;
 
     [SerializeField] private bool hasDialogue, hasThought, repeatable;
 
@@ -36,7 +36,8 @@ public class EventPoint : MonoBehaviour
                 if (!interacted)
                 {
                     if (hasDialogue)
-                        controller.SetDialogue(playerDialogue, followerDialogue);
+                        controller.SetDialogue(
+                            playerDialogue, followerDialogue, otherDialogue);
 
                     controller.BeginEvent(eventIndex);
                 }

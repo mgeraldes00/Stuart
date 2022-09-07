@@ -10,7 +10,8 @@ public class Level5Controller : MonoBehaviour, IController
     [SerializeField] private CameraCtrl cam;
     [SerializeField] private Player player;
     [SerializeField] private Follower follower;
-    [SerializeField] private SpeechBalloon playerSpeech, followerSpeech;
+    [SerializeField] private ActiveAgent activeAgent;
+    [SerializeField] private SpeechBalloon playerSpeech, followerSpeech, otherSpeech;
 
     [SerializeField] private Image coverMask;
 
@@ -18,7 +19,7 @@ public class Level5Controller : MonoBehaviour, IController
 
     [SerializeField] private GameObject[] refPoints;
 
-    [SerializeField] private string[] playerDialogue, followerDialogue;
+    [SerializeField] private string[] playerDialogue, followerDialogue, otherDialogue;
     [SerializeField] private string playerThought;
 
     [SerializeField] private int coinNum = 0;
@@ -38,6 +39,9 @@ public class Level5Controller : MonoBehaviour, IController
         follower = FindObjectOfType<Follower>();
         followerSpeech = 
             follower.gameObject.GetComponentInChildren<SpeechBalloon>();
+        activeAgent = FindObjectOfType<ActiveAgent>();
+        otherSpeech = 
+            activeAgent.gameObject.GetComponentInChildren<SpeechBalloon>();
 
         coverMask.enabled = true;
         InitializeScene();
@@ -67,10 +71,12 @@ public class Level5Controller : MonoBehaviour, IController
         StartCoroutine(cam.Unlock());
     }
 
-    public void SetDialogue(string [] playerLines, string[] followerLines)
+    public void SetDialogue(
+        string [] playerLines, string[] followerLines, string[] otherLines)
     {
         playerDialogue = playerLines;
         followerDialogue = followerLines;
+        otherDialogue = otherLines;
     }
 
     public void SetThought(string thought)
@@ -87,11 +93,12 @@ public class Level5Controller : MonoBehaviour, IController
                 player.Lock();
                 follower.Lock();
 
+                otherSpeech.DefineDialogue(otherDialogue);
                 playerSpeech.DefineDialogue(playerDialogue);
                 followerSpeech.DefineDialogue(followerDialogue);
 
                 StartCoroutine(Dialogue(
-                    new int[] { 0, 1},
+                    new int[] { 2, 0, 1},
                     1.0f));
                 
                 bounds[1].SetActive(false);
@@ -113,9 +120,10 @@ public class Level5Controller : MonoBehaviour, IController
     {
         int index = 0;
 
-        Component[] speakers = new Component[] { player, follower };
+        Component[] speakers = new Component[] { player, follower, activeAgent };
 
-        Component currentSpeaker, currentListener;
+        Component currentSpeaker;
+        Component[] currentListener = new Component[2];
 
         int turningPoint = -1, returnPoint = -1;
 
@@ -129,13 +137,24 @@ public class Level5Controller : MonoBehaviour, IController
         do
         {
             currentSpeaker = speakers[dialogue[index]];
-            
-            if (currentSpeaker == speakers[0])
-                currentListener = speakers[1];
-            else
-                currentListener = speakers[0];
 
-            if (extraParams != null)
+            if (currentSpeaker == speakers[0])
+            {
+                currentListener[0] = speakers[1];
+                currentListener[1] = speakers[2];
+            }
+            else if (currentSpeaker == speakers[1])
+            {
+                currentListener[0] = speakers[0];
+                currentListener[1] = speakers[2];
+            }
+            else if (currentSpeaker == speakers[2])
+            {
+                currentListener[0] = speakers[0];
+                currentListener[1] = speakers[1];
+            }
+
+            /*if (extraParams != null)
             {
                 if (index == turningPoint)
                 {
@@ -146,12 +165,13 @@ public class Level5Controller : MonoBehaviour, IController
                 {
                     currentSpeaker.SendMessage("Turn");
                 } 
-            }
+            }*/
 
             yield return new WaitForEndOfFrame();
 
             currentSpeaker.SendMessage("Talk");
-            currentListener.SendMessage("Listen");
+            currentListener[0].SendMessage("Listen");
+            currentListener[1].SendMessage("Listen");
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => Input.GetButtonDown("Select"));
