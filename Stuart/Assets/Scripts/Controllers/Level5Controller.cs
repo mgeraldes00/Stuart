@@ -19,6 +19,8 @@ public class Level5Controller : MonoBehaviour, IController
 
     [SerializeField] private GameObject[] refPoints;
 
+    [SerializeField] private GameObject goal;
+
     [SerializeField] private string[] playerDialogue, followerDialogue, otherDialogue;
     [SerializeField] private string playerThought;
 
@@ -98,8 +100,8 @@ public class Level5Controller : MonoBehaviour, IController
                 followerSpeech.DefineDialogue(followerDialogue);
 
                 StartCoroutine(Dialogue(
-                    new int[] { 2, 0, 1},
-                    1.0f));
+                    new int[] { 2, 0, 1, 0, 2, 0, 1, 0},
+                    1.0f, new int[] { 3, 4 }));
                 
                 bounds[1].SetActive(false);
                 break;
@@ -154,18 +156,18 @@ public class Level5Controller : MonoBehaviour, IController
                 currentListener[1] = speakers[1];
             }
 
-            /*if (extraParams != null)
+            if (extraParams != null)
             {
                 if (index == turningPoint)
                 {
-                    currentListener.SendMessage("Turn");
+                    currentSpeaker.SendMessage("Turn");
                 }
                     
                 if (index == returnPoint)
                 {
-                    currentSpeaker.SendMessage("Turn");
+                    currentListener[0].SendMessage("Turn");
                 } 
-            }*/
+            }
 
             yield return new WaitForEndOfFrame();
 
@@ -184,9 +186,10 @@ public class Level5Controller : MonoBehaviour, IController
         currentSpeaker.SendMessage("Listen");
         
         yield return new WaitForSeconds(0.2f);
-        follower.Unlock();
-        yield return new WaitForSeconds(0.8f);
-        player.Unlock();
-        StartCoroutine(cam.Unlock());
+        goal.SetActive(true);
+        //follower.Unlock();
+        //yield return new WaitForSeconds(0.8f);
+        //player.Unlock();
+        //StartCoroutine(cam.Unlock());
     }
 }

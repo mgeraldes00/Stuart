@@ -763,6 +763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8404399720361120064, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1480493241}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
 --- !u!95 &705074603 stripped
@@ -1422,6 +1426,11 @@ Transform:
   m_Father: {fileID: 1418170779}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1480493241 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7879517705669676290, guid: 29c15dcae30e47a4f928f387bba85c58, type: 3}
+  m_PrefabInstance: {fileID: 1103557083}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1522584565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1530,6 +1539,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1396983430188358483, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1480493241}
     - target: {fileID: 5474135624191018161, guid: 789916aeb7060954caae94abe8a894c5, type: 3}
       propertyPath: enterPoint
       value: 
@@ -1809,11 +1822,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.data[0]
-      value: teste.
+      value: olha aqueles senhores ali. vamos perguntar-lhes onde estamos..
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.data[0]
-      value: teste.
+      value: "parece-me que n\xE3o deviamos estar aqui de todo. acho melhor seguir-mos
+        em frente antes que nos vejam.."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Name

@@ -1052,19 +1052,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.data[0]
-      value: TESTE.
+      value: "n\xE3o consigo passar! \xE9 mesmo isso, sinto que estou a bater numa
+        parede invis\xEDvel!."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[1]
+      value: "n\xE3o sei o que hei de fazer! achas que h\xE1 outro caminho para seguir
+        em frente?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[2]
+      value: "parece-me uma boa ideia. por falar em moedas gigantes, pressinto que
+        h\xE1 mais umas quantas por aqui.."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.data[0]
-      value: TESTE.
+      value: "manecas, que se passa contigo? parece que est\xE1s a ir contra alguma
+        coisa.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[1]
+      value: "que coisa... moedas gigantes, paredes invis\xEDveis, que raio de mundo
+        este...."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[2]
+      value: "bem... talvez esta parede n\xE3o seja muito alta. se conseguires subir
+        ao topo deste edif\xEDcio, pode haver uma passagem.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[3]
+      value: "tens muito com que te ocupar, ent\xE3o. fico \xE0 tua espera, aqui
+        \xE0 frente.."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Name
@@ -5205,6 +5232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ladder 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9166850459092270725, guid: 7d90ef48d1ddc22449458b1df294d41b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d90ef48d1ddc22449458b1df294d41b, type: 3}
 --- !u!4 &1439382676 stripped
@@ -7506,19 +7537,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.data[0]
-      value: teste.
+      value: "olha aqui este jornal, quim. tem uns desenhos engra\xE7ados.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[1]
+      value: "tens raz\xE3o! que bela coincid\xEAncia. gostava de conhecer o artista
+        que fez isto.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[2]
+      value: bem. continuando!.
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.data[0]
-      value: teste.
+      value: "\"as aventuras de quim e manecas\"? e v\xEA bem, parecem-se mesmo connosco!."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[1]
+      value: ....
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154946, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Size.x
@@ -8366,13 +8410,13 @@ Transform:
   - {fileID: 1482996193}
   - {fileID: 912823327}
   - {fileID: 539360558}
-  - {fileID: 2004821363}
   - {fileID: 323480148}
-  - {fileID: 170822074}
+  - {fileID: 613764580}
   - {fileID: 1247352512}
   - {fileID: 1920132305}
+  - {fileID: 2004821363}
   - {fileID: 1563397094}
-  - {fileID: 613764580}
+  - {fileID: 170822074}
   m_Father: {fileID: 429958418}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

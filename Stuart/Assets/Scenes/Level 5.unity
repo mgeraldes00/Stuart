@@ -1168,6 +1168,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
   m_PrefabInstance: {fileID: 1169397533}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1171905580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7872590692321645674, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
+  m_PrefabInstance: {fileID: 1732151203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1218377710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,6 +1471,7 @@ MonoBehaviour:
   - {fileID: 2126499033}
   - {fileID: 614617552}
   refPoints: []
+  goal: {fileID: 1171905580}
   playerDialogue: []
   followerDialogue: []
   otherDialogue: []
@@ -1610,13 +1616,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 7872590692321645674, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7872590692321645684, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7872590692321645684, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 7872590692321645684, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1653,6 +1663,10 @@ PrefabInstance:
     - target: {fileID: 7872590692321645684, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872590692321645685, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
+      propertyPath: m_Size.x
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e649cf24c67b938458cd5f2d08e5495f, type: 3}
@@ -1857,27 +1871,57 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: otherDialogue.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: otherDialogue.Array.data[0]
-      value: teste.
+      value: "ei, meninos! o que andam a fazer? as aulas j\xE1 come\xE7aram h\xE1
+        imenso tempo!."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: otherDialogue.Array.data[1]
+      value: "eu fiz-vos uma pergunta! n\xE3o t\xEAm aulas? vou ter de chamar os
+        vossos pais?."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: playerDialogue.Array.data[0]
-      value: teste.
+      value: "achas que est\xE3o a falar connosco?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[1]
+      value: "ah, isto \xE9 uma escola? que bonito. tem ali um retrato de um senhor
+        e tudo. deve ser algu\xE9m importante.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[2]
+      value: "n\xE3o! tudo menos isso!."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[3]
+      value: "hum... est\xE1 bem. s\xF3 espero que n\xE3o seja dia de matem\xE1tica...."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.data[0]
-      value: teste.
+      value: "s\xF3 pode. n\xE3o vejo mais ningu\xE9m, devem estar todos nas aulas,
+        como disseram.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[1]
+      value: "se calhar temos mesmo de ir \xE0s aulas para seguir em frente. vamos
+        l\xE1, manecas. n\xE3o custa nada.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[2]
+      value: "s\xF3 pode. n\xE3o vejo mais ningu\xE9m, devem estar todos nas aulas,
+        como disseram.."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Name
@@ -1969,6 +2013,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1799077760}
+    - target: {fileID: 8404399720361120064, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
 --- !u!114 &1872710775 stripped
