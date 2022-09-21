@@ -1206,7 +1206,9 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: afb3b76e11511cf4c9c7181d703afb66, type: 3}
   - {fileID: 21300000, guid: 51502c9f876621a4c8d2ccdf1e3e4bdd, type: 3}
+  startTime: 1.5
   swapTime: 0.25
+  count: 3
 --- !u!1001 &1128776293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1909,7 +1911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.data[0]
-      value: "parece-me que n\xE3o deviamos estar aqui de todo. acho melhor seguir-mos
+      value: "parece-me que n\xE3o deviamos estar aqui de todo. acho melhor seguirmos
         em frente antes que nos vejam.."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
