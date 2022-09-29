@@ -17,6 +17,10 @@ public class Level3Controller : MonoBehaviour, IController
     [SerializeField] private Image coinImage;
     [SerializeField] private TextMeshProUGUI coinText;
 
+    [SerializeField] private Material material;
+
+    [SerializeField] private float blurAmount;
+
     [SerializeField] private bool uiRevealed;
 
     [SerializeField] private GameObject[] bounds;
@@ -38,6 +42,8 @@ public class Level3Controller : MonoBehaviour, IController
         Application.targetFrameRate = 300;
 
         cam = FindObjectOfType<CameraCtrl>();
+
+        material.SetFloat("_BlurAmount", blurAmount);
 
         player = FindObjectOfType<Player>();
         playerSpeech = 
