@@ -8,6 +8,10 @@ public class MobileAgent : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private bool isInverted = false, isOnForeground = false;
+    public bool IsInverted => isInverted;
+    public bool IsOnForeground => isOnForeground;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,8 +26,15 @@ public class MobileAgent : MonoBehaviour
 
     public void OnForeground()
     {
+        isOnForeground = true;
 
         sr.material = foregroundMaterial;
         sr.sortingOrder += 2;
+    }
+
+    public void CheckOrientation(bool facingRight)
+    {
+        if (!facingRight)
+            isInverted = true;
     }
 }

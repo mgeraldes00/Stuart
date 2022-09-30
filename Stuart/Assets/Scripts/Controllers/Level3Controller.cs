@@ -41,7 +41,9 @@ public class Level3Controller : MonoBehaviour, IController
     {
         Application.targetFrameRate = 300;
 
-        cam = FindObjectOfType<CameraCtrl>();
+        //cam = FindObjectOfType<CameraCtrl>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").
+            GetComponent<CameraCtrl>();
 
         material.SetFloat("_BlurAmount", blurAmount);
 

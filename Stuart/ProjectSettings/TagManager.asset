@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Panel
   - Follower
+  - Background Character
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Follower
   - Platform Edge
   - Coin
-  - 
-  - 
+  - Background Agent
+  - Agent Ground
   - 
   - 
   - 

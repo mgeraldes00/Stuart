@@ -6,6 +6,8 @@ using URand = UnityEngine.Random;
 
 public class AgentGenerator : MonoBehaviour
 {
+    private const int maxAgents = 5;
+
     [SerializeField] private GameObject agentPrefab;
 
     private List<MobileAgent> sceneAgents = new List<MobileAgent>();
@@ -26,11 +28,21 @@ public class AgentGenerator : MonoBehaviour
         StartCoroutine(Generate());
     }
 
+    private void Update()
+    {
+        startPositions = new Vector2[startPoints.Length];
+
+        for (int i = 0; i < startPoints.Length; i++)
+            startPositions[i] = new Vector2(
+                startPoints[i].transform.position.x,
+                startPoints[i].transform.position.y);
+    }
+
     private IEnumerator Generate()
     {
         while(true)
         {
-            if (sceneAgents.Count <= 30)
+            if (sceneAgents.Count <= maxAgents)
                 DefineAgent();
             yield return new WaitForSeconds(0.5f);
         }
@@ -61,7 +73,7 @@ public class AgentGenerator : MonoBehaviour
             case 2:
             case 3:
             case 4:
-                size = URand.Range(0.7f, 1.2f);
+                size = URand.Range(1.0f, 1.3f);
                 if (side == 0)
                 {
                     spawnPoint = 0;
@@ -77,7 +89,7 @@ public class AgentGenerator : MonoBehaviour
             case 7:
             case 8:
             case 9:
-                size = URand.Range(0.8f, 1.3f);
+                size = URand.Range(1.1f, 1.4f);
                 if (side == 0)
                 {
                     spawnPoint = 2;
@@ -112,6 +124,8 @@ public class AgentGenerator : MonoBehaviour
                 Quaternion.Euler(0, 180, 0));
 
         thisAgent = currentAgentObj.GetComponent<MobileAgent>();
+
+        thisAgent.CheckOrientation(facingRight);
         
         sceneAgents.Add(thisAgent);
 
@@ -120,4 +134,7 @@ public class AgentGenerator : MonoBehaviour
 
         currentAgentObj.transform.localScale = new Vector3(size, size, 1);
     }
+    
+    public void RemoveAgent(MobileAgent agentToDestroy)
+        => sceneAgents.Remove(agentToDestroy);
 }
