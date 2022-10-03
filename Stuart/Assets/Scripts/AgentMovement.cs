@@ -1,15 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Rand = System.Random;
+using Rand = UnityEngine.Random;
 
 public class AgentMovement : MonoBehaviour
 {
+    private const float maxSpeed = 8f;
+
     private MobileAgent agent;
 
     [SerializeField] private float speed;
 
     private Rigidbody2D rb;
+
+    [SerializeField] private Sprite[] sprites;
+    private SpriteRenderer objectRenderer;
+    private Sprite currentSprite;
 
     private bool onGround;
 
@@ -18,10 +23,9 @@ public class AgentMovement : MonoBehaviour
     {
         agent = GetComponent<MobileAgent>();
         rb = GetComponent<Rigidbody2D>();
+        objectRenderer = GetComponent<SpriteRenderer>();
 
-        Rand rnd = new Rand();
-
-        speed = rnd.Next(5, 8);
+        speed = Rand.Range(5f, maxSpeed);
 
         if (agent.IsOnForeground)
             speed *= 3;
@@ -30,6 +34,8 @@ public class AgentMovement : MonoBehaviour
             speed = -speed;
 
         StartCoroutine(Land());
+
+        StartCoroutine(MoveAnimation());
     }
 
     // Update is called once per frame
@@ -50,5 +56,36 @@ public class AgentMovement : MonoBehaviour
 
         rb.gravityScale = 1;
         onGround = true;
+    }
+
+    private IEnumerator MoveAnimation()
+    {
+        int nextInLine = 0;
+        float moveSpeed = speed;
+
+        if (speed < 0)
+            moveSpeed = -speed;
+
+        if (speed > 10)
+            moveSpeed = speed / 3;
+
+        float moveSpeedPercent = moveSpeed / maxSpeed;
+        
+        float moveSpeedFinal = 1 - moveSpeedPercent;
+
+        if (moveSpeedFinal < 0.2f)
+            moveSpeedFinal = 0.2f;
+
+        Debug.Log(moveSpeedFinal);
+
+        while (true)
+        {
+            currentSprite = sprites[nextInLine];
+            objectRenderer.sprite = currentSprite;
+            yield return new WaitForSeconds(moveSpeedFinal);
+            nextInLine++;
+            if (nextInLine >= sprites.Length)
+                nextInLine = 0;
+        }
     }
 }

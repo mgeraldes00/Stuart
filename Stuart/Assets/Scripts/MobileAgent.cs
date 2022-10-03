@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MobileAgent : MonoBehaviour
@@ -18,18 +16,14 @@ public class MobileAgent : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void OnMiddle() => sr.sortingOrder += 2;
 
     public void OnForeground()
     {
         isOnForeground = true;
 
         sr.material = foregroundMaterial;
-        sr.sortingOrder += 2;
+        sr.sortingOrder += 3;
     }
 
     public void CheckOrientation(bool facingRight)

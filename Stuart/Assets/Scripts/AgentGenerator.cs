@@ -52,7 +52,7 @@ public class AgentGenerator : MonoBehaviour
     {
         Rand rnd = new Rand();
 
-        int spawnPoint = rnd.Next(0, 11), side = rnd.Next(0, 2);
+        int spawnPoint = rnd.Next(0, 10), side = rnd.Next(0, 2);
 
         SpawnAgent(spawnPoint, side);
     }
@@ -64,7 +64,7 @@ public class AgentGenerator : MonoBehaviour
 
         int spawnPoint = 0;
         float size = 0;
-        bool facingRight = true, onForeground = false;
+        bool facingRight = true, onMiddle = false, onForeground = false;
 
         switch (pointGen)
         {
@@ -72,8 +72,7 @@ public class AgentGenerator : MonoBehaviour
             case 1:
             case 2:
             case 3:
-            case 4:
-                size = URand.Range(1.0f, 1.3f);
+                size = URand.Range(1.1f, 1.3f);
                 if (side == 0)
                 {
                     spawnPoint = 0;
@@ -84,12 +83,12 @@ public class AgentGenerator : MonoBehaviour
                     facingRight = false;
                 }
                 break;
+            case 4:
             case 5:
             case 6:
             case 7:
-            case 8:
-            case 9:
-                size = URand.Range(1.1f, 1.4f);
+                onMiddle = true;
+                size = URand.Range(1.2f, 1.4f);
                 if (side == 0)
                 {
                     spawnPoint = 2;
@@ -100,7 +99,8 @@ public class AgentGenerator : MonoBehaviour
                     facingRight = false;
                 }
                 break;
-            case 10:
+            case 8:
+            case 9:
                 onForeground = true;
                 size = 5;
                 if (side == 0)
@@ -128,6 +128,9 @@ public class AgentGenerator : MonoBehaviour
         thisAgent.CheckOrientation(facingRight);
         
         sceneAgents.Add(thisAgent);
+
+        if (onMiddle)
+            thisAgent.OnMiddle();
 
         if (onForeground)
             thisAgent.OnForeground();
