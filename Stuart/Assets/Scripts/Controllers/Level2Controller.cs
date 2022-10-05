@@ -14,6 +14,10 @@ public class Level2Controller : MonoBehaviour, IController
 
     [SerializeField] private Image coverMask;
 
+    [SerializeField] private Material material;
+
+    [SerializeField] private float blurAmount;
+
     [SerializeField] private GameObject[] bounds;
 
     [SerializeField] private GameObject[] refPoints;
@@ -31,6 +35,8 @@ public class Level2Controller : MonoBehaviour, IController
         Application.targetFrameRate = 300;
 
         cam = FindObjectOfType<CameraCtrl>();
+
+        material.SetFloat("_BlurAmount", blurAmount);
 
         player = FindObjectOfType<Player>();
         playerSpeech = 

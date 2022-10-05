@@ -25,7 +25,7 @@ public class SpriteSwap : MonoBehaviour
 
         do 
         {
-            if (currentCount > count)
+            if (count != 0 && currentCount > count)
             {
                 yield return new WaitForSeconds(startTime);
                 currentCount = 0;
@@ -35,7 +35,7 @@ public class SpriteSwap : MonoBehaviour
             objectRenderer.sprite = currentSprite;
             yield return new WaitForSeconds(swapTime);
             nextInLine++;
-            currentCount++;
+            if (count != 0) currentCount++;
             if (nextInLine >= sprites.Length)
                 nextInLine = 0;
         }
