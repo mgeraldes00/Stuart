@@ -72,11 +72,8 @@ public class AgentGenerator : MonoBehaviour
             case 1:
             case 2:
             case 3:
-                size = URand.Range(1.1f, 1.3f);
-                if (side == 0)
-                {
-                    spawnPoint = 0;
-                }
+                size = URand.Range(1.0f, 1.2f);
+                if (side == 0)  spawnPoint = 0;
                 else
                 {
                     spawnPoint = 1;
@@ -89,10 +86,7 @@ public class AgentGenerator : MonoBehaviour
             case 7:
                 onMiddle = true;
                 size = URand.Range(1.2f, 1.4f);
-                if (side == 0)
-                {
-                    spawnPoint = 2;
-                }
+                if (side == 0) spawnPoint = 2;
                 else
                 {
                     spawnPoint = 3;
@@ -103,10 +97,7 @@ public class AgentGenerator : MonoBehaviour
             case 9:
                 onForeground = true;
                 size = 5;
-                if (side == 0)
-                {
-                    spawnPoint = 4;
-                }
+                if (side == 0) spawnPoint = 4;
                 else
                 {
                     spawnPoint = 5;
