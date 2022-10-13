@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class PanelNavigation : MonoBehaviour
 {
-    private const float duration = 1.5f;
+    private const float duration = 1.5f, turnDuration = 0.5f, switchTime = 0.1f;
 
     [SerializeField] private int currentPanel;
+    [SerializeField] private int currentPage;
     [SerializeField] private int lastPanelPlayed;
     [SerializeField] private int nextPanel;
     [SerializeField] private int maxPanelReached;
 
-    private bool isLocked;
+    [SerializeField] private bool isLocked;
 
-    [SerializeField] private GameObject[] panels;
+    [SerializeField] private GameObject[] panels, pages;
     [SerializeField] private Panel[] panelGroups;
 
     [SerializeField] private Image coverMask;
@@ -39,16 +40,20 @@ public class PanelNavigation : MonoBehaviour
         if (!PlayerPrefs.HasKey("CurrentPanel"))
         {
             currentPanel = 0;
+            currentPage = 0;
             nextPanel = 1;
             PlayerPrefs.SetInt("CurrentPanel", 0);
+            PlayerPrefs.SetInt("CurrentPage", 0);
             PlayerPrefs.SetInt("LastPanelPlayed", 0);
             PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
             PlayerPrefs.SetInt("MaxPanelReached", 0);
+
+            pages[0].SetActive(true);
         }
         else
         {
             currentPanel = PlayerPrefs.GetInt("CurrentPanel");
-            
+            currentPage = PlayerPrefs.GetInt("CurrentPage");
             nextPanel = maxPanelReached + 1;
             
             /*if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 1)
@@ -97,6 +102,12 @@ public class PanelNavigation : MonoBehaviour
                     panels[currentPanel - 1].transform.position.x,
                     panels[currentPanel - 1].transform.position.y, -10);
             }
+
+            // Activate current page
+            for (int i = 0; i < pages.Length; i++)
+                pages[i].SetActive(false);
+
+            pages[currentPage].SetActive(true);
         }
 
         coverMask.enabled = true;
@@ -119,7 +130,16 @@ public class PanelNavigation : MonoBehaviour
         {
             Debug.Log("Move to next panel");
             isLocked = true;
-            StartCoroutine(Move(PlayerPrefs.GetInt("CurrentPanel")));
+
+            if (currentPanel % 2 == 0)
+            {
+                StartCoroutine(SwitchPage(true));
+                StartCoroutine(
+                    Move(PlayerPrefs.GetInt("CurrentPanel"), true));
+            }
+
+            else StartCoroutine(Move(PlayerPrefs.GetInt("CurrentPanel")));
+
             ++currentPanel;
             PlayerPrefs.SetInt("CurrentPanel", currentPanel);
         }
@@ -129,9 +149,20 @@ public class PanelNavigation : MonoBehaviour
         {
             Debug.Log("Move to previous panel");
             isLocked = true;
-            --currentPanel;
-            PlayerPrefs.SetInt("CurrentPanel", currentPanel);
-            StartCoroutine(Move(currentPanel - 1));
+
+            if (currentPanel % 2 != 0)
+            {
+                --currentPanel;
+                PlayerPrefs.SetInt("CurrentPanel", currentPanel);
+                StartCoroutine(SwitchPage(false));
+                StartCoroutine(Move(currentPanel - 1, true));
+            }
+            else
+            {
+                --currentPanel;
+                PlayerPrefs.SetInt("CurrentPanel", currentPanel);
+                StartCoroutine(Move(currentPanel - 1));
+            }
         }
 
         if (Input.GetButtonDown("Select") && currentPanel > 0 && !isLocked)
@@ -144,11 +175,33 @@ public class PanelNavigation : MonoBehaviour
         }
     }
 
-    private IEnumerator Move(int index)
+    private IEnumerator SwitchPage(bool increase)
+    {
+        yield return new WaitForSeconds(turnDuration);
+        pages[currentPage].SetActive(false);
+
+        if (increase) currentPage++;
+        else currentPage--;
+
+        pages[currentPage].SetActive(true);
+        PlayerPrefs.SetInt("CurrentPage", currentPage);
+
+        isLocked = false;
+    }
+
+    private IEnumerator Move(int index, bool switchPage = false)
     {
         float timeElapsed = 0;
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = panels[index].transform.position;
+
+        float finalDuration = duration;
+
+        if (switchPage)
+        {
+            finalDuration = switchTime;
+            yield return new WaitForSeconds(turnDuration);
+        }
 
         do
         {
@@ -157,16 +210,17 @@ public class PanelNavigation : MonoBehaviour
                     cam.orthographicSize - 2f * Time.deltaTime;
             else
                 cam.orthographicSize = 2.5f;
-            transform.position = Vector3.Lerp(
-                startPosition, new Vector3(targetPosition.x, targetPosition.y, -10), 
-                timeElapsed / duration);
-            timeElapsed += Time.deltaTime;
+                transform.position = Vector3.Lerp(
+                    startPosition, new Vector3(targetPosition.x, targetPosition.y, -10), 
+                    timeElapsed / finalDuration);
+                timeElapsed += Time.deltaTime;
             yield return null;
         }
         while (timeElapsed < duration);
 
         transform.position = new Vector3(targetPosition.x, targetPosition.y, -10);
-        isLocked = false;
+        if (!switchPage)
+            isLocked = false;
     }
 
     private IEnumerator Zoom()
