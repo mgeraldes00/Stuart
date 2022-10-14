@@ -19,6 +19,7 @@ public class PanelNavigation : MonoBehaviour
     [SerializeField] private GameObject[] panels, pages;
     [SerializeField] private Panel[] panelGroups;
 
+    [SerializeField] private Animator coverAnim;
     [SerializeField] private Image coverMask;
 
     private Camera cam;
@@ -97,7 +98,7 @@ public class PanelNavigation : MonoBehaviour
 
             if (currentPanel > 0)
             {
-                cam.orthographicSize = 2.5f;
+                cam.orthographicSize = 8.8f;
                 transform.position = new Vector3(
                     panels[currentPanel - 1].transform.position.x,
                     panels[currentPanel - 1].transform.position.y, -10);
@@ -133,7 +134,7 @@ public class PanelNavigation : MonoBehaviour
 
             if (currentPanel % 2 == 0)
             {
-                StartCoroutine(SwitchPage(true));
+                StartCoroutine(SwitchPage(true, "turnRight"));
                 StartCoroutine(
                     Move(PlayerPrefs.GetInt("CurrentPanel"), true));
             }
@@ -154,7 +155,7 @@ public class PanelNavigation : MonoBehaviour
             {
                 --currentPanel;
                 PlayerPrefs.SetInt("CurrentPanel", currentPanel);
-                StartCoroutine(SwitchPage(false));
+                StartCoroutine(SwitchPage(false, "turnLeft"));
                 StartCoroutine(Move(currentPanel - 1, true));
             }
             else
@@ -175,8 +176,15 @@ public class PanelNavigation : MonoBehaviour
         }
     }
 
-    private IEnumerator SwitchPage(bool increase)
+    private IEnumerator SwitchPage(bool increase, string turnDirection)
     {
+        coverAnim.SetTrigger(turnDirection);
+
+
+        Color c = coverMask.color;
+        c.a = 1;
+        coverMask.color = c;
+ 
         yield return new WaitForSeconds(turnDuration);
         pages[currentPage].SetActive(false);
 
@@ -186,6 +194,9 @@ public class PanelNavigation : MonoBehaviour
         pages[currentPage].SetActive(true);
         PlayerPrefs.SetInt("CurrentPage", currentPage);
 
+        yield return new WaitForSeconds(turnDuration);
+        c.a = 0;
+        coverMask.color = c;
         isLocked = false;
     }
 
@@ -205,18 +216,18 @@ public class PanelNavigation : MonoBehaviour
 
         do
         {
-            if (cam.orthographicSize > 2.5f)
+            if (cam.orthographicSize > 8.8f)
                 cam.orthographicSize = 
                     cam.orthographicSize - 2f * Time.deltaTime;
             else
-                cam.orthographicSize = 2.5f;
+                cam.orthographicSize = 8.8f;
                 transform.position = Vector3.Lerp(
                     startPosition, new Vector3(targetPosition.x, targetPosition.y, -10), 
                     timeElapsed / finalDuration);
                 timeElapsed += Time.deltaTime;
             yield return null;
         }
-        while (timeElapsed < duration);
+        while (timeElapsed < finalDuration);
 
         transform.position = new Vector3(targetPosition.x, targetPosition.y, -10);
         if (!switchPage)
