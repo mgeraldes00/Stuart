@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -299,6 +299,14 @@ PrefabInstance:
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341412301846291248, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "T\xCDTULO DO EPIS\xD3DIO"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825959990176303986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "EPIS\xD3DIO 3"
       objectReference: {fileID: 0}
     - target: {fileID: 7455350127448351109, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_Name
@@ -746,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -787,6 +795,14 @@ PrefabInstance:
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805804483891816478, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "EPIS\xD3DIO 4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975416858186481756, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "T\xCDTULO DO EPIS\xD3DIO"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
@@ -3751,7 +3767,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3793,9 +3809,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6341412301846291248, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "T\xCDTULO DO EPIS\xD3DIO"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825959990176303986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "EPIS\xD3DIO 1"
+      objectReference: {fileID: 0}
     - target: {fileID: 7455350127448351109, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_Name
       value: Set 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267131210486691860, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
@@ -3827,7 +3855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3868,6 +3896,14 @@ PrefabInstance:
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805804483891816478, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "EPIS\xD3DIO 2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975416858186481756, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "T\xCDTULO DO EPIS\xD3DIO"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}

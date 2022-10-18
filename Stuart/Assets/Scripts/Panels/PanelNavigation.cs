@@ -98,7 +98,7 @@ public class PanelNavigation : MonoBehaviour
 
             if (currentPanel > 0)
             {
-                cam.orthographicSize = 8.8f;
+                cam.orthographicSize = 9f;
                 transform.position = new Vector3(
                     panels[currentPanel - 1].transform.position.x,
                     panels[currentPanel - 1].transform.position.y, -10);
@@ -216,11 +216,11 @@ public class PanelNavigation : MonoBehaviour
 
         do
         {
-            if (cam.orthographicSize > 8.8f)
+            if (cam.orthographicSize > 9f)
                 cam.orthographicSize = 
                     cam.orthographicSize - 2f * Time.deltaTime;
             else
-                cam.orthographicSize = 8.8f;
+                cam.orthographicSize = 9f;
                 transform.position = Vector3.Lerp(
                     startPosition, new Vector3(targetPosition.x, targetPosition.y, -10), 
                     timeElapsed / finalDuration);

@@ -10,6 +10,13 @@ public class Panel : MonoBehaviour
 
     [SerializeField] private GameObject[] images;
 
+    private Camera cam;
+
+    private void Start()
+    {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
     // Change later to hide default image and replace with illustration
     public void SetImage(Color newColor)
     {
