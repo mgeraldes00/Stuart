@@ -3185,7 +3185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1902708484
 Transform:
   m_ObjectHideFlags: 0
@@ -3765,6 +3765,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1902708484}
     m_Modifications:
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Apesar da tentativa de dissuas\xE3o do Quim, o Manecas j\xE1 est\xE1
+        decidido a subir a torre, e p\xF5e-se a caminho."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Finalmente alcan\xE7a a moeda e apanha-a, sentindo um grande orgulho
+        pelo seu sucesso. Est\xE1 finalmente pronto para seguir em frente."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Encontra o Quim, que tamb\xE9m n\xE3o percebe o que se passa. Os irm\xE3os
+        refletem na situa\xE7\xE3o em que se encontram."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Vai de plataforma em plataforma, em saltos cada vez mais dif\xEDceis
+        de executar."
+      objectReference: {fileID: 0}
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3809,9 +3829,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "O Manecas volta ao ch\xE3o, para junto do seu irm\xE3o, e ambos prosseguem,
+        em busca de explica\xE7\xF5es para a sua situa\xE7\xE3o."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "P\xF5e-se a andar, e eventualmente depara-se com algu\xE9m familiar."
+      objectReference: {fileID: 0}
     - target: {fileID: 6341412301846291248, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
-      value: "T\xCDTULO DO EPIS\xD3DIO"
+      value: O CASTELO MISTERIOSO
       objectReference: {fileID: 0}
     - target: {fileID: 6825959990176303986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
@@ -3821,9 +3850,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Set 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "O Manecas repara no que parece ser uma moeda gigante, no topo de uma
+        torre. Subitamente, v\xEA-se tomado por uma vontade incontrol\xE1vel de a
+        apanhar."
+      objectReference: {fileID: 0}
     - target: {fileID: 8267131210486691860, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "O Manecas d\xE1 por si no que parece ser um castelo, sem saber como
+        veio aqui parar."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
