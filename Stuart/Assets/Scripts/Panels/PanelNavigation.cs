@@ -14,7 +14,7 @@ public class PanelNavigation : MonoBehaviour
     [SerializeField] private int nextPanel;
     [SerializeField] private int maxPanelReached;
 
-    [SerializeField] private bool isLocked;
+    [SerializeField] private bool isLocked, isFocusLocked, zoomIn;
 
     [SerializeField] private GameObject[] panels, pages;
     [SerializeField] private Panel[] panelGroups;
@@ -27,6 +27,7 @@ public class PanelNavigation : MonoBehaviour
     private void Start()
     {
         isLocked = true;
+        isFocusLocked = true;
 
         cam = GetComponent<Camera>();
 
@@ -121,16 +122,18 @@ public class PanelNavigation : MonoBehaviour
         {
             Debug.Log("Move to first panel");
             isLocked = true;
+            isFocusLocked = true;
             StartCoroutine(Move(0));
             currentPanel = 1;
             PlayerPrefs.SetInt("CurrentPanel", currentPanel);
         }
 
         if (Input.GetAxis("Horizontal") > 0 && currentPanel > 0
-            && currentPanel < nextPanel && !isLocked)
+            && currentPanel < nextPanel && !isLocked && !zoomIn)
         {
             Debug.Log("Move to next panel");
             isLocked = true;
+            isFocusLocked = true;
 
             if (currentPanel % 2 == 0)
             {
@@ -146,10 +149,11 @@ public class PanelNavigation : MonoBehaviour
         }
 
         if (Input.GetAxis("Horizontal") < 0 && currentPanel > 1
-            && currentPanel <= nextPanel && !isLocked)
+            && currentPanel <= nextPanel && !isLocked && !zoomIn)
         {
             Debug.Log("Move to previous panel");
             isLocked = true;
+            isFocusLocked = true;
 
             if (currentPanel % 2 != 0)
             {
@@ -166,20 +170,65 @@ public class PanelNavigation : MonoBehaviour
             }
         }
 
+        //TODO
+        if (Input.GetAxis("VerticalAlt") > 0 
+            && panelGroups[currentPanel - 1].CurrentPanel <
+            panelGroups[currentPanel - 1].Images.Length - 1
+            && !isLocked && !isFocusLocked && zoomIn)
+        {
+            Debug.Log("Move to next image");
+            isLocked = true;
+            isFocusLocked = true;
+
+            StartCoroutine(Move(
+                currentPanel, false, true, true, false, 5.5f, 3.5f));
+        }
+
+        if (Input.GetAxis("VerticalAlt") < 0
+            && panelGroups[currentPanel - 1].CurrentPanel > 0
+            && !isLocked && !isFocusLocked && zoomIn)
+        {
+            Debug.Log("Move to previous image");
+            isLocked = true;
+            isFocusLocked = true;
+
+            StartCoroutine(Move(
+                currentPanel, false, true, true, true, 5.5f, 3.5f));
+        }
+
         if (Input.GetButtonDown("Select") && currentPanel > 0 && !isLocked)
         {
             PlayerPrefs.SetInt("LastPanelPlayed", currentPanel);
             PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
             isLocked = true;
-            StartCoroutine(Zoom());
+            isFocusLocked = true;
+            StartCoroutine(Zoom(2f));
             StartCoroutine(AdjustCover(false));
+        }
+
+        if (Input.GetButtonDown("Focus") && currentPanel > 0 && !isFocusLocked)
+        {
+            if (!zoomIn)
+            {
+                isLocked = true;
+                isFocusLocked = true;
+                StartCoroutine(Move(
+                    currentPanel, false, true, true, false, 5.5f, 3.5f));
+            }
+            else
+            {
+                isLocked = true;
+                isFocusLocked = true;
+                panelGroups[currentPanel - 1].ResetCurrentPanel();
+                StartCoroutine(Move(
+                    currentPanel, false, true, false, false, -5.5f, 9f));
+            }
         }
     }
 
     private IEnumerator SwitchPage(bool increase, string turnDirection)
     {
         coverAnim.SetTrigger(turnDirection);
-
 
         Color c = coverMask.color;
         c.a = 1;
@@ -198,15 +247,27 @@ public class PanelNavigation : MonoBehaviour
         c.a = 0;
         coverMask.color = c;
         isLocked = false;
+        isFocusLocked = false;
     }
 
-    private IEnumerator Move(int index, bool switchPage = false)
+    private IEnumerator Move(int index, bool switchPage = false, 
+        bool isFocus = false, bool focusing = false, bool goingUp = false,
+        float zoomAmount = 2f, float maxSize = 9f)
     {
         float timeElapsed = 0;
         Vector3 startPosition = transform.position;
-        Vector3 targetPosition = panels[index].transform.position;
+        Vector3 targetPosition;
 
         float finalDuration = duration;
+
+        if (isFocus && focusing)
+            if (cam.orthographicSize > maxSize)
+                targetPosition = panelGroups[index - 1].Images[0].transform.position;
+            else
+                targetPosition = panelGroups[index - 1].SelectImage(goingUp);
+        else if (isFocus && !focusing)
+            targetPosition = panels[index - 1].transform.position;
+        else targetPosition = panels[index].transform.position;
 
         if (switchPage)
         {
@@ -216,35 +277,47 @@ public class PanelNavigation : MonoBehaviour
 
         do
         {
-            if (cam.orthographicSize > 9f)
+            if (cam.orthographicSize > maxSize && zoomAmount >= 0
+                || cam.orthographicSize < maxSize && isFocus && !focusing)
                 cam.orthographicSize = 
-                    cam.orthographicSize - 2f * Time.deltaTime;
+                    cam.orthographicSize - zoomAmount * Time.deltaTime;
             else
-                cam.orthographicSize = 9f;
-                transform.position = Vector3.Lerp(
-                    startPosition, new Vector3(targetPosition.x, targetPosition.y, -10), 
-                    timeElapsed / finalDuration);
-                timeElapsed += Time.deltaTime;
+                cam.orthographicSize = maxSize;
+
+            transform.position = Vector3.Lerp(
+                startPosition, new Vector3(targetPosition.x, targetPosition.y, -10), 
+                timeElapsed / finalDuration);
+            timeElapsed += Time.deltaTime;
             yield return null;
         }
         while (timeElapsed < finalDuration);
 
         transform.position = new Vector3(targetPosition.x, targetPosition.y, -10);
         if (!switchPage)
+        {
             isLocked = false;
+            isFocusLocked = false;
+        }
+
+        if (isFocus) isFocusLocked = false;
+        
+        if(focusing) zoomIn = true; 
+        else if (isFocus && !focusing)
+        {
+            zoomIn = false;
+            isLocked = false;
+        } 
     }
 
-    private IEnumerator Zoom()
+    private IEnumerator Zoom(float value)
     {
-        float timeElapsed = 0;
-
         do
         {
             cam.orthographicSize = 
-                cam.orthographicSize - 2f * Time.deltaTime;
+                cam.orthographicSize - value * Time.deltaTime;
             yield return null;
         }
-        while(timeElapsed < duration);
+        while(true);
     }
 
     private IEnumerator AdjustCover(bool reveal, float waitTime = 0)
@@ -252,8 +325,7 @@ public class PanelNavigation : MonoBehaviour
         float time = 0.0f, totalTime = 1.0f;
         Color c = coverMask.color;
 
-        if (waitTime != 0)
-            yield return new WaitForSeconds(waitTime);
+        if (waitTime != 0) yield return new WaitForSeconds(waitTime);
 
         if (reveal)
         {
@@ -281,5 +353,6 @@ public class PanelNavigation : MonoBehaviour
         }
 
         isLocked = false;
+        isFocusLocked = false;
     }
 }
