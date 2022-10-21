@@ -205,6 +205,11 @@ Transform:
   m_Father: {fileID: 1223613098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &136634613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5180066315122135416, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &143264382
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +477,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &203934689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563622011421373688, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &211314306
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,9 +872,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 3
+  currentPanel: 0
   images:
   - {fileID: 228172646}
   - {fileID: 650738951}
+  texts: []
 --- !u!1 &597640582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1158,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &700107209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &722484779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,8 +1296,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  currentPanel: 0
   images:
   - {fileID: 1499331222}
+  texts: []
 --- !u!1 &755985643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,6 +1546,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &814640862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &952123491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,6 +1964,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08f0d9f548dd034d87a3328dc1434d1, type: 3}
+--- !u!114 &1087438975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1123142124 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3890966549264330744, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
@@ -2067,6 +2114,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176063601}
   m_CullTransparentMesh: 1
+--- !u!1 &1215764195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5215391308216221072, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1223613097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,8 +2454,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
+  currentPanel: 0
   images:
   - {fileID: 1920847321}
+  texts: []
+--- !u!114 &1487537388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499331222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2633,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1553717958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1559074182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,7 +2835,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5efde692943a7a646b000fe0466968a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d95c7d837ec39b54d9295c47d93f93eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2913,6 +2989,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
+--- !u!114 &1700715059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1715305068 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3890966550442852705, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
@@ -3006,6 +3093,11 @@ Transform:
   m_Father: {fileID: 1223613098}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1862011280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3991239622221760971, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1879106262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3330,9 +3422,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 2
+  currentPanel: 0
   images:
   - {fileID: 597640582}
   - {fileID: 755985643}
+  texts: []
+--- !u!114 &2017480470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046708522
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,9 +3700,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 4
+  currentPanel: 0
   images:
   - {fileID: 813643705}
   - {fileID: 1527507786}
+  texts: []
 --- !u!1 &2112233120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,6 +3809,8 @@ MonoBehaviour:
   nextPanel: 0
   maxPanelReached: 0
   isLocked: 0
+  isFocusLocked: 0
+  zoomIn: 0
   panels:
   - {fileID: 935493318770121028}
   - {fileID: 7455350126294376542}
@@ -3758,6 +3867,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d1134b13beed44fba0a8ed507749ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2122377574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+  m_PrefabInstance: {fileID: 935493318770121026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &935493318770121026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3770,20 +3890,124 @@ PrefabInstance:
       value: "Apesar da tentativa de dissuas\xE3o do Quim, o Manecas j\xE1 est\xE1
         decidido a subir a torre, e p\xF5e-se a caminho."
       objectReference: {fileID: 0}
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b371e5e67ed99547adab02ff2071c65, type: 3}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
       value: "Finalmente alcan\xE7a a moeda e apanha-a, sentindo um grande orgulho
         pelo seu sucesso. Est\xE1 finalmente pronto para seguir em frente."
       objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[0]
+      value: 
+      objectReference: {fileID: 1487537388}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1087438975}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[2]
+      value: 
+      objectReference: {fileID: 700107209}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1553717958}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[4]
+      value: 
+      objectReference: {fileID: 814640862}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[5]
+      value: 
+      objectReference: {fileID: 2122377574}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[6]
+      value: 
+      objectReference: {fileID: 1700715059}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: texts.Array.data[7]
+      value: 
+      objectReference: {fileID: 2017480470}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: images.Array.data[0]
+      value: 
+      objectReference: {fileID: 136634613}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: images.Array.data[1]
+      value: 
+      objectReference: {fileID: 1862011280}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: images.Array.data[2]
+      value: 
+      objectReference: {fileID: 203934689}
+    - target: {fileID: 1875084599669778297, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: images.Array.data[3]
+      value: 
+      objectReference: {fileID: 1215764195}
     - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
       value: "Encontra o Quim, que tamb\xE9m n\xE3o percebe o que se passa. Os irm\xE3os
         refletem na situa\xE7\xE3o em que se encontram."
       objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
       value: "Vai de plataforma em plataforma, em saltos cada vez mais dif\xEDceis
         de executar."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_RootOrder
@@ -3834,9 +4058,25 @@ PrefabInstance:
       value: "O Manecas volta ao ch\xE3o, para junto do seu irm\xE3o, e ambos prosseguem,
         em busca de explica\xE7\xF5es para a sua situa\xE7\xE3o."
       objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
       value: "P\xF5e-se a andar, e eventualmente depara-se com algu\xE9m familiar."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6341412301846291248, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
@@ -3856,6 +4096,14 @@ PrefabInstance:
         torre. Subitamente, v\xEA-se tomado por uma vontade incontrol\xE1vel de a
         apanhar."
       objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8267131210486691860, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -3864,6 +4112,18 @@ PrefabInstance:
       propertyPath: m_text
       value: "O Manecas d\xE1 por si no que parece ser um castelo, sem saber como
         veio aqui parar."
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
@@ -3892,6 +4152,10 @@ PrefabInstance:
     - target: {fileID: 454444543602341234, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_Name
       value: Set 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661116734447680299, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: texts.Array.size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_RootOrder

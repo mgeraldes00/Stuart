@@ -82,7 +82,7 @@ public class PanelNavigation : MonoBehaviour
                 for (int i = 0; i < maxPanelReached; i++)
                 {
                     //panels[i].GetComponent<SpriteRenderer>().color = Color.grey;
-                    panelGroups[i].SetImage(Color.grey);
+                    panelGroups[i].SetImage(true);
                 }
 
                 if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 0
@@ -90,7 +90,7 @@ public class PanelNavigation : MonoBehaviour
                 {
                     /*panels[currentPanel - 1].GetComponent<SpriteRenderer>().
                         color = Color.white;*/
-                    panelGroups[currentPanel - 1].SetImage(Color.white);
+                    panelGroups[currentPanel - 1].SetImage(false);
                 }
             }
             

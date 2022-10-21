@@ -9084,7 +9084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: f415f548d4a37a54db3006283a23f740, type: 2}
   blurAmount: 0
-  maxBlur: 15
+  maxBlur: 7
   blurSpeed: 20
   blurActive: 0
 --- !u!61 &1283103108

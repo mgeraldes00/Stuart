@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Panel : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Panel : MonoBehaviour
 
     [SerializeField] private GameObject[] images;
     public GameObject[] Images => images;
+
+    [SerializeField] private TextMeshProUGUI[] texts;
 
     private Camera cam;
 
@@ -32,11 +35,24 @@ public class Panel : MonoBehaviour
     }
 
     // Change later to hide default image and replace with illustration
-    public void SetImage(Color newColor)
+    public void SetImage(bool reveal)
     {
         for (int i = 0; i < images.Length; i++)
         {
-            images[i].GetComponent<SpriteRenderer>().color = newColor;
+            if (reveal)
+                images[i].GetComponent<SpriteRenderer>().color =
+                    new Color(255, 255, 255, 255);
+            else
+                images[i].GetComponent<SpriteRenderer>().color =
+                    new Color(255, 255, 255, 0);
+        }
+
+        for (int i = 0; i < texts.Length; i++)
+        {   
+            if (reveal)
+                texts[i].color = new Color(0, 0, 0, 255);
+            else
+                texts[i].color = new Color(0, 0, 0, 0);
         }
     }
 }
