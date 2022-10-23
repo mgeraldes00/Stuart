@@ -48,7 +48,7 @@ public class Level5Controller : MonoBehaviour, IController
         coverMask.enabled = true;
         InitializeScene();
 
-        InvokeRepeating(nameof(GetFPS), 1, 1);
+        //InvokeRepeating(nameof(GetFPS), 1, 1);
     }
 
     private void GetFPS()
