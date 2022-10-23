@@ -225,7 +225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &143264383
 Transform:
   m_ObjectHideFlags: 0
@@ -762,6 +762,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Set 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1002816705324545605, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "Neste momento, os manos percebem que est\xE3o diante uma escola, observando
+        melhor o que os rodeia."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002816705324545605, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002816705324545605, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405500331593734712, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "Esta \xE9 a fachada da Escola Secund\xE1ria Stuart Carvalhais, localizada
+        em Massam\xE1 e com o autor das personagens Quim e Manecas como patrono.
+        Uma representa\xE7\xE3o da sua face est\xE1 inscrita no lado esquerdo do
+        port\xE3o principal."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405500331593734712, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405500331593734712, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838658297839815959, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838658297839815959, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 2897514645820704836, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -805,6 +845,79 @@ PrefabInstance:
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530133652348626042, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: O Manecas aceita, resignado, e os manos encaminham-se para a entrada
+        da escola.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530133652348626042, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530133652348626042, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "O indiv\xEDduo pergunta-lhes porque est\xE3o na rua, assumindo que
+        deviam estar a ter aulas."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469450812488466585, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "Caminhando em frente, deparam-se com algu\xE9m cuja express\xE3o demonstra
+        uma ligeira irrita\xE7\xE3o ao v\xEA-los."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469450812488466585, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469450812488466585, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012931590646129155, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012931590646129155, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364472114028909667, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "Com a press\xE3o do indiv\xEDduo para que lhe respondam, o Quim sugere
+        que frequentem algumas aulas, podendo esta ser a \xFAnica maneira de prosseguirem."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364472114028909667, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364472114028909667, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557271217888339948, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "A mudan\xE7a de cen\xE1rio coloca os irm\xE3os num local aparentemente
+        tranquilo, quase  deserto de pessoas."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557271217888339948, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557271217888339948, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 8805804483891816478, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
