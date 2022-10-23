@@ -225,7 +225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &143264383
 Transform:
   m_ObjectHideFlags: 0
@@ -249,6 +249,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 143264383}
     m_Modifications:
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "O Quim percebe que algo est\xE1 errado, e sugere ao Manecas que procure
+        outro caminho em frente, subindo o edif\xEDcio atr\xE1s deles."
+      objectReference: {fileID: 0}
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 282282401971842683, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 872415232
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71c2809cfddade1468ceaf7795b43739, type: 3}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426736203223101405, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935493318712760919, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -260,6 +305,125 @@ PrefabInstance:
     - target: {fileID: 935493318712760919, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: Assim faz o seu caminho, de varanda em varanda, apanhando umas moedas
+        gigantes pelo caminho.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 872415232
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810417638669005027, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810417638669005027, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810417638669005027, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f2c4d6d6e21d2454aa2bd205f6e38f7e, type: 3}
+    - target: {fileID: 1810417638669005027, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810417638669005027, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274710448580198851, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274710448580198851, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274710448580198851, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3585d39caf76024468923a40d6cac6b4, type: 3}
+    - target: {fileID: 2274710448580198851, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274710448580198851, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Apesar das aventuras se assemelharem ao que os pr\xF3prios viveram,
+        assumem que n\xE3o passa de uma estranha coincid\xEAncia, e seguem em frente."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982674386519545129, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 872415232
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Sem outra escolha, o Manecas volta atr\xE1s, usando uma escada colocada
+        de forma conveniente, para come\xE7ar a escalada."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967523855865723220, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 872415232
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034143502385463663, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 5361844171827923346, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_RootOrder
@@ -305,9 +469,83 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Por fim chega ao topo, a partir de onde lhe \xE9 poss\xEDvel seguir
+        em frente, e reencontrar o seu irm\xE3o."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 872415232
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Leem uma p\xE1gina de \"As Aventuras de Quim e Manecas\", banda desenhada
+        com personagens que se assemelham aos pr\xF3prios manos."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931141900747506816, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 872415232
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046416311578106993, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 4.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6341412301846291248, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
-      value: "T\xCDTULO DO EPIS\xD3DIO"
+      value: "A RUA ENIGM\xC1TICA"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824185104249547713, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824185104249547713, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824185104249547713, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d5c0137d801cbe94c9b35122e88a4d86, type: 3}
+    - target: {fileID: 6824185104249547713, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824185104249547713, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6825959990176303986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
@@ -316,6 +554,56 @@ PrefabInstance:
     - target: {fileID: 7455350127448351109, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_Name
       value: Set 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "A certo ponto, o Manecas percebe que n\xE3o consegue prosseguir. Tenta
+        andar, mas algo n\xE3o lhe permite mexer-se."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730003994702329986, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 872415232
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_text
+      value: "Os irm\xE3os d\xE3o por si numa rua populosa. Adiante, uma pilha de
+        jornais capta a sua aten\xE7\xE3o."
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026961649317831669, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
@@ -762,6 +1050,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Set 4
       objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ac2c95e0171044d4db83e0a608ae1860, type: 3}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1002816705324545605, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
       value: "Neste momento, os manos percebem que est\xE3o diante uma escola, observando
@@ -769,11 +1077,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1002816705324545605, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1002816705324545605, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 553648128
       objectReference: {fileID: 0}
     - target: {fileID: 1405500331593734712, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
@@ -784,15 +1092,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1405500331593734712, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1405500331593734712, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 553648128
       objectReference: {fileID: 0}
     - target: {fileID: 2838658297839815959, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838658297839815959, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -801,6 +1109,26 @@ PrefabInstance:
     - target: {fileID: 2897514645820704836, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28166a86855848d4393b55dd9736709a, type: 3}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_RootOrder
@@ -853,24 +1181,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530133652348626042, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3530133652348626042, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 553648128
       objectReference: {fileID: 0}
-    - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
-      propertyPath: m_text
-      value: "O indiv\xEDduo pergunta-lhes porque est\xE3o na rua, assumindo que
-        deviam estar a ter aulas."
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
       objectReference: {fileID: 0}
-    - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
-      propertyPath: m_fontColor.a
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4ea468167863d3240ba27a6ff360e219, type: 3}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_text
+      value: "O indiv\xEDduo pergunta-lhes porque andam na rua, assumindo que deviam
+        estar em aulas."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 553648128
       objectReference: {fileID: 0}
     - target: {fileID: 6469450812488466585, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
@@ -879,11 +1227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469450812488466585, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6469450812488466585, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7012931590646129155, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -893,6 +1241,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3910435478aeb742976707e1d431898, type: 3}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8364472114028909667, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
       value: "Com a press\xE3o do indiv\xEDduo para que lhe respondam, o Quim sugere
@@ -900,11 +1268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8364472114028909667, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8364472114028909667, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 553648128
       objectReference: {fileID: 0}
     - target: {fileID: 8557271217888339948, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
@@ -913,11 +1281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8557271217888339948, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8557271217888339948, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 553648128
       objectReference: {fileID: 0}
     - target: {fileID: 8805804483891816478, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
@@ -925,7 +1293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8975416858186481756, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
-      value: "T\xCDTULO DO EPIS\xD3DIO"
+      value: "A ESCOLA SECUND\xC1RIA"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
@@ -3096,6 +3464,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3890966550968383641, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5375103547910802449, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -4314,6 +4686,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Set 2
       objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 29f5fa85f114f1443b541d65d66eb9f9, type: 3}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 804822824150975241, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1002816705324545605, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
       value: Adiante, deparam-se com dois senhores em frente a um grande painel de
@@ -4364,6 +4756,26 @@ PrefabInstance:
     - target: {fileID: 2897514645820704836, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c245cc185c40c64c98ecbc7642d0849, type: 3}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916412056840557273, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3121314821572500837, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_RootOrder
@@ -4422,6 +4834,26 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 419430400
       objectReference: {fileID: 0}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 29c9d0237cc924d43890fd310a2d30ef, type: 3}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256587427541270373, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5748936571525012462, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
       value: "Ouvindo o que parecem ser ligeiras pinceladas numa tela, seguem em
@@ -4458,6 +4890,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7128355860459718163, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.x
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c608a37d62e709f4d8a04cfc63d27d78, type: 3}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397159244318766738, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8183705708146199796, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
@@ -4503,7 +4955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8975416858186481756, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}
       propertyPath: m_text
-      value: "T\xCDTULO DO EPIS\xD3DIO"
+      value: O ATELIER DE AZULEJARIA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48600fcef6d4fdb419b28ecb4f5d73f5, type: 3}

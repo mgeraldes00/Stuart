@@ -171,7 +171,7 @@ public class PanelNavigation : MonoBehaviour
         }
 
         //TODO
-        if (Input.GetAxis("VerticalAlt") > 0 
+        if (Input.GetAxis("VerticalAlt") > 0 && currentPanel > 0
             && panelGroups[currentPanel - 1].CurrentPanel <
             panelGroups[currentPanel - 1].Images.Length - 1
             && !isLocked && !isFocusLocked && zoomIn)
@@ -184,7 +184,7 @@ public class PanelNavigation : MonoBehaviour
                 currentPanel, false, true, true, false, 5.5f, 3.5f));
         }
 
-        if (Input.GetAxis("VerticalAlt") < 0
+        if (Input.GetAxis("VerticalAlt") < 0 && currentPanel > 0
             && panelGroups[currentPanel - 1].CurrentPanel > 0
             && !isLocked && !isFocusLocked && zoomIn)
         {
