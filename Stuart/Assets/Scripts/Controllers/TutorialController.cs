@@ -99,6 +99,8 @@ public class TutorialController : MonoBehaviour, IController
                 refPoints[0].SetActive(true);
                 refPoints[1].SetActive(false);
                 refPoints[2].SetActive(true);
+
+                player.Lock();
                 break;
             case 3:
                 StartCoroutine(cam.Lock());
@@ -133,10 +135,18 @@ public class TutorialController : MonoBehaviour, IController
                 player.Invoke(nameof(player.Listen), 2.0f);
                 break;
             case 6:
-                playerSpeech.DefineThought(playerThought);
-                player.Think();
+                StartCoroutine(cam.Lock());
 
-                player.Invoke(nameof(player.Listen), 2.0f);
+                if (player.gameObject.transform.rotation 
+                    != Quaternion.Euler(0, 0, 0))
+                    player.Turn();
+
+                playerSpeech.DefineThought(playerThought);
+                player.Invoke(nameof(player.Think), 0.5f);
+
+                StartCoroutine(cam.Unlock(3.5f));
+                player.Invoke(nameof(player.Unlock), 3.7f);
+                player.Invoke(nameof(player.Listen), 2.5f);
                 break;
         }
     }

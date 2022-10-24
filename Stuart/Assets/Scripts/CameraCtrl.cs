@@ -94,8 +94,11 @@ public class CameraCtrl : MonoBehaviour
         while (camSize >= camMinSize);
     }
 
-    public IEnumerator Unlock()
+    public IEnumerator Unlock(float timeToWait = 0)
     {
+        if (timeToWait != 0)
+            yield return new WaitForSeconds(timeToWait);
+
         camSize = camMinSize;
 
         do
