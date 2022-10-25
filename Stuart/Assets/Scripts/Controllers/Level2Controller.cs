@@ -70,7 +70,7 @@ public class Level2Controller : MonoBehaviour, IController
         for (int i = 0; i < bounds.Length; i++)
             bounds[i].SetActive(true);
 
-        StartCoroutine(cam.Unlock());
+        //StartCoroutine(cam.Unlock());
     }
 
     public void SetDialogue(
@@ -89,6 +89,19 @@ public class Level2Controller : MonoBehaviour, IController
     {
         switch (i)
         {
+            case 0:
+                player.Lock();
+                follower.Lock();
+
+                playerSpeech.DefineDialogue(playerDialogue);
+                followerSpeech.DefineDialogue(followerDialogue);
+
+                StartCoroutine(follower.AdjustPosition(false));
+
+                StartCoroutine(Dialogue(
+                    new int[] { 0, 1, 0 },
+                    3.0f));
+                break;
             case 1:
                 StartCoroutine(cam.Lock());
                 player.Lock();
@@ -98,7 +111,7 @@ public class Level2Controller : MonoBehaviour, IController
                 followerSpeech.DefineDialogue(followerDialogue);
 
                 StartCoroutine(Dialogue(
-                    new int[] { 0, 1},
+                    new int[] { 0, 1 },
                     1.0f));
                 
                 bounds[1].SetActive(false);

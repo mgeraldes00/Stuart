@@ -874,7 +874,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1345,6 +1345,98 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 3890966549264330744, guid: a0f9bd0fdb8545945b6df3c892e43b58, type: 3}
   m_PrefabInstance: {fileID: 1522584565}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1299168850
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1418170779}
+    m_Modifications:
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: eventIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: hasDialogue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[0]
+      value: "o que acabou de acontecer? ainda agora est\xE1vamos num castelo! e
+        agora, onde estamos?."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: playerDialogue.Array.data[1]
+      value: "de acordo. vamos l\xE1 perceber o que raio se passa!."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: followerDialogue.Array.data[0]
+      value: "realmente, algo muito estranho se est\xE1 a passar... bem, n\xE3o adianta
+        pensar nisso. continuemos em frente.."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+      propertyPath: m_Name
+      value: Dialogue Point 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+--- !u!4 &1299168851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
+  m_PrefabInstance: {fileID: 1299168850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1418170778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1466,7 @@ Transform:
   m_Children:
   - {fileID: 1467384700}
   - {fileID: 2047966835}
+  - {fileID: 1299168851}
   - {fileID: 1934502222}
   - {fileID: 825932150}
   m_Father: {fileID: 0}
@@ -1853,7 +1946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154944, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1922,7 +2015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: m_Name
-      value: Dialogue Point
+      value: Dialogue Point 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}

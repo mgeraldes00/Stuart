@@ -110,7 +110,7 @@ public class Level3Controller : MonoBehaviour, IController
                 StartCoroutine(follower.AdjustPosition(false));
 
                 StartCoroutine(Dialogue(
-                    new int[] { 0, 1, 0, 1, 0},
+                    new int[] { 0, 1, 0, 1, 0 },
                     2.0f));
                 break;
             // Event : separation point
