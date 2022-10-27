@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using Rand = UnityEngine.Random;
 
 public class SpriteSwap : MonoBehaviour
 {
     [SerializeField] private Sprite[] sprites;
 
     [SerializeField] private float startTime, swapTime;
-    [SerializeField] int count;
+    [SerializeField] private int count;
+
+    [SerializeField] private AudioSource[] animAudio;
 
     private SpriteRenderer objectRenderer;
     private Sprite currentSprite;
@@ -18,6 +21,11 @@ public class SpriteSwap : MonoBehaviour
 
         StartCoroutine(SwapLoop());
     }
+    
+    private void RandomizeWaitTime()
+    {
+        startTime = Rand.Range(1.0f, 3.0f);
+    }
 
     private IEnumerator SwapLoop()
     {
@@ -28,10 +36,12 @@ public class SpriteSwap : MonoBehaviour
             if (count != 0 && currentCount > count)
             {
                 yield return new WaitForSeconds(startTime);
+                RandomizeWaitTime();
                 currentCount = 0;
             }
-
+            
             currentSprite = sprites[nextInLine];
+            if (currentCount < count) animAudio[nextInLine].Play();
             objectRenderer.sprite = currentSprite;
             yield return new WaitForSeconds(swapTime);
             nextInLine++;

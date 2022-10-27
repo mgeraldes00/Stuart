@@ -11,6 +11,7 @@ public class Level2Controller : MonoBehaviour, IController
     [SerializeField] private Player player;
     [SerializeField] private Follower follower;
     [SerializeField] private SpeechBalloon playerSpeech, followerSpeech;
+    [SerializeField] private AudioSource playerSound, followerSound;
 
     [SerializeField] private Image coverMask;
 
@@ -106,6 +107,9 @@ public class Level2Controller : MonoBehaviour, IController
                 StartCoroutine(cam.Lock());
                 player.Lock();
                 follower.Lock();
+
+                playerSound.volume = 0.1f;
+                followerSound.volume = 0.2f;
 
                 playerSpeech.DefineDialogue(playerDialogue);
                 followerSpeech.DefineDialogue(followerDialogue);

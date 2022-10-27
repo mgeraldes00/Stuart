@@ -8,6 +8,8 @@ public class PanelNavigation : MonoBehaviour
 {
     private const float duration = 1.5f, turnDuration = 0.5f, switchTime = 0.1f;
 
+    [SerializeField] private AudioLeveler audioCtrl;
+
     [SerializeField] private int currentPanel;
     [SerializeField] private int currentPage;
     [SerializeField] private int lastPanelPlayed;
@@ -204,6 +206,7 @@ public class PanelNavigation : MonoBehaviour
             PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
             isLocked = true;
             isFocusLocked = true;
+            StartCoroutine(audioCtrl.AdjustVolume("Master Volume", 0, -60, 30));
             StartCoroutine(Zoom(2f));
             StartCoroutine(AdjustCover(false));
         }
