@@ -9,6 +9,8 @@ public class AudioLeveler : MonoBehaviour
 
     [SerializeField] private Player player;
 
+    [SerializeField] private float lowPos, highPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +20,16 @@ public class AudioLeveler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float playerPos = player.gameObject.transform.position.y;
-
-        if (playerPos >= 0 && playerPos <= 20)
+        if (player != null)
         {
-            level.SetFloat("Low Volume", -playerPos);
-            level.SetFloat("High Volume", -20 + playerPos);
-        }
+            float playerPos = player.gameObject.transform.position.y;
+
+            if (playerPos >= lowPos && playerPos <= highPos)
+            {
+                level.SetFloat("Low Volume", -playerPos + lowPos);
+                level.SetFloat("High Volume", -highPos + playerPos);
+            }
+        }    
     }
 
     public IEnumerator AdjustVolume(

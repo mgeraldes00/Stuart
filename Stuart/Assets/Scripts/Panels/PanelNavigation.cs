@@ -22,6 +22,8 @@ public class PanelNavigation : MonoBehaviour
     [SerializeField] private Animator coverAnim;
     [SerializeField] private Image coverMask;
 
+    [SerializeField] private AudioSource pageTurn;
+
     private Camera cam;
 
     private void Start()
@@ -233,8 +235,11 @@ public class PanelNavigation : MonoBehaviour
         Color c = coverMask.color;
         c.a = 1;
         coverMask.color = c;
+
+        yield return new WaitForSeconds(0.15f);
+        pageTurn.Play();
  
-        yield return new WaitForSeconds(turnDuration);
+        yield return new WaitForSeconds(turnDuration - 0.15f);
         pages[currentPage].SetActive(false);
 
         if (increase) currentPage++;
