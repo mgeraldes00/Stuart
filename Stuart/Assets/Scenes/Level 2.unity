@@ -2322,7 +2322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416154945, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}
       propertyPath: followerDialogue.Array.data[0]
-      value: "parece-me que n\xE3o deviamos estar aqui de todo. acho melhor seguirmos
+      value: "parece-me que n\xE3o dev\xEDamos estar aqui de todo. acho melhor seguirmos
         em frente antes que nos vejam.."
       objectReference: {fileID: 0}
     - target: {fileID: 4564929513416155007, guid: aa49c6f46c9c7a34cae37aede9bdb8fd, type: 3}

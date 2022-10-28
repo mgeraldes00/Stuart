@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
-      value: Assim faz o seu caminho, de varanda em varanda, apanhando umas moedas
+      value: Assim, faz o seu caminho, de varanda em varanda, apanhando umas moedas
         gigantes pelo caminho.
       objectReference: {fileID: 0}
     - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
@@ -536,8 +536,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
-      value: "Por fim chega ao topo, a partir de onde lhe \xE9 poss\xEDvel seguir
-        em frente, e reencontrar o seu irm\xE3o."
+      value: "Por fim, chega ao topo, a partir de onde lhe \xE9 poss\xEDvel seguir
+        em frente e reencontrar o seu irm\xE3o."
       objectReference: {fileID: 0}
     - target: {fileID: 5808163464665872143, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_fontColor.a
@@ -4580,8 +4580,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_text
-      value: "Finalmente alcan\xE7a a moeda e apanha-a, sentindo um grande orgulho
-        pelo seu sucesso. Est\xE1 finalmente pronto para seguir em frente."
+      value: "Finalmente, alcan\xE7a a moeda e apanha-a, sentindo um grande orgulho
+        pelo seu sucesso. Est\xE1, assim, pronto para seguir em frente."
       objectReference: {fileID: 0}
     - target: {fileID: 1473700919893903126, guid: cfc5c2b81b62e884d8dc744b4168ab79, type: 3}
       propertyPath: m_fontColor.a
