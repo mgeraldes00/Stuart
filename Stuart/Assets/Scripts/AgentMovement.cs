@@ -16,6 +16,8 @@ public class AgentMovement : MonoBehaviour
     private SpriteRenderer objectRenderer;
     private Sprite currentSprite;
 
+    [SerializeField] private AudioSource[] steps;
+
     private bool onGround;
 
     // Start is called before the first frame update
@@ -60,7 +62,7 @@ public class AgentMovement : MonoBehaviour
 
     private IEnumerator MoveAnimation()
     {
-        int nextInLine = 0;
+        int nextInLine = 0, nextStep = 0;
         float moveSpeed = speed;
 
         if (speed < 0)
@@ -76,16 +78,19 @@ public class AgentMovement : MonoBehaviour
         if (moveSpeedFinal < 0.2f)
             moveSpeedFinal = 0.2f;
 
-        Debug.Log(moveSpeedFinal);
-
         while (true)
         {
             currentSprite = sprites[nextInLine];
+            if (nextInLine == 1) steps[nextInLine].Play();
             objectRenderer.sprite = currentSprite;
+
             yield return new WaitForSeconds(moveSpeedFinal);
+
             nextInLine++;
-            if (nextInLine >= sprites.Length)
-                nextInLine = 0;
+            nextStep++;
+
+            if (nextInLine >= sprites.Length) nextInLine = 0;
+            if (nextStep >= steps.Length) nextStep = 0;
         }
     }
 }
