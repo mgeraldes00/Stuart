@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -85,15 +84,12 @@ public class PanelNavigation : MonoBehaviour
             {
                 for (int i = 0; i < maxPanelReached; i++)
                 {
-                    //panels[i].GetComponent<SpriteRenderer>().color = Color.grey;
                     panelGroups[i].SetImage(true);
                 }
 
                 if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 0
                     && maxPanelReached < currentPanel)
                 {
-                    /*panels[currentPanel - 1].GetComponent<SpriteRenderer>().
-                        color = Color.white;*/
                     panelGroups[currentPanel - 1].SetImage(false);
                 }
             }
@@ -229,6 +225,11 @@ public class PanelNavigation : MonoBehaviour
                     currentPanel, false, true, false, false, -5.5f, 9f));
             }
         }
+    }
+
+    private IEnumerator UpdateUI()
+    {
+        yield return null;
     }
 
     private IEnumerator SwitchPage(bool increase, string turnDirection)
