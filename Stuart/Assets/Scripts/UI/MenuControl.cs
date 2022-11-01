@@ -7,7 +7,9 @@ using TMPro;
 public class MenuControl : MonoBehaviour, IControls
 {
     [SerializeField] private Image controlImg;
-    [SerializeField] private TextMeshProUGUI controlTxt;
+    [SerializeField] private TextMeshProUGUI controlTxt, imgTxt;
+
+    [SerializeField] private int index;
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +25,26 @@ public class MenuControl : MonoBehaviour, IControls
 
     public IEnumerator RevealControl()
     {
-        float time = 0.0f, totalTime = 1.0f;
-        Color c = controlImg.color, t = controlTxt.color;
+        Debug.Log($"Reveal icon {index}");
+
+        float startTime = 0.0f, time = 0.0f, totalTime = 0.25f;
+        Color c = controlImg.color, t = controlTxt.color, ct = imgTxt.color;
 
         do
         {
-            time += Time.deltaTime;
-            c.a = 1.0f - Mathf.Clamp01(time / totalTime);
-            t.a = 1.0f - Mathf.Clamp01(time / totalTime);
-            controlImg.color = c;
-            controlTxt.color = t;
+            startTime += Time.deltaTime;
+
+            if (startTime > totalTime * 4f)
+            {
+                time += Time.deltaTime;
+                c.a = Mathf.Clamp01(time / totalTime);
+                t.a = Mathf.Clamp01(time / totalTime);
+                ct.a = Mathf.Clamp01(time / totalTime);
+                controlImg.color = c;
+                controlTxt.color = t;
+                imgTxt.color = ct;
+            }
+            
             yield return null;
         }
         while(time < totalTime);
@@ -40,16 +52,20 @@ public class MenuControl : MonoBehaviour, IControls
 
     public IEnumerator HideControl()
     {
-        float time = 0.0f, totalTime = 1.0f;
-        Color c = controlImg.color, t = controlTxt.color;
+        Debug.Log($"Hide icon {index}");
+
+        float time = 0.0f, totalTime = 0.25f;
+        Color c = controlImg.color, t = controlTxt.color, ct = imgTxt.color;
 
         do
         {
             time += Time.deltaTime;
-            c.a = 0.0f - Mathf.Clamp01(time / totalTime);
-            t.a = 0.0f - Mathf.Clamp01(time / totalTime);
+            c.a = 1.0f - Mathf.Clamp01(time / totalTime);
+            t.a = 1.0f - Mathf.Clamp01(time / totalTime);
+            ct.a = 1.0f - Mathf.Clamp01(time / totalTime);
             controlImg.color = c;
             controlTxt.color = t;
+            imgTxt.color = ct;
             yield return null;
         }
         while(time < totalTime);

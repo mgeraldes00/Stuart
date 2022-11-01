@@ -8,6 +8,7 @@ public class PanelNavigation : MonoBehaviour
     private const float duration = 1.5f, turnDuration = 0.5f, switchTime = 0.1f;
 
     [SerializeField] private AudioLeveler audioCtrl;
+    [SerializeField] private MenuUIController menuUI;
 
     [SerializeField] private int currentPanel;
     [SerializeField] private int currentPage;
@@ -103,6 +104,11 @@ public class PanelNavigation : MonoBehaviour
                 transform.position = new Vector3(
                     panels[currentPanel - 1].transform.position.x,
                     panels[currentPanel - 1].transform.position.y, -10);
+
+                if (currentPanel / 2 != 0)
+                    menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
+                else menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
+                    
             }
 
             // Activate current page
@@ -140,9 +146,13 @@ public class PanelNavigation : MonoBehaviour
                 StartCoroutine(SwitchPage(true, "turnRight"));
                 StartCoroutine(
                     Move(PlayerPrefs.GetInt("CurrentPanel"), true));
+                menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
             }
-
-            else StartCoroutine(Move(PlayerPrefs.GetInt("CurrentPanel")));
+            else
+            {
+                StartCoroutine(Move(PlayerPrefs.GetInt("CurrentPanel")));
+                menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
+            } 
 
             ++currentPanel;
             PlayerPrefs.SetInt("CurrentPanel", currentPanel);
@@ -161,12 +171,14 @@ public class PanelNavigation : MonoBehaviour
                 PlayerPrefs.SetInt("CurrentPanel", currentPanel);
                 StartCoroutine(SwitchPage(false, "turnLeft"));
                 StartCoroutine(Move(currentPanel - 1, true));
+                menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
             }
             else
             {
                 --currentPanel;
                 PlayerPrefs.SetInt("CurrentPanel", currentPanel);
                 StartCoroutine(Move(currentPanel - 1));
+                menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
             }
         }
 
@@ -225,11 +237,6 @@ public class PanelNavigation : MonoBehaviour
                     currentPanel, false, true, false, false, -5.5f, 9f));
             }
         }
-    }
-
-    private IEnumerator UpdateUI()
-    {
-        yield return null;
     }
 
     private IEnumerator SwitchPage(bool increase, string turnDirection)
