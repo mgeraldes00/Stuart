@@ -2,6 +2,6 @@ using System.Collections;
 
 public interface IControls
 {
-    IEnumerator RevealControl();
-    IEnumerator HideControl();
+    IEnumerator RevealControl(bool onlyPart);
+    IEnumerator HideControl(bool onlyPart);
 }

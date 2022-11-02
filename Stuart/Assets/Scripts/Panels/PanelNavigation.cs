@@ -105,9 +105,9 @@ public class PanelNavigation : MonoBehaviour
                     panels[currentPanel - 1].transform.position.x,
                     panels[currentPanel - 1].transform.position.y, -10);
 
-                if (currentPanel / 2 != 0)
-                    menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
-                else menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
+                if (currentPanel % 2 != 0)
+                    menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
+                else menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
                     
             }
 
@@ -182,7 +182,6 @@ public class PanelNavigation : MonoBehaviour
             }
         }
 
-        //TODO
         if (Input.GetAxis("VerticalAlt") > 0 && currentPanel > 0
             && panelGroups[currentPanel - 1].CurrentPanel <
             panelGroups[currentPanel - 1].Images.Length - 1
@@ -227,6 +226,10 @@ public class PanelNavigation : MonoBehaviour
                 isFocusLocked = true;
                 StartCoroutine(Move(
                     currentPanel, false, true, true, false, 5.5f, 3.5f));
+                if (currentPanel % 2 != 0)
+                    menuUI.UpdateUI(new int[] { }, new int[] { 0, 1 }, true);
+                else
+                    menuUI.UpdateUI(new int[] { }, new int[] { 2, 3 }, true);
             }
             else
             {
@@ -235,7 +238,11 @@ public class PanelNavigation : MonoBehaviour
                 panelGroups[currentPanel - 1].ResetCurrentPanel();
                 StartCoroutine(Move(
                     currentPanel, false, true, false, false, -5.5f, 9f));
-            }
+                if (currentPanel % 2 != 0)
+                    menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { }, true);
+                else
+                    menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { }, true);
+            }   
         }
     }
 
@@ -262,6 +269,8 @@ public class PanelNavigation : MonoBehaviour
         yield return new WaitForSeconds(turnDuration);
         c.a = 0;
         coverMask.color = c;
+
+        yield return new WaitForSeconds(turnDuration);
         isLocked = false;
         isFocusLocked = false;
     }
