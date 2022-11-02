@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class PanelNavigation : MonoBehaviour
 {
+    private const int numOfLevels = 4;
     private const float duration = 1.5f, turnDuration = 0.5f, switchTime = 0.1f;
 
     [SerializeField] private AudioLeveler audioCtrl;
     [SerializeField] private MenuUIController menuUI;
+    [SerializeField] private MenuStart startControl;
 
     [SerializeField] private int currentPanel;
     [SerializeField] private int currentPage;
@@ -30,6 +32,16 @@ public class PanelNavigation : MonoBehaviour
 
     private void Start()
     {
+        // ENDGAME
+        /*currentPanel = numOfLevels;
+        currentPage = 0;
+        nextPanel = numOfLevels;
+        PlayerPrefs.SetInt("CurrentPanel", numOfLevels);
+        PlayerPrefs.SetInt("CurrentPage", 1);
+        PlayerPrefs.SetInt("LastPanelPlayed", numOfLevels);
+        PlayerPrefs.SetInt("IsLastPanelPlayed", 1);
+        PlayerPrefs.SetInt("MaxPanelReached", numOfLevels);*/
+
         isLocked = true;
         isFocusLocked = true;
 
@@ -55,32 +67,16 @@ public class PanelNavigation : MonoBehaviour
             PlayerPrefs.SetInt("MaxPanelReached", 0);
 
             pages[0].SetActive(true);
+
+            coverMask.enabled = true;
+            StartCoroutine(AdjustCover(true, 1.0f, 1.0f));
         }
         else
         {
             currentPanel = PlayerPrefs.GetInt("CurrentPanel");
             currentPage = PlayerPrefs.GetInt("CurrentPage");
             nextPanel = maxPanelReached + 1;
-            
-            /*if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 1)
-            {
-                
-            }
-            else if (PlayerPrefs.GetInt("IsLastPanelPlayed") == 0)
-            {
-                if (maxPanelReached >= lastPanelPlayed)
-                {
-                    nextPanel = maxPanelReached + 1;
-                }
-                else if (maxPanelReached < lastPanelPlayed)
-                {
-                    maxPanelReached--;
-                    PlayerPrefs.SetInt("MaxPanelReached", maxPanelReached);
-                    nextPanel = maxPanelReached + 1;
-                }
-            }*/
 
-            // Modify image for all played panels
             if (currentPanel > 0)
             {
                 for (int i = 0; i < maxPanelReached; i++)
@@ -106,20 +102,39 @@ public class PanelNavigation : MonoBehaviour
                     panels[currentPanel - 1].transform.position.y, -10);
 
                 if (currentPanel % 2 != 0)
-                    menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
-                else menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
+                {
+                    menuUI.UpdateUI(new int[] { 0 }, new int[] { });
+                    if (currentPanel < nextPanel
+                        || currentPanel == numOfLevels)
+                        menuUI.UpdateUI(new int[] { 1 }, new int[] { });
+                }
+                else
+                {
+                    menuUI.UpdateUI(new int[] { 2 }, new int[] { });
+                    if (currentPanel < nextPanel
+                        || currentPanel == numOfLevels)
+                        menuUI.UpdateUI(new int[] { 3 }, new int[] { });
+                } 
+
+                if (currentPanel > 1)
+                    menuUI.UpdateNavigationUI(new int[] { 1 }, new int[] { });
+
+                if (nextPanel > currentPanel)
+                    menuUI.UpdateNavigationUI(new int[] { 0 }, new int[] { });
+                
                     
             }
 
-            // Activate current page
             for (int i = 0; i < pages.Length; i++)
                 pages[i].SetActive(false);
 
             pages[currentPage].SetActive(true);
+
+            coverMask.enabled = true;
+            StartCoroutine(AdjustCover(true, 1.0f));
         }
 
-        coverMask.enabled = true;
-        StartCoroutine(AdjustCover(true, 1.0f));
+        if (currentPanel == 0) StartCoroutine(startControl.RevealControl());
     }
 
     private void Update()
@@ -132,6 +147,8 @@ public class PanelNavigation : MonoBehaviour
             StartCoroutine(Move(0));
             currentPanel = 1;
             PlayerPrefs.SetInt("CurrentPanel", currentPanel);
+            menuUI.UpdateUI(new int[] { 0 }, new int[] { });
+            StartCoroutine(startControl.HideControl());
         }
 
         if (Input.GetAxis("Horizontal") > 0 && currentPanel > 0
@@ -146,16 +163,28 @@ public class PanelNavigation : MonoBehaviour
                 StartCoroutine(SwitchPage(true, "turnRight"));
                 StartCoroutine(
                     Move(PlayerPrefs.GetInt("CurrentPanel"), true));
-                menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
+                menuUI.UpdateUI(new int[] { 0 }, new int[] { 2, 3 });
+                if (currentPanel + 1 < nextPanel
+                    || currentPanel + 1 == numOfLevels)
+                    menuUI.UpdateUI(new int[] { 1 }, new int[] { });
             }
             else
             {
                 StartCoroutine(Move(PlayerPrefs.GetInt("CurrentPanel")));
-                menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
-            } 
+                menuUI.UpdateUI(new int[] { 2 }, new int[] { 0, 1 });
+                if (currentPanel + 1 < nextPanel
+                    || currentPanel + 1 == numOfLevels)
+                    menuUI.UpdateUI(new int[] { 3 }, new int[] { });
+            }
 
             ++currentPanel;
             PlayerPrefs.SetInt("CurrentPanel", currentPanel);
+
+            if (currentPanel == 2)
+                menuUI.UpdateNavigationUI(new int[] { 1 }, new int[] { });
+
+            if (currentPanel == nextPanel)
+                menuUI.UpdateNavigationUI(new int[] { }, new int[] { 0 });
         }
 
         if (Input.GetAxis("Horizontal") < 0 && currentPanel > 1
@@ -171,15 +200,27 @@ public class PanelNavigation : MonoBehaviour
                 PlayerPrefs.SetInt("CurrentPanel", currentPanel);
                 StartCoroutine(SwitchPage(false, "turnLeft"));
                 StartCoroutine(Move(currentPanel - 1, true));
-                menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0, 1 });
+                menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0 });
+                if (currentPanel + 1 < nextPanel
+                    || currentPanel + 1 == numOfLevels)
+                    menuUI.UpdateUI(new int[] { }, new int[] { 1 });
             }
             else
             {
                 --currentPanel;
                 PlayerPrefs.SetInt("CurrentPanel", currentPanel);
                 StartCoroutine(Move(currentPanel - 1));
-                menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2, 3 });
+                menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2 });
+                if (currentPanel + 1 < nextPanel
+                    || currentPanel + 1 == numOfLevels)
+                    menuUI.UpdateUI(new int[] { }, new int[] { 3 });
             }
+
+            if (currentPanel == nextPanel - 1)
+                menuUI.UpdateNavigationUI(new int[] { 0 }, new int[] { });
+
+            if (currentPanel == 1)
+                menuUI.UpdateNavigationUI(new int[] { }, new int[] { 1 });
         }
 
         if (Input.GetAxis("VerticalAlt") > 0 && currentPanel > 0
@@ -193,6 +234,14 @@ public class PanelNavigation : MonoBehaviour
 
             StartCoroutine(Move(
                 currentPanel, false, true, true, false, 5.5f, 3.5f));
+
+            if (panelGroups[currentPanel - 1].CurrentPanel > 0)
+                menuUI.UpdateNavigationUI(new int[] { 2 }, new int[] { });
+
+            if (panelGroups[currentPanel - 1].CurrentPanel ==
+                panelGroups[currentPanel - 1].Images.Length - 1)
+                menuUI.UpdateNavigationUI(new int[] { }, new int[] { 3 });
+                
         }
 
         if (Input.GetAxis("VerticalAlt") < 0 && currentPanel > 0
@@ -205,6 +254,13 @@ public class PanelNavigation : MonoBehaviour
 
             StartCoroutine(Move(
                 currentPanel, false, true, true, true, 5.5f, 3.5f));
+
+            if (panelGroups[currentPanel - 1].CurrentPanel == 0)
+                menuUI.UpdateNavigationUI(new int[] { }, new int[] { 2 });
+            
+            if (panelGroups[currentPanel - 1].CurrentPanel ==
+                panelGroups[currentPanel - 1].Images.Length - 2)
+                menuUI.UpdateNavigationUI(new int[] { 3 }, new int[] { });
         }
 
         if (Input.GetButtonDown("Select") && currentPanel > 0 && !isLocked)
@@ -218,7 +274,10 @@ public class PanelNavigation : MonoBehaviour
             StartCoroutine(AdjustCover(false));
         }
 
-        if (Input.GetButtonDown("Focus") && currentPanel > 0 && !isFocusLocked)
+        if (Input.GetButtonDown("Focus") && !isFocusLocked
+            && currentPanel > 0 && currentPanel < nextPanel
+            || Input.GetButtonDown("Focus") && !isFocusLocked 
+            && currentPanel > 0 && currentPanel == numOfLevels)
         {
             if (!zoomIn)
             {
@@ -230,6 +289,8 @@ public class PanelNavigation : MonoBehaviour
                     menuUI.UpdateUI(new int[] { }, new int[] { 0, 1 }, true);
                 else
                     menuUI.UpdateUI(new int[] { }, new int[] { 2, 3 }, true);
+
+                menuUI.UpdateNavigationUI(new int[] { 3 }, new int[] { 0, 1 });
             }
             else
             {
@@ -242,6 +303,12 @@ public class PanelNavigation : MonoBehaviour
                     menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { }, true);
                 else
                     menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { }, true);
+
+                if (currentPanel > 1)
+                    menuUI.UpdateNavigationUI(new int[] { 1 }, new int[] { 2, 3 });
+
+                if (nextPanel > currentPanel)
+                    menuUI.UpdateNavigationUI(new int[] { 0 }, new int[] { 2, 3 });
             }   
         }
     }
@@ -345,7 +412,8 @@ public class PanelNavigation : MonoBehaviour
         while(true);
     }
 
-    private IEnumerator AdjustCover(bool reveal, float waitTime = 0)
+    private IEnumerator AdjustCover(bool reveal, 
+        float waitTime = 0, float waitTimeSec = 0)
     {
         float time = 0.0f, totalTime = 1.0f;
         Color c = coverMask.color;
@@ -377,6 +445,7 @@ public class PanelNavigation : MonoBehaviour
             SceneManager.LoadScene(currentPanel);
         }
 
+        if (waitTimeSec != 0) yield return new WaitForSeconds(waitTime);
         isLocked = false;
         isFocusLocked = false;
     }

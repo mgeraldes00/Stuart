@@ -12,8 +12,6 @@ public class MenuControl : MonoBehaviour, IControls
 
     public IEnumerator RevealControl(bool onlyPart)
     {
-        Debug.Log($"Reveal icon {index}");
-
         float startTime = 0.0f, time = 0.0f, totalTime = 0.25f;
         Color c, t = controlTxt.color, ct;
 
@@ -55,8 +53,6 @@ public class MenuControl : MonoBehaviour, IControls
 
     public IEnumerator HideControl(bool onlyPart)
     {
-        Debug.Log($"Hide icon {index}");
-
         float time = 0.0f, totalTime = 0.25f;
         Color c, t = controlTxt.color, ct;
 

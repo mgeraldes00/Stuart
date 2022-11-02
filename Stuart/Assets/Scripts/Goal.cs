@@ -25,7 +25,6 @@ public class Goal : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(playerMask))
         {
-            Debug.Log("Reached goal");
             isOnGoal = true;
         }
     }
@@ -34,7 +33,6 @@ public class Goal : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(playerMask))
         {
-            Debug.Log("Moved away from goal");
             isOnGoal = false;
         }
     }
