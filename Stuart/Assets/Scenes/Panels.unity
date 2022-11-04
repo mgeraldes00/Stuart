@@ -1238,6 +1238,18 @@ PrefabInstance:
       propertyPath: index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1260023854535564969, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
+      propertyPath: horizontal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260023854535564969, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
+      propertyPath: isNegative
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260023854535564969, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
+      propertyPath: updateValue
+      value: -0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2387660945703443237, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
       propertyPath: m_Name
       value: Arrow Left
@@ -3681,6 +3693,14 @@ PrefabInstance:
       propertyPath: index
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1260023854535564969, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
+      propertyPath: isNegative
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260023854535564969, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
+      propertyPath: updateValue
+      value: -0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2387660945703443237, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
       propertyPath: m_Name
       value: Arrow Down
@@ -5730,6 +5750,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416894672}
     m_Modifications:
+    - target: {fileID: 1260023854535564969, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
+      propertyPath: horizontal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2387660945703443237, guid: 360ecebf63cb4ab4db18d30be3e235f3, type: 3}
       propertyPath: m_Name
       value: Arrow Right

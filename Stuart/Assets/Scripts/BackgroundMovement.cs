@@ -28,7 +28,7 @@ public class BackgroundMovement : MonoBehaviour
         xyPosition[1] = transform.position.y;
 
         movement += updateValue * Time.deltaTime;
-
+        
         if (movement > maxMovement)
         {
             movement = maxMovement;

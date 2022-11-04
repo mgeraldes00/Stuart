@@ -13,21 +13,25 @@ public class MenuNavigator : MonoBehaviour, IControls
         float startTime = 0.0f, time = 0.0f, totalTime = 0.25f;
         Color c = controlImg.color;
         
-        do
+        if (controlImg.color.a != 1)
         {
-            startTime += Time.deltaTime;
-
-            if (startTime > totalTime * 4f)
+            do
             {
-                time += Time.deltaTime;
+                startTime += Time.deltaTime;
 
-                c.a = Mathf.Clamp01(time / totalTime);
-                controlImg.color = c;
+                if (startTime > totalTime * 4f)
+                {
+                    time += Time.deltaTime;
+
+                    c.a = Mathf.Clamp01(time / totalTime);
+                    controlImg.color = c;
+                }
+                
+                yield return null;
             }
-            
-            yield return null;
+            while(time < totalTime);
         }
-        while(time < totalTime);
+        
     }
 
     public IEnumerator HideControl(bool onlyPart = false)
