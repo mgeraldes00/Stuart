@@ -11,6 +11,7 @@ public class TutorialController : MonoBehaviour, IController
     [SerializeField] private Player player;
     [SerializeField] private Follower follower;
     [SerializeField] private SpeechBalloon playerSpeech, followerSpeech;
+    [SerializeField] private TutorialUIController uiControl;
 
     [SerializeField] private Image coverMask;
 
@@ -64,6 +65,8 @@ public class TutorialController : MonoBehaviour, IController
     {
         for (int i = 0; i < bounds.Length; i++)
             bounds[i].SetActive(true);
+
+        uiControl.UpdateNavigationUI(new int[] { 0 }, new int[] { });
 
         StartCoroutine(cam.Unlock());
     }
