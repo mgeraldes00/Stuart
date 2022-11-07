@@ -66,7 +66,7 @@ public class TutorialController : MonoBehaviour, IController
         for (int i = 0; i < bounds.Length; i++)
             bounds[i].SetActive(true);
 
-        uiControl.UpdateNavigationUI(new int[] { 0 }, new int[] { });
+        uiControl.UpdateNavigationUI(0);
 
         StartCoroutine(cam.Unlock());
     }
@@ -147,11 +147,24 @@ public class TutorialController : MonoBehaviour, IController
                 playerSpeech.DefineThought(playerThought);
                 player.Invoke(nameof(player.Think), 0.5f);
 
+                StartCoroutine(RevealControl(1, 2.5f));
                 StartCoroutine(cam.Unlock(3.5f));
                 player.Invoke(nameof(player.Unlock), 3.7f);
                 player.Invoke(nameof(player.Listen), 2.5f);
                 break;
+            case 7:
+                uiControl.UpdateUI(0);
+                break;
+            case 8:
+                uiControl.UpdateUI(1);
+                break;
         }
+    }
+
+    private IEnumerator RevealControl(int revealIndex, float waitTime = 0f)
+    {
+        yield return new WaitForSeconds(waitTime);
+        uiControl.UpdateNavigationUI(revealIndex);
     }
 
     public void CollectCoin()
