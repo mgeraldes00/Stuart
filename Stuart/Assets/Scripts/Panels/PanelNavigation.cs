@@ -33,14 +33,14 @@ public class PanelNavigation : MonoBehaviour
     private void Start()
     {
         // ENDGAME
-        /*currentPanel = numOfLevels;
+        /*currentPanel = numOfLevels - 1;
         currentPage = 0;
-        nextPanel = numOfLevels;
-        PlayerPrefs.SetInt("CurrentPanel", numOfLevels);
+        nextPanel = numOfLevels - 1;
+        PlayerPrefs.SetInt("CurrentPanel", numOfLevels - 1);
         PlayerPrefs.SetInt("CurrentPage", 1);
-        PlayerPrefs.SetInt("LastPanelPlayed", numOfLevels);
+        PlayerPrefs.SetInt("LastPanelPlayed", numOfLevels - 1);
         PlayerPrefs.SetInt("IsLastPanelPlayed", 1);
-        PlayerPrefs.SetInt("MaxPanelReached", numOfLevels);*/
+        PlayerPrefs.SetInt("MaxPanelReached", numOfLevels - 1);*/
 
         isLocked = true;
         isFocusLocked = true;
@@ -112,7 +112,8 @@ public class PanelNavigation : MonoBehaviour
                 {
                     menuUI.UpdateUI(new int[] { 2 }, new int[] { });
                     if (currentPanel < nextPanel
-                        || currentPanel == numOfLevels)
+                        || currentPanel == maxPanelReached 
+                        && maxPanelReached == numOfLevels)
                         menuUI.UpdateUI(new int[] { 3 }, new int[] { });
                 } 
 
@@ -141,7 +142,6 @@ public class PanelNavigation : MonoBehaviour
     {
         if (Input.GetButtonUp("Select") && currentPanel == 0 && !isLocked)
         {
-            Debug.Log("Move to first panel");
             isLocked = true;
             isFocusLocked = true;
             StartCoroutine(Move(0));
@@ -154,7 +154,6 @@ public class PanelNavigation : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0 && currentPanel > 0
             && currentPanel < nextPanel && !isLocked && !zoomIn)
         {
-            Debug.Log("Move to next panel");
             isLocked = true;
             isFocusLocked = true;
 
@@ -165,7 +164,8 @@ public class PanelNavigation : MonoBehaviour
                     Move(PlayerPrefs.GetInt("CurrentPanel"), true));
                 menuUI.UpdateUI(new int[] { 0 }, new int[] { 2, 3 });
                 if (currentPanel + 1 < nextPanel
-                    || currentPanel + 1 == numOfLevels)
+                    || currentPanel + 1 == maxPanelReached 
+                    && maxPanelReached == numOfLevels)
                     menuUI.UpdateUI(new int[] { 1 }, new int[] { });
             }
             else
@@ -173,7 +173,8 @@ public class PanelNavigation : MonoBehaviour
                 StartCoroutine(Move(PlayerPrefs.GetInt("CurrentPanel")));
                 menuUI.UpdateUI(new int[] { 2 }, new int[] { 0, 1 });
                 if (currentPanel + 1 < nextPanel
-                    || currentPanel + 1 == numOfLevels)
+                    || currentPanel + 1 == maxPanelReached 
+                    && maxPanelReached == numOfLevels)
                     menuUI.UpdateUI(new int[] { 3 }, new int[] { });
             }
 
@@ -190,7 +191,6 @@ public class PanelNavigation : MonoBehaviour
         if (Input.GetAxis("Horizontal") < 0 && currentPanel > 1
             && currentPanel <= nextPanel && !isLocked && !zoomIn)
         {
-            Debug.Log("Move to previous panel");
             isLocked = true;
             isFocusLocked = true;
 
@@ -202,7 +202,8 @@ public class PanelNavigation : MonoBehaviour
                 StartCoroutine(Move(currentPanel - 1, true));
                 menuUI.UpdateUI(new int[] { 2, 3 }, new int[] { 0 });
                 if (currentPanel + 1 < nextPanel
-                    || currentPanel + 1 == numOfLevels)
+                    || currentPanel + 1 == maxPanelReached 
+                    && maxPanelReached == numOfLevels)
                     menuUI.UpdateUI(new int[] { }, new int[] { 1 });
             }
             else
@@ -212,7 +213,8 @@ public class PanelNavigation : MonoBehaviour
                 StartCoroutine(Move(currentPanel - 1));
                 menuUI.UpdateUI(new int[] { 0, 1 }, new int[] { 2 });
                 if (currentPanel + 1 < nextPanel
-                    || currentPanel + 1 == numOfLevels)
+                    || currentPanel + 1 == maxPanelReached 
+                    && maxPanelReached == numOfLevels)
                     menuUI.UpdateUI(new int[] { }, new int[] { 3 });
             }
 
@@ -228,7 +230,6 @@ public class PanelNavigation : MonoBehaviour
             panelGroups[currentPanel - 1].Images.Length - 1
             && !isLocked && !isFocusLocked && zoomIn)
         {
-            Debug.Log("Move to next image");
             isLocked = true;
             isFocusLocked = true;
 
@@ -248,7 +249,6 @@ public class PanelNavigation : MonoBehaviour
             && panelGroups[currentPanel - 1].CurrentPanel > 0
             && !isLocked && !isFocusLocked && zoomIn)
         {
-            Debug.Log("Move to previous image");
             isLocked = true;
             isFocusLocked = true;
 
@@ -277,7 +277,7 @@ public class PanelNavigation : MonoBehaviour
         if (Input.GetButtonDown("Focus") && !isFocusLocked
             && currentPanel > 0 && currentPanel < nextPanel
             || Input.GetButtonDown("Focus") && !isFocusLocked 
-            && currentPanel > 0 && currentPanel == numOfLevels)
+            && currentPanel == maxPanelReached && maxPanelReached == numOfLevels)
         {
             if (!zoomIn)
             {
@@ -433,6 +433,9 @@ public class PanelNavigation : MonoBehaviour
         }
         else 
         {
+            menuUI.UpdateUI(new int[] { }, new int[] { 0, 1, 2, 3 });
+            menuUI.UpdateNavigationUI(new int[] { }, new int[] { 0, 1, 2, 3 });
+
             do
             {
                 time += Time.deltaTime;

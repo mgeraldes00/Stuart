@@ -67,23 +67,26 @@ public class MenuControl : MonoBehaviour, IControls
             ct = imgTxt.color;
         }
 
-        do
+        if (controlImg.color.a != 0)
         {
-            time += Time.deltaTime;
-
-            t.a = 1.0f - Mathf.Clamp01(time / totalTime);
-            controlTxt.color = t;
-            
-            if (!onlyPart)
+            do
             {
-                c.a = 1.0f - Mathf.Clamp01(time / totalTime);
-                controlImg.color = c;
-                ct.a = 1.0f - Mathf.Clamp01(time / totalTime);
-                imgTxt.color = ct;
-            }
+                time += Time.deltaTime;
 
-            yield return null;
+                t.a = 1.0f - Mathf.Clamp01(time / totalTime);
+                controlTxt.color = t;
+                
+                if (!onlyPart)
+                {
+                    c.a = 1.0f - Mathf.Clamp01(time / totalTime);
+                    controlImg.color = c;
+                    ct.a = 1.0f - Mathf.Clamp01(time / totalTime);
+                    imgTxt.color = ct;
+                }
+
+                yield return null;
+            }
+            while(time < totalTime);
         }
-        while(time < totalTime);
     }
 }
