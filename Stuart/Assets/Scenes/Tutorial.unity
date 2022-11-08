@@ -1070,9 +1070,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0003
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &119786843
 SpriteRenderer:
@@ -2153,9 +2161,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &189055978
 SpriteRenderer:
@@ -2337,7 +2353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 69b8ff84701975342be9b68726584234, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 69b8ff84701975342be9b68726584234, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2364,9 +2380,17 @@ PrefabInstance:
       value: Usa as setas direcionais para te movimentares
       objectReference: {fileID: 0}
     - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
       propertyPath: m_fontColor.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 16777215
@@ -2427,6 +2451,18 @@ PrefabInstance:
     - target: {fileID: 2793185434369855187, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: index
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921950835835185853, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: canPause
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921950835835185853, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921950835835185853, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: maxMovement
+      value: 0.0002
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_Pivot.x
@@ -2494,11 +2530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2635
+      value: 2761
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16
+      value: -205
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2710,9 +2746,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &248750634
 SpriteRenderer:
@@ -3148,9 +3192,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &378265736
 SpriteRenderer:
@@ -3250,9 +3302,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0003
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &388862977
 SpriteRenderer:
@@ -3541,9 +3601,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.001
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!1 &460418543 stripped
 GameObject:
@@ -3602,9 +3670,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &463735483
 SpriteRenderer:
@@ -3817,12 +3893,28 @@ PrefabInstance:
       value: Usa a seta para baixo, para desceres de plataformas
       objectReference: {fileID: 0}
     - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
       propertyPath: m_fontColor.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7877399244298803065, guid: 69b8ff84701975342be9b68726584234, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 16777215
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877399244298803066, guid: 69b8ff84701975342be9b68726584234, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 231.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877399244298803066, guid: 69b8ff84701975342be9b68726584234, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 145.61
       objectReference: {fileID: 0}
     - target: {fileID: 7877399244862480794, guid: 69b8ff84701975342be9b68726584234, type: 3}
       propertyPath: m_Color.a
@@ -3959,9 +4051,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0003
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &506627103
 SpriteRenderer:
@@ -5690,9 +5790,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &744749141
 SpriteRenderer:
@@ -5920,9 +6028,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &782533384
 SpriteRenderer:
@@ -6623,9 +6739,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &889092018
 SpriteRenderer:
@@ -6904,9 +7028,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0003
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &933971286
 SpriteRenderer:
@@ -7088,9 +7220,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &945453629
 SpriteRenderer:
@@ -8166,9 +8306,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.001
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &1125714403
 SpriteRenderer:
@@ -8336,9 +8484,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 2
   updateValue: 0.5
+  waitTime: 0
   movement: 0
 --- !u!1 &1137906334 stripped
 GameObject:
@@ -10914,9 +11070,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &1385067944
 SpriteRenderer:
@@ -11321,7 +11485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4870345705777911817, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 44.7
       objectReference: {fileID: 0}
     - target: {fileID: 4870345705777911817, guid: c7353f033d961334aa32d3e110b84d0f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11481,9 +11645,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &1481131547
 SpriteRenderer:
@@ -12098,9 +12270,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0003
   updateValue: -0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &1589540934
 SpriteRenderer:
@@ -13089,6 +13269,22 @@ PrefabInstance:
       propertyPath: index
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2921950835835185853, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: canPause
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921950835835185853, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921950835835185853, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: horizontal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921950835835185853, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: maxMovement
+      value: 0.0002
+      objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13155,11 +13351,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2685
+      value: 2501
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 547
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 7877399243481809830, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13179,7 +13375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7877399244298803065, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_text
-      value: "Mant\xE9m a barra de espa\xE7o pressionada para abrandar a queda"
+      value: "Mant\xE9m a barra de espa\xE7o pressionada para abrandares a queda"
       objectReference: {fileID: 0}
     - target: {fileID: 7877399244298803065, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_fontColor.a
@@ -13188,6 +13384,14 @@ PrefabInstance:
     - target: {fileID: 7877399244298803065, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 16777215
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877399244298803066, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 311.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877399244298803066, guid: 54943512f7fa862468b4d86646bec818, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 260.88
       objectReference: {fileID: 0}
     - target: {fileID: 7877399244862480794, guid: 54943512f7fa862468b4d86646bec818, type: 3}
       propertyPath: m_Color.a
@@ -14194,9 +14398,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &1962085762
 SpriteRenderer:
@@ -14904,9 +15116,17 @@ MonoBehaviour:
   xyPosition:
   - 0
   - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
   horizontal: 1
+  isScale: 0
+  paused: 0
+  canPause: 0
   maxMovement: 0.0005
   updateValue: 0.0001
+  waitTime: 0
   movement: 0
 --- !u!212 &2064063712
 SpriteRenderer:

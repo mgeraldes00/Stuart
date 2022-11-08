@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -123,6 +122,8 @@ public class TutorialController : MonoBehaviour, IController
                 refPoints[2].SetActive(false);
                 break;
             case 4:
+                uiControl.UpdateUI(-1, 0);
+
                 StartCoroutine(player.LeaveScene());
                 StartCoroutine(follower.LeaveScene());
                 break;

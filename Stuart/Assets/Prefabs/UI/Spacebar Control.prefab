@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7877399243481809830}
-  - component: {fileID: 2623726531259726928}
   - component: {fileID: 2793185434369855187}
   m_Layer: 5
   m_Name: Spacebar Control
@@ -39,22 +38,6 @@ RectTransform:
   m_AnchoredPosition: {x: -25, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2623726531259726928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7877399243481809831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797345e45d4b41a49be8e2c5dd29eef4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlImg: {fileID: 7877399244862480794}
-  controlTxt: {fileID: 7877399244298803065}
-  imgTxt: {fileID: 0}
-  index: 0
 --- !u!114 &2793185434369855187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +87,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160, y: 0}
+  m_AnchoredPosition: {x: 205, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7877399244298803064
@@ -162,8 +145,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -215,6 +198,7 @@ GameObject:
   - component: {fileID: 7877399244862480795}
   - component: {fileID: 7877399244862480793}
   - component: {fileID: 7877399244862480794}
+  - component: {fileID: 2921950835835185853}
   m_Layer: 5
   m_Name: Control Image
   m_TagString: Untagged
@@ -239,7 +223,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7877399244862480793
 CanvasRenderer:
@@ -279,3 +263,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2921950835835185853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877399244862480796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91e5c7f774feb04081497f725911fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xyPosition:
+  - 0
+  - 0
+  scalePos:
+  - 0
+  - 0
+  - 0
+  horizontal: 0
+  isScale: 1
+  maxMovement: 0.001
+  updateValue: 0.001
+  movement: 0
