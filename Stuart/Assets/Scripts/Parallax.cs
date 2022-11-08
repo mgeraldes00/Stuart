@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Parallax : MonoBehaviour
@@ -9,7 +7,7 @@ public class Parallax : MonoBehaviour
 
     private Vector3 offset;
 
-    void Start()
+    private void Start()
     {
         sourceTransform = Camera.main.transform;
 
@@ -19,7 +17,7 @@ public class Parallax : MonoBehaviour
             transform.position.z - sourceTransform.position.z);
     }
 
-    void Update()
+    private void Update()
     {
         Vector3 currentPos = new Vector3();
         currentPos.x = sourceTransform.position.x * moveScale.x + offset.x;

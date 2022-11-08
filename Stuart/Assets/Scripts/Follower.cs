@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Follower : MonoBehaviour
@@ -53,12 +52,6 @@ public class Follower : MonoBehaviour
         }
         else
             currentVelocity = rb.velocity;
-            
-
-        /*if (transform.rotation.y == 0)
-            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
-        else
-            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];*/
 
         animator.SetFloat("VelocityX", Mathf.Abs(currentVelocity.x));
     }
@@ -390,10 +383,7 @@ public class Follower : MonoBehaviour
         StartCoroutine(ResetTalk());
     }
 
-    public void Listen()
-    {
-        speechBalloon.HideBalloon();
-    }
+    public void Listen() => speechBalloon.HideBalloon();
 
     private IEnumerator ResetTalk()
     {

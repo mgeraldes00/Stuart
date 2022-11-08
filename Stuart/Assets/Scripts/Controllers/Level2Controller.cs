@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,8 +69,6 @@ public class Level2Controller : MonoBehaviour, IController
     {
         for (int i = 0; i < bounds.Length; i++)
             bounds[i].SetActive(true);
-
-        //StartCoroutine(cam.Unlock());
     }
 
     public void SetDialogue(

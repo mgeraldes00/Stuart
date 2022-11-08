@@ -10,8 +10,7 @@ public class MobileAgent : MonoBehaviour
     public bool IsInverted => isInverted;
     public bool IsOnForeground => isOnForeground;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
     }

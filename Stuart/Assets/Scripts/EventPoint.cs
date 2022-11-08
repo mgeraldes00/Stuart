@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EventPoint : MonoBehaviour
@@ -18,7 +17,6 @@ public class EventPoint : MonoBehaviour
 
     private bool interacted;
 
-    // Start is called before the first frame update
     private void Start()
     {
         controllerObj = GameObject.Find("Controller");

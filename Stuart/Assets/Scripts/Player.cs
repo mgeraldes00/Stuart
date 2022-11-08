@@ -1,16 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     private const float glideCooldownAmount = 0.5f;
-    /*private readonly float[] colliderSize = new float[]{1f, 0.2f};
-    private readonly float[] colliderSizeJump = new float[]{2f, 0.2f};
-    private readonly float[] colliderSizeJumpAlt = new float[]{1.75f, 2f};
-    private readonly float[] colliderSizePlatform = new float[]{1f, 2f};
-    private float colliderInc;*/
 
     [SerializeField] private float horizontalSpeed = 5.0f;
     [SerializeField] private float jumpSpeed = 5.0f;
@@ -37,7 +30,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator animator;
-    //private CapsuleCollider2D bodyCollider;
+
     [SerializeField] private BoxCollider2D platformCollider;
 
     [SerializeField] private SpeechBalloon speechBalloon;
@@ -54,7 +47,6 @@ public class Player : MonoBehaviour
     public bool Platforming => platforming;
     public bool HoveringPlatform => hoveringPlatform;
     [SerializeField] private bool onBound, onCoin;
-    //[SerializeField] private bool onPlatformLeft, onPlatformRight;
     [SerializeField] private bool balancingFront, balancingBack;
     [SerializeField] private bool jumping;
     public bool Jumping => jumping;
@@ -77,7 +69,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        //bodyCollider = GetComponent<CapsuleCollider2D>();
 
         speechBalloon = GetComponentInChildren<SpeechBalloon>();
 
@@ -101,18 +92,12 @@ public class Player : MonoBehaviour
         {
             sprite.sortingOrder = defaultLayer - 2;
             platforming = true;
-            /*if (colliderDecrease)
-                StartCoroutine(ColliderIncrease(false, 1.5f));*/
-            //colliderInc = colliderSize[0];
         }
             
         if (onGround)
         {
             sprite.sortingOrder = defaultLayer;
             platforming = false;
-            /*if (colliderDecrease)
-                StartCoroutine(ColliderIncrease(false));*/
-            //colliderInc = colliderSize[0];
         }
 
         if (enteredScene && !isLocked)
@@ -136,10 +121,7 @@ public class Player : MonoBehaviour
         if (isInputLocked)
         {
             inputLockTimer -= Time.deltaTime;
-            if (timeUpdater)
-            {
-                timeUpdater.SetScale(1.0f);
-            }
+            if (timeUpdater) timeUpdater.SetScale(1.0f);
         }
         else
         {
@@ -158,8 +140,6 @@ public class Player : MonoBehaviour
                 gliding = false;
                 hasPlayed = false;
                 glideCooldown = 0;
-                /*bodyCollider.size = 
-                    new Vector2(colliderSize[0], colliderSize[1]);*/
             }
             
             if (Input.GetButtonDown("Jump"))
@@ -181,7 +161,6 @@ public class Player : MonoBehaviour
 
                         sounds[0].Play();
                         glideCooldown = glideCooldownAmount;
-                        //StartCoroutine(ResetGlideCooldown());
                     } 
                 }
             }
@@ -212,7 +191,6 @@ public class Player : MonoBehaviour
 
                         sounds[0].Play();
                         glideCooldown = glideCooldownAmount;
-                        //StartCoroutine(ResetGlideCooldown());
                     }
                     
                     hasPlayed = true;
@@ -221,7 +199,6 @@ public class Player : MonoBehaviour
             else if (Input.GetButtonUp("Jump"))
             {
                 jumping = false;
-                //hasPlayed = false;
                 buttonHold = false;
 
                 if (gliding)
@@ -254,7 +231,6 @@ public class Player : MonoBehaviour
     {
         gliding = true;
         rb.gravityScale = 0.2f;
-        //if (currentVelocity.y < -5 * fallGravityScale)
     }
 
     public IEnumerator EnterScene(float timeToEnter)
@@ -347,7 +323,6 @@ public class Player : MonoBehaviour
         sprite.sortingOrder = defaultLayer;
 
         rb.gravityScale = fallGravityScale;
-        //rb.velocity = Vector3.zero;
         rb.velocity = new Vector3(0, currentVelocity.y, 0);
     }
 
@@ -358,9 +333,6 @@ public class Player : MonoBehaviour
     
     private bool IsOnGround()
     {
-        /*Collider2D collider = Physics2D.OverlapCircle(
-            groundProbe.position, groundProbeRadius, groundMask);*/
-
         Collider2D collider = Physics2D.OverlapBox(
             groundProbe.position, groundProbeSize, 0, groundMask);
 
@@ -369,15 +341,8 @@ public class Player : MonoBehaviour
 
     private bool IsOnPlatform()
     {
-        /*Collider2D collider = Physics2D.OverlapCircle(
-            groundProbe.position, groundProbeRadius, platformMask);*/
-
         Collider2D collider = Physics2D.OverlapBox(
             groundProbe.position, groundProbeSize, 0, platformMask);
-
-        /*Collider2D collider = Physics2D.OverlapCapsule(
-            groundProbe.position, groundProbeSize, 
-            CapsuleDirection2D.Horizontal, 0, platformMask);*/
 
         if (currentVelocity.y <= 0 && jumping 
             || currentVelocity.y <= 0 && gliding
@@ -413,25 +378,6 @@ public class Player : MonoBehaviour
 
         return false;
     }
-
-    /*public void SetBalancing(int side = -1)
-    {
-        switch (side)
-        {
-            case -1:
-                onPlatformLeft = false;
-                onPlatformRight = false;
-                break;
-            case 0:
-                onPlatformLeft = true;
-                onPlatformRight = false;
-                break;
-            case 1:
-                onPlatformRight = true;
-                onPlatformLeft = false;
-                break;
-        }
-    }*/
     
     private bool IsBalancingBack()
     {
@@ -441,12 +387,6 @@ public class Player : MonoBehaviour
             platformProbeBack.position, platformProbeRadius, platformMask);
 
         return (collider != null && colliderSec == null && onPlatform);
-
-        /*if (onPlatform)
-            return (onPlatformLeft && transform.rotation == Quaternion.Euler(0, 0, 0)
-                || onPlatformRight && transform.rotation != Quaternion.Euler(0, 0, 0));
-
-        return false;*/
     }
 
     private bool IsBalancingFront()
@@ -457,19 +397,12 @@ public class Player : MonoBehaviour
             platformProbeFront.position, platformProbeRadius, platformMask);
 
         return (collider != null && colliderSec == null && onPlatform);
-
-        /*if (onPlatform)
-            return (onPlatformRight && transform.rotation == Quaternion.Euler(0, 0, 0)
-                || onPlatformLeft && transform.rotation != Quaternion.Euler(0, 0, 0));
-
-        return false;*/
     }
 
     private IEnumerator DownPlatform()
     {
         StartCoroutine(ResetDownRequest());
 
-        //bodyCollider.enabled = false;
         platformCollider.enabled = false;
 
         do
@@ -478,7 +411,6 @@ public class Player : MonoBehaviour
         }
         while (!onPlatform && !onGround && !onBound && !onCoin);
         
-        //bodyCollider.enabled = true;
         platformCollider.enabled = true;
     }
 
@@ -513,9 +445,6 @@ public class Player : MonoBehaviour
             Gizmos.DrawSphere(groundProbe.position, groundProbeRadius);
             Gizmos.DrawSphere(platformProbeFront.position, platformProbeRadius);
             Gizmos.DrawSphere(platformProbeBack.position, platformProbeRadius);
-            /*Gizmos.DrawMesh(
-                probeMesh, 0, groundProbe.position, Quaternion.Euler(0, 0, 0), 
-                groundProbeSize);*/
         }
     }
 
@@ -539,10 +468,7 @@ public class Player : MonoBehaviour
         StartCoroutine(ResetTalk());
     }
 
-    public void Listen()
-    {
-        speechBalloon.HideBalloon();
-    }
+    public void Listen() => speechBalloon.HideBalloon();
 
     private IEnumerator ResetTalk()
     {

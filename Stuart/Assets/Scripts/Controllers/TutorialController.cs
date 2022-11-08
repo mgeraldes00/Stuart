@@ -26,7 +26,6 @@ public class TutorialController : MonoBehaviour, IController
     [SerializeField] private float fps;
     [SerializeField] private Text fpsText;
 
-    // Start is called before the first frame update
     private void Start()
     {
         Application.targetFrameRate = 300;

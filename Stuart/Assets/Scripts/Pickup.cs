@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
@@ -17,7 +15,6 @@ public class Pickup : MonoBehaviour
 
     private bool collected;
 
-    // Start is called before the first frame update
     private void Start()
     {
         controllerObj = GameObject.Find("Controller");
@@ -26,7 +23,6 @@ public class Pickup : MonoBehaviour
         coinCollider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (collected)

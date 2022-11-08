@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Panel : MonoBehaviour
@@ -34,7 +31,6 @@ public class Panel : MonoBehaviour
         return images[currentPanel].transform.position;
     }
 
-    // Change later to hide default image and replace with illustration
     public void SetImage(bool reveal)
     {
         for (int i = 0; i < images.Length; i++)

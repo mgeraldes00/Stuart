@@ -11,8 +11,7 @@ public class BackgroundMovement : MonoBehaviour
     [SerializeField] private float maxMovement, updateValue, waitTime;
     [SerializeField] private float movement;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         if (!isScale)
         {
@@ -27,8 +26,7 @@ public class BackgroundMovement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!isScale)
         {

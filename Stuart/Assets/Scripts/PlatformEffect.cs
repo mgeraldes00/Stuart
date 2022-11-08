@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformEffect : MonoBehaviour
@@ -31,22 +29,4 @@ public class PlatformEffect : MonoBehaviour
                 cam.OffsetY = offsetValue;
         }
     }
-
-    /*private void OnTriggerStay2D(Collider2D other)
-    {   
-        if (edge)
-        {
-            if (other.tag == "Player")
-                player.SetBalancing(side);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (edge)
-        {
-            if (other.tag == "Player")
-                player.SetBalancing();
-        }
-    }*/
 }

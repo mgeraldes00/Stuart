@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -187,9 +186,5 @@ public class Level5Controller : MonoBehaviour, IController
         
         yield return new WaitForSeconds(0.2f);
         goal.SetActive(true);
-        //follower.Unlock();
-        //yield return new WaitForSeconds(0.8f);
-        //player.Unlock();
-        //StartCoroutine(cam.Unlock());
     }
 }

@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class SpeechBalloon : MonoBehaviour
@@ -22,7 +20,6 @@ public class SpeechBalloon : MonoBehaviour
 
     [SerializeField] private bool active, speaking;
 
-    // Start is called before the first frame update
     private void Start()
     {
         mask = GetComponent<Animator>();
@@ -55,7 +52,6 @@ public class SpeechBalloon : MonoBehaviour
         mask.SetBool("Talking", true);
         active = true;
 
-        //text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         text.text = "";
 
         nextLine++;
@@ -69,7 +65,6 @@ public class SpeechBalloon : MonoBehaviour
         mask.SetBool("Talking", true);
         active = true;
 
-        //text.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         text.text = "";
 
         nextLine++;

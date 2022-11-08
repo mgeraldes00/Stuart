@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,14 +10,12 @@ public class AudioLeveler : MonoBehaviour
 
     [SerializeField] private float lowPos, highPos;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         StartCoroutine(AdjustVolume("Master Volume", -60, 0, 30));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (player != null)
         {

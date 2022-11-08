@@ -20,8 +20,7 @@ public class AgentMovement : MonoBehaviour
 
     private bool onGround;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         agent = GetComponent<MobileAgent>();
         rb = GetComponent<Rigidbody2D>();
@@ -40,8 +39,7 @@ public class AgentMovement : MonoBehaviour
         StartCoroutine(MoveAnimation());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (onGround)
             rb.velocity = new Vector3(speed, 0, 0);

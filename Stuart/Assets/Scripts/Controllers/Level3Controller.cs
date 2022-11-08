@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -41,7 +40,6 @@ public class Level3Controller : MonoBehaviour, IController
     {
         Application.targetFrameRate = 300;
 
-        //cam = FindObjectOfType<CameraCtrl>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").
             GetComponent<CameraCtrl>();
 
@@ -113,7 +111,6 @@ public class Level3Controller : MonoBehaviour, IController
                     new int[] { 0, 1, 0, 1, 0 },
                     2.0f));
                 break;
-            // Event : separation point
             case 2:
                 StartCoroutine(cam.Lock());
                 player.Lock();
@@ -128,22 +125,10 @@ public class Level3Controller : MonoBehaviour, IController
                 StartCoroutine(Dialogue(
                     new int[] { 1, 0, 1, 0, 1, 0, 1 },
                     4.5f, new int[] {-1, -1}));
-                
-                //bounds[1].SetActive(false);
                 break;
-            // Event : final
-            case 3:
-
-                break;
-            // Event : leave scene
             case 4:
                 StartCoroutine(player.LeaveScene());
                 break;
-            // Event : liberate exit
-            case 5:
-
-                break;
-            // Event : not enough coins
             case 6:
                 player.Lock();
                 player.Turn();
@@ -262,7 +247,6 @@ public class Level3Controller : MonoBehaviour, IController
             yield return new WaitForSeconds(0.2f);
             StartCoroutine(follower.LeaveScene());
             props[0].SetActive(true);
-            // Play prop sound
         }
         yield return new WaitForSeconds(0.8f);
         player.Unlock();
