@@ -53,6 +53,7 @@ public class Goal : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
         PlayerPrefs.SetInt("IsLastPanelPlayed", 1);
+        PlayerPrefs.SetInt("TransitionFromLevel", 1);
         if (PlayerPrefs.GetInt("MaxPanelReached") < levelIndex)
             PlayerPrefs.SetInt("MaxPanelReached", levelIndex);
         SceneManager.LoadScene("Panels");

@@ -65,11 +65,11 @@ public class PanelNavigation : MonoBehaviour
             PlayerPrefs.SetInt("LastPanelPlayed", 0);
             PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
             PlayerPrefs.SetInt("MaxPanelReached", 0);
+            PlayerPrefs.SetInt("TransitionFromLevel", 0);
 
             pages[0].SetActive(true);
 
-            coverMask.enabled = true;
-            StartCoroutine(AdjustCover(true, 1.0f, 1.0f));
+            StartCoroutine(SimpleLock(2.5f));
         }
         else
         {
@@ -131,8 +131,12 @@ public class PanelNavigation : MonoBehaviour
 
             pages[currentPage].SetActive(true);
 
-            coverMask.enabled = true;
-            StartCoroutine(AdjustCover(true, 1.0f));
+            if (PlayerPrefs.GetInt("TransitionFromLevel") != 0)
+            {
+                coverMask.enabled = true;
+                StartCoroutine(AdjustCover(true, 1.0f));
+            }
+            else StartCoroutine(SimpleLock(1.0f));
         }
 
         if (currentPanel == 0) StartCoroutine(startControl.RevealControl());
@@ -267,6 +271,7 @@ public class PanelNavigation : MonoBehaviour
         {
             PlayerPrefs.SetInt("LastPanelPlayed", currentPanel);
             PlayerPrefs.SetInt("IsLastPanelPlayed", 0);
+            PlayerPrefs.SetInt("TransitionFromLevel", 0);
             isLocked = true;
             isFocusLocked = true;
             StartCoroutine(audioCtrl.AdjustVolume("Master Volume", 0, -60, 30));
@@ -412,11 +417,19 @@ public class PanelNavigation : MonoBehaviour
         while(true);
     }
 
-    private IEnumerator AdjustCover(bool reveal, 
-        float waitTime = 0, float waitTimeSec = 0)
+    private IEnumerator SimpleLock(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        isLocked = false;
+        isFocusLocked = false;
+    }
+
+    private IEnumerator AdjustCover(bool reveal, float waitTime = 0)
     {
         float time = 0.0f, totalTime = 1.0f;
         Color c = coverMask.color;
+
+        if (coverMask.enabled != true) coverMask.enabled = true;
 
         if (waitTime != 0) yield return new WaitForSeconds(waitTime);
 
@@ -448,8 +461,11 @@ public class PanelNavigation : MonoBehaviour
             SceneManager.LoadScene(currentPanel);
         }
 
-        if (waitTimeSec != 0) yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(waitTime);
         isLocked = false;
         isFocusLocked = false;
     }
+
+    private void OnApplicationQuit() 
+        => PlayerPrefs.SetInt("TransitionFromLevel", 0);
 }
