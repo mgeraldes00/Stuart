@@ -104,6 +104,8 @@ public class TutorialController : MonoBehaviour, IController
                 player.Lock();
                 break;
             case 3:
+                uiControl.UpdateNavigationUI(-1, 1);
+
                 StartCoroutine(cam.Lock());
                 player.Lock();
                 follower.Lock();
@@ -121,8 +123,6 @@ public class TutorialController : MonoBehaviour, IController
                 refPoints[2].SetActive(false);
                 break;
             case 4:
-                uiControl.UpdateUI(-1, 0);
-
                 StartCoroutine(player.LeaveScene());
                 StartCoroutine(follower.LeaveScene());
                 break;
@@ -138,6 +138,10 @@ public class TutorialController : MonoBehaviour, IController
                 player.Invoke(nameof(player.Listen), 2.0f);
                 break;
             case 6:
+                uiControl.UpdateUI(-1, 0);
+                uiControl.UpdateUI(-1, 1);
+                uiControl.UpdateNavigationUI(-1, 0);
+
                 StartCoroutine(cam.Lock());
 
                 if (player.gameObject.transform.rotation 
